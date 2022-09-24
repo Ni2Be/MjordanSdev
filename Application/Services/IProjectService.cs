@@ -4,5 +4,5 @@ namespace Application.Services;
 
 public interface IProjectService
 {
-    public Task<List<Project>> GetAll();
+    public Task<List<Project>> GetAll(CancellationToken cancellationToken);
 }

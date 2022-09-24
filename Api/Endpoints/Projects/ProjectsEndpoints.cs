@@ -11,9 +11,9 @@ public static class ProjectEndpoints
     }
 
     
-    public static async Task<IResult> GetAllProjects(IProjectService projectService)
+    public static async Task<IResult> GetAllProjects(IProjectService projectService, CancellationToken cancellationToken)
     {
-        var projects = await projectService.GetAll();
+        var projects = await projectService.GetAll(cancellationToken);
         return Results.Ok(projects);
     }
 }

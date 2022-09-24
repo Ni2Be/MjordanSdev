@@ -13,8 +13,8 @@ public class ProjectService : IProjectService
         _dataContext = dataContext;
     }
 
-    public async Task<List<Project>> GetAll()
+    public async Task<List<Project>> GetAll(CancellationToken cancellationToken)
     {
-        return await _dataContext.Projects.ToListAsync();
+        return await _dataContext.Projects.ToListAsync(cancellationToken);
     }
 }
