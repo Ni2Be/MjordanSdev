@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Menu, Sidebar } from 'semantic-ui-react'
 
 import './Menu.scss';
 
@@ -12,36 +11,7 @@ const MenuBar: React.FC = () => {
     }
 
     return (
-        <Menu
-            pointing
-            vertical
-            secondary
-            visible>
-            <Menu.Item
-                className='someContent'
-                name='about'
-                active={activeItem === 'about'}
-                onClick={() => handleClick('about')}
-            />
-            <Menu.Item
-                className='someContent'
-                name='projects'
-                active={activeItem === 'projects'}
-                onClick={() => handleClick('projects')}
-            />
-            <Menu.Item
-                className='someContent'
-                name='contact'
-                active={activeItem === 'contact'}
-                onClick={() => handleClick('contact')}
-            />
-            <Menu.Item
-                className='someContent'
-                name='articles'
-                active={activeItem === 'articles'}
-                onClick={() => handleClick('articles')}
-            />
-        </Menu>
+        <div></div>
     )
 }
 
