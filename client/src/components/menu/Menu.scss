@@ -1,0 +1,24 @@
+$someColor: #C4C56B;
+$someOtherColor: #6b9ac5;
+$someThirdColor: #ff48d1;
+
+
+.someContent.item {
+    &#{&} {
+        color: $someOtherColor;
+    }
+
+    &:hover {
+        &#{&} {
+            &#{&} {
+                color: $someThirdColor;
+            }
+        }
+    }
+
+    &.active {
+        &#{&} {
+            color: $someColor;
+        }
+    }
+}

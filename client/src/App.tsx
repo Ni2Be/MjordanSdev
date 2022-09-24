@@ -1,57 +1,34 @@
 import React from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
-import { Grid, Segment, Placeholder } from 'semantic-ui-react';
+import { Grid, Placeholder } from 'semantic-ui-react';
+import MenuBar from './components/menu/Menu';
+import Background from './components/Background/Background';
+import { Canvas } from '@react-three/fiber';
+import Box from './components/Box/Box';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <Grid columns={3} stackable>
-        <Grid.Column>
-          <Segment raised>
+
+      <Grid columns={2} >
+        <Grid.Column stretched>
+          <Grid.Row columns={2}>
             <Placeholder>
-              <Placeholder.Header image>
-                <Placeholder.Line />
-                <Placeholder.Line />
-              </Placeholder.Header>
-              <Placeholder.Paragraph>
-                <Placeholder.Line length='medium' />
-                <Placeholder.Line length='short' />
-              </Placeholder.Paragraph>
             </Placeholder>
-          </Segment>
+          </Grid.Row>
+          <Grid.Row columns={2}>
+            <Placeholder>
+              <Placeholder.Image />
+            </Placeholder>
+            <MenuBar />
+          </Grid.Row>
         </Grid.Column>
 
         <Grid.Column>
-          <Segment raised>
-            <Placeholder>
-              <Placeholder.Header image>
-                <Placeholder.Line />
-                <Placeholder.Line />
-              </Placeholder.Header>
-              <Placeholder.Paragraph>
-                <Placeholder.Line length='medium' />
-                <Placeholder.Line length='short' />
-              </Placeholder.Paragraph>
-            </Placeholder>
-          </Segment>
-        </Grid.Column>
-
-        <Grid.Column>
-          <Segment raised>
-            <Placeholder>
-              <Placeholder.Header image>
-                <Placeholder.Line />
-                <Placeholder.Line />
-              </Placeholder.Header>
-              <Placeholder.Paragraph>
-                <Placeholder.Line length='medium' />
-                <Placeholder.Line length='short' />
-              </Placeholder.Paragraph>
-            </Placeholder>
-          </Segment>
         </Grid.Column>
       </Grid>
+      <Background />
     </div>
   );
 }
