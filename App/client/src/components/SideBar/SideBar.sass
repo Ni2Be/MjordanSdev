@@ -1,0 +1,40 @@
+@use 'sass:math'
+@import './../../theme/colors'
+@import './../../theme/keyframes'
+
+$menuBackgroundTop: $primary
+$menuBackgroundBottom: $primary-2
+$menuItemColor: $secondary
+$menuItemActiveColor: $secondary-1
+$menuItemHoverColor: $secondary-2
+
+@include glow("active", $menuItemActiveColor)
+@include glow("hover", $menuItemHoverColor)
+
+.pointing.secondary.vertical.sideBar.menu 
+    font-family: 'LexendExa'
+    background-image: linear-gradient(to bottom right, $menuBackgroundTop, $menuBackgroundBottom)
+    margin-top: 0
+    padding-top: 0
+    border-color: $primary-2
+
+    position: fixed
+    top: math.div(100vh, 3)
+
+    .sideBarItem 
+        color: $menuItemColor
+
+        &:hover 
+            color: $menuItemHoverColor
+            text-shadow: 0px 0px 1rem $menuItemHoverColor
+            animation: glow-hover 2s ease-in-out infinite alternate
+            transition: all 0.1s ease-in
+
+        &.active
+            border-color: $secondary-1
+            color: $menuItemActiveColor
+            animation: glow-active 2s ease-in-out infinite alternate
+            transition: all 0.1s ease-in
+
+
+

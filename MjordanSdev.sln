@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{4C2563EE-B121-4EDC-89C3-3A51639B1D19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "App\Api\Api.csproj", "{4C2563EE-B121-4EDC-89C3-3A51639B1D19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{DB748DED-8163-4D55-9BFB-25E047CB5308}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "App\Application\Application.csproj", "{DB748DED-8163-4D55-9BFB-25E047CB5308}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{38CE3893-EC50-41F4-9146-08ED86063B49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "App\Infrastructure\Infrastructure.csproj", "{38CE3893-EC50-41F4-9146-08ED86063B49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{38C4FC37-7858-44E8-B7BB-04E8E614356A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "App\Persistence\Persistence.csproj", "{38C4FC37-7858-44E8-B7BB-04E8E614356A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{6D99F3C4-999B-4EF4-8EE0-5155B5B4BB62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "App\Model\Model.csproj", "{6D99F3C4-999B-4EF4-8EE0-5155B5B4BB62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "Application.UnitTests\Application.UnitTests.csproj", "{CEA078AF-7289-42CB-8DF4-0699377469C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Tests\Application.UnitTests\Application.UnitTests.csproj", "{CEA078AF-7289-42CB-8DF4-0699377469C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{61774C0E-2D58-45BD-A62E-90BFCF56470F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C249D239-9367-4FD6-B7C1-14642EAA631D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +52,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C2563EE-B121-4EDC-89C3-3A51639B1D19} = {61774C0E-2D58-45BD-A62E-90BFCF56470F}
+		{DB748DED-8163-4D55-9BFB-25E047CB5308} = {61774C0E-2D58-45BD-A62E-90BFCF56470F}
+		{38CE3893-EC50-41F4-9146-08ED86063B49} = {61774C0E-2D58-45BD-A62E-90BFCF56470F}
+		{38C4FC37-7858-44E8-B7BB-04E8E614356A} = {61774C0E-2D58-45BD-A62E-90BFCF56470F}
+		{6D99F3C4-999B-4EF4-8EE0-5155B5B4BB62} = {61774C0E-2D58-45BD-A62E-90BFCF56470F}
+		{CEA078AF-7289-42CB-8DF4-0699377469C2} = {C249D239-9367-4FD6-B7C1-14642EAA631D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {054E1536-C6AB-4231-90A5-C77AFB418F81}
