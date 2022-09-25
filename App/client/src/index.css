@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'LexendExa';
+  src: local('LexendExa'), url(./fonts/LexendExa-VariableFont_wght.ttf) format('truetype');
+}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Menu, Sidebar } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 
-import './Menu.scss';
+import './SideBar.sass';
 
-const MenuBar: React.FC = () => {
+const SideBar: React.FC = () => {
 
     const [activeItem, setActiveItem] = useState('about');
 
@@ -16,27 +16,27 @@ const MenuBar: React.FC = () => {
             pointing
             vertical
             secondary
-            visible>
+            className='sideBar'>
             <Menu.Item
-                className='someContent'
+                className='sideBarItem'
                 name='about'
                 active={activeItem === 'about'}
                 onClick={() => handleClick('about')}
             />
             <Menu.Item
-                className='someContent'
+                className='sideBarItem'
                 name='projects'
                 active={activeItem === 'projects'}
                 onClick={() => handleClick('projects')}
             />
             <Menu.Item
-                className='someContent'
+                className='sideBarItem'
                 name='contact'
                 active={activeItem === 'contact'}
                 onClick={() => handleClick('contact')}
             />
             <Menu.Item
-                className='someContent'
+                className='sideBarItem'
                 name='articles'
                 active={activeItem === 'articles'}
                 onClick={() => handleClick('articles')}
@@ -45,4 +45,4 @@ const MenuBar: React.FC = () => {
     )
 }
 
-export default MenuBar;
+export default SideBar;
