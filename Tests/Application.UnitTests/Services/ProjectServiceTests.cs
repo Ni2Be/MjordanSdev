@@ -12,7 +12,7 @@ namespace Application.UnitTests.Services;
 public class ProjectServiceTests
 {
     private readonly ITestOutputHelper _testOutputHelper;
-    DbContextOptions<DataContext> _dbContextOptions;
+    private readonly DbContextOptions<DataContext> _dbContextOptions;
     public ProjectServiceTests(ITestOutputHelper testOutputHelper)
     {
         _dbContextOptions = new DbContextOptionsBuilder<DataContext>()

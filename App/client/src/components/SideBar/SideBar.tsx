@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { Menu } from 'semantic-ui-react'
-
-import './SideBar.sass';
+import React, { useState } from "react"
+import { Menu } from "semantic-ui-react"
+import "./SideBar.sass";
 
 const SideBar: React.FC = () => {
 
