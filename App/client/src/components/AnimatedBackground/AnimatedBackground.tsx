@@ -4,8 +4,8 @@ import Box from "../Sphere/Sphere";
 import "./AnimatedBackground.sass"
 
 function AnimatedBackground() {
-  
-  
+
+
   return (
     <div className='animatedBackground'>
       <Canvas>

@@ -11,7 +11,7 @@ const App = () => {
     <div className="App">
 
       <AnimatedBackground />
-      
+
       <SideBar />
 
       <ProjectList />
