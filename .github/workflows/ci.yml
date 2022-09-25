@@ -34,7 +34,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     defaults:
       run:
-        working-directory: app/client
+        working-directory: ./App/client
     steps:
 
     - uses: actions/checkout@v3
