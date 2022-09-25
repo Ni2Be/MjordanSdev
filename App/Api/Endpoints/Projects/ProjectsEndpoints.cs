@@ -7,7 +7,7 @@ public static class ProjectEndpoints
 {
     public static void MapProjectEndpoints(this WebApplication app)
     {
-        app.MapGet("projects", GetAllProjects);
+        app.MapGet("projects/list", GetAllProjects);
     }
 
     
