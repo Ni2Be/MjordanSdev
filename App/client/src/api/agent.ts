@@ -8,7 +8,7 @@ axios.interceptors.response.use(undefined, error => {
     if (error.message === "Network Error" && !error.response) {
         console.log("Network error, can't connect to server");
     }
-    const { status, data, config, headers } = error.response;
+    const { status } = error.response;
     switch (status) {
         case 404:
             // TODO add not found page

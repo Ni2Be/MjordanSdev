@@ -34,7 +34,7 @@ function Box(props: ThreeElements['mesh']) {
     material.roughnessMap = roughMap
     material.aoMap = ambientOccMap
     setMaterial(material);
-  }, [])
+  }, [ambientOccMap, colorMap, displacementMap, material, normalMap, roughMap])
 
   useEffect(() => {
     material.color = new THREE.Color(hovered ? 0xffffff : 0xeeeeff)
