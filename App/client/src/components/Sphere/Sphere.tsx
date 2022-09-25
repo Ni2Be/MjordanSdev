@@ -1,12 +1,12 @@
-import * as THREE from 'three'
-import { useEffect, useRef, useState } from 'react'
-import { useFrame, ThreeElements, useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three'
-import colorMapImg from '../../mat/Lava_004_SD/Lava_004_COLOR.jpg';
-import normalMapImg from '../../mat/Lava_004_SD/Lava_004_NORM.jpg';
-import displacementMapImg from  '../../mat/Lava_004_SD/Lava_004_DISP.png';
-import ambientOccMapImg from  '../../mat/Lava_004_SD/Lava_004_OCC.jpg';
-import roughMapImg from  '../../mat/Lava_004_SD/Lava_004_ROUGH.jpg';
+import * as THREE from "three"
+import { useEffect, useRef, useState } from "react"
+import { useFrame, ThreeElements, useLoader } from "@react-three/fiber"
+import { TextureLoader } from "three"
+import colorMapImg from "../../mat/Lava_004_SD/Lava_004_COLOR.jpg";
+import normalMapImg from "../../mat/Lava_004_SD/Lava_004_NORM.jpg";
+import displacementMapImg from  "../../mat/Lava_004_SD/Lava_004_DISP.png";
+import ambientOccMapImg from  "../../mat/Lava_004_SD/Lava_004_OCC.jpg";
+import roughMapImg from  "../../mat/Lava_004_SD/Lava_004_ROUGH.jpg";
 
 function Box(props: ThreeElements['mesh']) {
   

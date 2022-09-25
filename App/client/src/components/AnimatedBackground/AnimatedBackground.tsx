@@ -1,7 +1,6 @@
-import { Canvas, useFrame } from '@react-three/fiber'
-import { useRef } from 'react';
-import Box from '../Sphere/Sphere';
-import './AnimatedBackground.sass'
+import { Canvas } from "@react-three/fiber"
+import Box from "../Sphere/Sphere";
+import "./AnimatedBackground.sass"
 
 function AnimatedBackground() {
   
