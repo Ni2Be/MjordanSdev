@@ -1,3 +1,4 @@
+import React from "react";
 import * as THREE from "three"
 import { useEffect, useRef, useState } from "react"
 import { useFrame, ThreeElements, useLoader } from "@react-three/fiber"
