@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { RGB_ETC1_Format } from "three";
 import agent from "../../api/agent";
 import { IProject } from "../../models/projects"
 import './ProjectList.scss'

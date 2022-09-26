@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Menu, Image, Label } from "semantic-ui-react"
+import React from "react"
+import { Image } from "semantic-ui-react"
 import "./Logo.scss";
 
 interface IProps {

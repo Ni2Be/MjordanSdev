@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Container, Grid, Menu } from "semantic-ui-react"
+import { Menu } from "semantic-ui-react"
 import Logo from "../Logo/Logo";
 import "./SideBar.scss";
 
