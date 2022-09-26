@@ -1,7 +1,7 @@
 [![CI build](https://github.com/Ni2Be/MjordanSdev/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Ni2Be/MjordanSdev/actions/workflows/ci.yml)
 
 
-# MJS
+# MjordanS.dev
 
 This repository contains the code behind [mjordans.dev](https://mjordans.dev), a website that links to my projects and allows to contact me.
 
