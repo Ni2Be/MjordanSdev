@@ -7,5 +7,5 @@ it('should render Logo with text', async () => {
   const text = 'logo text';
   render(<Logo text={text} />);
   const logoText = screen.getByText(text);
-  expect(logoText).toBeVisible();
+  await expect(logoText).toBeVisible();
 });

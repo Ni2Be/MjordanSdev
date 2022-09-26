@@ -15,5 +15,5 @@ jest.mock('../../../api/agent', () => ({
 it('should render ProjectList', async () => {
   render(<ProjectList />);
   const description = await screen.findByText('some description');
-  expect(description).toBeVisible();
+  await expect(description).toBeVisible();
 });

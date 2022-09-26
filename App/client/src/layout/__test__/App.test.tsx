@@ -6,5 +6,5 @@ import App from "../App";
 it('should render App', async () => {
   render(<App/>);
   const application = screen.getByRole("application");
-  expect(application).toBeInTheDocument();
+  await expect(application).toBeInTheDocument();
 });

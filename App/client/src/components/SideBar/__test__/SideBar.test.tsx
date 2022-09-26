@@ -9,8 +9,8 @@ it('should render SideBar with menu items', async () => {
   const projects = screen.getByText(/projects/i);
   const contact = screen.getByText(/contact/i);
   const articles = screen.getByText(/articles/i);
-  expect(about).toBeVisible();
-  expect(projects).toBeVisible();
-  expect(contact).toBeVisible();
-  expect(articles).toBeVisible();
+  await expect(about).toBeVisible();
+  await expect(projects).toBeVisible();
+  await expect(contact).toBeVisible();
+  await expect(articles).toBeVisible();
 });
