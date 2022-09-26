@@ -7,5 +7,5 @@ This repository contains the code behind [mjordans.dev](https://mjordans.dev), a
 
 # Tech Stack
 <p align="center">
-    <img src="./dotnet.svg" alt="dotnet" width="200"/> <img src="./react.svg" alt="react" width="200"/> <img src="./Threejs.svg" alt="Threejs" width="200"/> <img src="./Sass.svg" alt="Sass" width="200"/> <img src="./Typescript.svg" alt="Typescript" width="200"/> <img src="./SQLite.svg" alt="SQLite" width="200"/> <img src="./docker.svg" alt="docker" width="200"/> <img src="./nginx.svg" alt="nginx" width="200"/>
+    <img src="./docs/tech stack/dotnet.svg" alt="dotnet" width="200"/> <img src="./docs/tech stack/react.svg" alt="react" width="200"/> <img src="./docs/tech stack/Threejs.svg" alt="Threejs" width="200"/> <img src="./docs/tech stack/Sass.svg" alt="Sass" width="200"/> <img src="./docs/tech stack/Typescript.svg" alt="Typescript" width="200"/> <img src="./docs/tech stack/SQLite.svg" alt="SQLite" width="200"/> <img src="./docs/tech stack/docker.svg" alt="docker" width="200"/> <img src="./docs/tech stack/nginx.svg" alt="nginx" width="200"/>
 </p>
