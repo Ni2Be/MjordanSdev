@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import agent from "./../../api/agent";
-import { IProject } from "./../../models/projects"
+import { RGB_ETC1_Format } from "three";
+import agent from "../../api/agent";
+import { IProject } from "../../models/projects"
+import './ProjectList.scss'
 
 function AnimatedBackground() {
     const [projects, setProjects] = useState<IProject[]>()
@@ -9,24 +11,23 @@ function AnimatedBackground() {
     useEffect(() => {
 
         const fetchProjects = async () => {
-            const data = await agent.Projects.getAll();
-            console.log(data)
-            setProjects(data);
+            const data : IProject[] = await agent.Projects.getAll();
+            setProjects(data.sort((a, b) => b.id.localeCompare(a.id)));
         }
 
         fetchProjects().catch(console.error);
     }, [])
 
     return (
-        <div style={{ color: "white", position: "absolute", padding: "17rem" }} >
+        <div className="projectList" >
             {
                 projects?.map(project => {
                     return (
-                        <div>
-                            <p key={project.id} >
+                        <div key={project.id} className="projectListElement">
+                            <p>
                                 {project.name}
                             </p>
-                            <p key={project.id} >
+                            <p>
                                 {project.description}
                             </p>
                         </div>
