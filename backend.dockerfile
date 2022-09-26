@@ -14,14 +14,17 @@ RUN wget https://dot.net/v1/dotnet-install.sh
 RUN chmod +x dotnet-install.sh
 RUN ./dotnet-install.sh -c 6.0 --install-dir /usr/share/dotnet
 
+FROM build-env AS build
+WORKDIR /app
+
 COPY . .
-RUN dotnet restore
+RUN dotnet restore ./MjordanSdev.sln
 RUN dotnet publish -c Release -o out
 
 # Run
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build /app/out .
 
 EXPOSE 80/tcp
 
