@@ -9,7 +9,7 @@ COPY "./../App/client/package-lock.json" .
 
 RUN npm install --production
 
-COPY ./../App/client .
+COPY ./App/client .
 
 RUN npm run build
 
