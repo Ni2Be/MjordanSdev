@@ -3,12 +3,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN dotnet restore App/Api/Api.csproj
-RUN dotnet restore App/Application/Application.csproj
-RUN dotnet restore App/Infrastructure/Infrastructure.csproj
-RUN dotnet restore App/Model/Model.csproj
-RUN dotnet restore App/Persistence/Persistence.csproj
-RUN dotnet restore Tests/Application.UnitTests/Application.UnitTests.csproj
+RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
 # Run
