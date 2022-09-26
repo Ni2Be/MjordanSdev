@@ -59,7 +59,7 @@ const requests = {
 };
 
 const Projects = {
-    getAll: () => requests.get(`/list`)
+    getAll: () => requests.get(`projects/list`)
 };
 
 const Agent = {
