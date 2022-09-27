@@ -16,10 +16,20 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
 });
 
+var productionCorsPolicy = "productionCorsPolicy"; 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: productionCorsPolicy,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://mjordans.dev",
+                                              "https://www.mjordans.dev");
+                      });
+});
 var devCorsPolicy = "devCorsPolicy";
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(devCorsPolicy, builder => {
+    options.AddPolicy(name: devCorsPolicy, builder => {
         builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
     });
 });
@@ -33,6 +43,9 @@ if (app.Environment.IsDevelopment())
     app.UseCors(devCorsPolicy);
     app.UseSwagger();
     app.UseSwaggerUI();
+} else
+{
+    app.UseCors(productionCorsPolicy);
 }
 
 app.UseHttpsRedirection();

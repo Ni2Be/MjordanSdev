@@ -9,12 +9,12 @@ COPY "./../App/client/package-lock.json" .
 
 RUN npm install --production
 
-COPY ./../App/client .
+COPY ./App/client .
 
 RUN npm run build
 
 # Run
-FROM nginx:stable-alpine
+FROM nginx:1.23.1-alpine
 COPY --from=nodeBuild /app/build /usr/share/nginx/html
 
 EXPOSE 80/tcp
