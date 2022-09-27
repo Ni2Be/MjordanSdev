@@ -3,7 +3,7 @@ version: '3'
 services:
   # Backend
   mjordansdev-backend:
-    image: mjordansdev-backend:latest
+    image: ghcr.io/ni2be/mjordansdev-backend:latest
     restart: always
     ports:
       - '60001:80'
@@ -13,7 +13,7 @@ services:
   mjordansdev-frontend:
     depends_on:
       - mjordansdev-backend
-    image: mjordansdev-frontend:latest
+    image: ghcr.io/ni2be/mjordansdev-frontend:latest
     ports:
       - '60000:80'
     restart: always
