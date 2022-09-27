@@ -1,4 +1,4 @@
-[![CI build](https://github.com/Ni2Be/MjordanSdev/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Ni2Be/MjordanSdev/actions/workflows/ci.yml)
+[![Docker CI/CD](https://github.com/Ni2Be/MjordanSdev/actions/workflows/docker%20ci-cd.yml/badge.svg)](https://github.com/Ni2Be/MjordanSdev/actions/workflows/docker%20ci-cd.yml)
 
 
 # MjordanS.dev
