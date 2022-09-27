@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "release" ]
+    branches: [ "release", "main" ]
   pull_request:
-    branches: [ "release" ]
+    branches: [ "release", "main" ]
 
 env:
   REGISTRY: ghcr.io
@@ -13,7 +13,7 @@ env:
   FILE_NAME_BACKEND: backend.dockerfile
   IMAGE_NAME_FRONTEND: mjordansdev-frontend
   FILE_NAME_FRONTEND: frontend.dockerfile
-  IMAGE_TAG: latest #0.0.${{ github.run_number }}
+  IMAGE_TAG: 0.0.${{ github.run_number }}
   
 jobs:
 
@@ -45,7 +45,7 @@ jobs:
       id: build-and-push-backend
       uses: docker/build-push-action@v3.1.1
       with:
-        push: ${{ github.event_name != 'pull_request' }}
+        push: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/release' }}
         tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME_BACKEND }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta-backend.outputs.labels }}
         file: ${{ env.FILE_NAME_BACKEND }}
@@ -60,11 +60,7 @@ jobs:
       id: build-and-push-frontend
       uses: docker/build-push-action@v3.1.1
       with:
-        push: ${{ github.event_name != 'pull_request' }}
+        push: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/release' }}
         tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta-frontend.outputs.labels }}
         file: ${{ env.FILE_NAME_FRONTEND }}
-        
-
-      
-      
