@@ -1,8 +1,9 @@
 @import './../../theme/colors';
-    
+
 .animatedBackground {
     position: absolute;
-    background-color: $primary-2;
+    background-color: theme-color('primary');
+    transition: background-color 1000ms ease-in-out;
     margin: 0;
     padding: 0;
     width: 100%;
