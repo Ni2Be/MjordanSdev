@@ -2,48 +2,46 @@
 @import './../../theme/colors';
 @import './../../theme/keyframes';
 
-$menuBackground: $primary-2;
-$menuItemColor: $secondary;
-$menuItemActiveColor: $secondary;
-$menuItemHoverColor: $secondary;
+@include glow("hover", theme-color('secondary'), 0, 0, 0, 0, 0rem, 1rem);
 
-@include glow("hover", $menuItemHoverColor, 0, 0, 0, 0, 0rem, 1rem);
+.sideBar {
+  position: absolute;
+  min-height: 100vh;
+  background-color: theme-color('primary-1');
+  transition: background-color 1000ms ease-in-out;
 
-.sideBar{
+  .logo {
+    margin-top: 20px;
+  }
+
+  .pointing.secondary.vertical.menu {
+    font-family: 'LexendExa';
+    margin-top: 0;
+    padding-top: 0;
+    width: inherit;
+    overflow-x: hidden;
     position: absolute;
-    background-color: $primary-1;
-    min-height: 100vh;
+    top: math.div(100vh, 2.7);
 
-    .logo {
-      margin-top: 20px;
-    }
-
-    .pointing.secondary.vertical.menu {
-      font-family: 'LexendExa';
-      margin-top: 0;
-      padding-top: 0;
+    .sideBarItem {
+      color: theme-color('secondary');
       width: inherit;
-    
-      overflow-x: hidden;
-      position: absolute;
-      top: math.div(100vh, 2.7);
-    
-      .sideBarItem {
-        color: $menuItemColor;
-        width: inherit;
-        text-align: center;
-        font-weight: 100;
-    
-        &:hover {
-          color: $menuItemHoverColor;
-          animation: glow-hover 2s ease-in-out infinite alternate;
-          transition: all 0.1s ease-in;
-        }
-        &.active {
-          font-weight: 900;
-          color: $menuItemActiveColor;
-          transition: all 0.1s ease-in;
-        }
+      text-align: center;
+      font-weight: 100;
+
+      &:hover {
+        color: theme-color('secondary');
+        animation: glow-hover 2s ease-in-out infinite alternate;
+        transition: all 0.1s ease-in;
+        transition: color 1000ms ease-in-out;
+      }
+
+      &.active {
+        color: theme-color('secondary');
+        font-weight: 900;
+        transition: all 0.1s ease-in;
+        transition: color 1000ms ease-in-out;
       }
     }
+  }
 }
