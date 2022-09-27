@@ -9,7 +9,10 @@ on:
 env:
   REGISTRY: ghcr.io
   REGISTRY_PATH: ni2be
-  IMAGE_NAME: mjordansdev-backend
+  IMAGE_NAME_BACKEND: mjordansdev-backend
+  FILE_NAME_BACKEND: backend.dockerfile
+  IMAGE_NAME_FRONTEND: mjordansdev-frontend
+  FILE_NAME_FRONTEND: frontend.dockerfile
   IMAGE_TAG: latest #0.0.${{ github.run_number }}
   
 jobs:
@@ -33,19 +36,35 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Docker metadata
-      id: meta
+      id: meta-backend
       uses: docker/metadata-action@v1
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_BACKEND }}
         
-    - name: Build the Docker image
-      id: build-and-push
+    - name: Build the backend Docker image
+      id: build-and-push-backend
       uses: docker/build-push-action@v3.1.1
       with:
         push: 'true'# ${{ github.event_name != 'pull_request' }}
-        tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-        labels: ${{ steps.meta.outputs.labels }}
-        file: backend.dockerfile
+        tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME_BACKEND }}:${{ env.IMAGE_TAG }}
+        labels: ${{ steps.meta-backend.outputs.labels }}
+        file: ${{ env.FILE_NAME_BACKEND }}
+        
+    - name: Docker metadata
+      id: meta-frontend
+      uses: docker/metadata-action@v1
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_FRONTEND }}
+        
+    - name: Build the frontend Docker image
+      id: build-and-push-frontend
+      uses: docker/build-push-action@v3.1.1
+      with:
+        push: 'true'# ${{ github.event_name != 'pull_request' }}
+        tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ env.IMAGE_TAG }}
+        labels: ${{ steps.meta-frontend.outputs.labels }}
+        file: ${{ env.FILE_NAME_FRONTEND }}
         
 
+      
       
