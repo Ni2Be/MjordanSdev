@@ -1,7 +1,24 @@
+@keyframes rotate {
+    0% {
+        filter: hue-rotate(0deg);
+        rotate: 0deg;
+    }
+    100% {
+        filter: hue-rotate(360deg);
+        rotate: 360deg;
+    }
+}
+
 .logo {
     min-width: 100px;
     width: inherit;
     position: absolute;
+
+    .image.easterEgg {
+        animation: rotate 3s;
+        animation-iteration-count: 3;
+        animation-direction: alternate;
+    }
 
     p {
         color: cyan;
