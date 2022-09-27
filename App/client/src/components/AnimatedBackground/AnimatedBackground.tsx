@@ -1,7 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber"
 import Box from "../Sphere/Sphere";
-import "./AnimatedBackground.sass"
+import "./AnimatedBackground.scss"
 import { ResizeObserver } from '@juggle/resize-observer';
 
 function AnimatedBackground() {
