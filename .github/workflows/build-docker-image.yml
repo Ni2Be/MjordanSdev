@@ -46,13 +46,13 @@ jobs:
       id: build-and-push
       uses: docker/build-push-action@v3.1.1
       with:
-        push: ${{ github.event_name != 'pull_request' }}
+        push: true# ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta.outputs.labels }}
         file: backend.dockerfile
         
     - name: Sign
-      if: ${{ github.event_name != 'pull_request' }}
+      if: true#${{ github.event_name != 'pull_request' }}
       env:
         COSIGN_EXPERIMENTAL: "true"
       run: cosign sign ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
