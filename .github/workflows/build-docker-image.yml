@@ -45,7 +45,7 @@ jobs:
       id: build-and-push-backend
       uses: docker/build-push-action@v3.1.1
       with:
-        push: 'true'# ${{ github.event_name != 'pull_request' }}
+        push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME_BACKEND }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta-backend.outputs.labels }}
         file: ${{ env.FILE_NAME_BACKEND }}
@@ -60,7 +60,7 @@ jobs:
       id: build-and-push-frontend
       uses: docker/build-push-action@v3.1.1
       with:
-        push: 'true'# ${{ github.event_name != 'pull_request' }}
+        push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME_FRONTEND }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta-frontend.outputs.labels }}
         file: ${{ env.FILE_NAME_FRONTEND }}
