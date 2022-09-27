@@ -46,7 +46,7 @@ jobs:
       id: build-and-push
       uses: docker/build-push-action@v3.1.1
       with:
-        push: true# ${{ github.event_name != 'pull_request' }}
+        push: 'true'# ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta.outputs.labels }}
         file: backend.dockerfile
