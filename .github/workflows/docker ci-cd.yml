@@ -13,7 +13,7 @@ env:
   FILE_NAME_BACKEND: backend.dockerfile
   IMAGE_NAME_FRONTEND: mjordansdev-frontend
   FILE_NAME_FRONTEND: frontend.dockerfile
-  IMAGE_TAG: 0.0.${{ github.run_number }}
+  IMAGE_TAG: latest #0.0.${{ github.run_number }}
   
 jobs:
 
