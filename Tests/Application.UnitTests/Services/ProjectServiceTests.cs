@@ -27,7 +27,7 @@ public class ProjectServiceTests
         // arrange
         using (var db = new DataContext(_dbContextOptions))
         {
-            List<Project> projects = new List<Project>{new Project()
+            List<Project> projects = new List<Project>{new Project
             {
                 Id = Guid.NewGuid(),
                 Name = "Project 1",
