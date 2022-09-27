@@ -8,6 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  REGISTRY_PATH: ni2be
   IMAGE_NAME: mjordansdev-backend
   IMAGE_TAG: 0.0.${{ github.run_number }}
   
@@ -45,12 +46,12 @@ jobs:
       uses: docker/build-push-action@v3.1.1
       with:
         push: true
-        tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        tags: ${{ env.REGISTRY }}${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta.outputs.labels }}
         file: backend.dockerfile
         
     - name: Sign
       if: true
-      run: cosign sign ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
+      run: cosign sign ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
       
       
