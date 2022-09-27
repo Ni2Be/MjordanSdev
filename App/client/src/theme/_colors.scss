@@ -1,16 +1,30 @@
+:root {
+    --primary: #FFFFFF;
+    --primary-1: #D5F6FF;
+    --primary-2: #82D1FF;
+    --secondary: #CB7EFF;
+    --secondary-1: #9962FF;
+    --secondary-2: #7A29AF;
+}
 
-$primary: #000000;
-$primary-1: #111111;
-$primary-2: #222222;
+.light-theme {
+    --primary: #FFFFFF;
+    --primary-1: #D5F6FF;
+    --primary-2: #82D1FF;
+    --secondary: #CB7EFF;
+    --secondary-1: #9962FF;
+    --secondary-2: #7A29AF;
+}
 
-$secondary: #ffffff;
-$secondary-1: #e0f0ff;
-$secondary-2: #9BE8FF;
+.dark-theme {
+    --primary: #000000;
+    --primary-1: #111111;
+    --primary-2: #222222;
+    --secondary: #ffffff;
+    --secondary-1: #e0f0ff;
+    --secondary-2: #9BE8FF;
+}
 
-// $primary: #FFFFFF;
-// $primary-1: #D5F6FF;
-// $primary-2: #82D1FF;
-
-// $secondary: #CB7EFF;
-// $secondary-1: #9962FF;
-// $secondary-2: #7A29AF;
+@function theme-color($color) {
+    @return var(--#{$color});
+}
