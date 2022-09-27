@@ -46,7 +46,7 @@ jobs:
       uses: docker/build-push-action@v3.1.1
       with:
         push: true
-        tags: ${{ env.REGISTRY }}${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta.outputs.labels }}
         file: backend.dockerfile
         
