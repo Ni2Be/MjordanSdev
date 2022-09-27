@@ -25,8 +25,8 @@ jobs:
     - name: cosign
       uses: sigstore/cosign-installer@ced07f21fb1da67979f539bbc6304c16c0677e76
     
-#    - name: Docker Setup
-#      uses: docker/setup-buildx-action@v1
+    - name: Docker Setup
+      uses: docker/setup-buildx-action@v1
     
     - name: Docker Login
       uses: docker/login-action@49ed152c8eca782a232dede0303416e8f356c37b
@@ -46,13 +46,13 @@ jobs:
       id: build-and-push
       uses: docker/build-push-action@v3.1.1
       with:
-        push: true
+        push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
         labels: ${{ steps.meta.outputs.labels }}
         file: backend.dockerfile
         
     - name: Sign
-      if: true
+      if: ${{ github.event_name != 'pull_request' }}
       env:
         COSIGN_EXPERIMENTAL: "true"
       run: cosign sign ${{ env.REGISTRY }}/${{ env.REGISTRY_PATH }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
