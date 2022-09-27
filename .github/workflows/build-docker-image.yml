@@ -10,7 +10,7 @@ env:
   REGISTRY: ghcr.io
   REGISTRY_PATH: ni2be
   IMAGE_NAME: mjordansdev-backend
-  IMAGE_TAG: 0.0.${{ github.run_number }}
+  IMAGE_TAG: latest #0.0.${{ github.run_number }}
   
 jobs:
 
@@ -43,6 +43,7 @@ jobs:
       
 
     - name: Build the Docker image
+      id: build-and-push
       uses: docker/build-push-action@v3.1.1
       with:
         push: true
