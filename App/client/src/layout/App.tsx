@@ -7,6 +7,7 @@ import ProjectList from "../components/Projects/ProjectList";
 import { Grid } from "semantic-ui-react";
 import About from "../components/About/About";
 import UnderConstruction from "../components/UnderConstruction/UnderConstruction";
+import Skill from "../components/Skills/Skill";
 
 const App = () => {
   const sideBarWidth = '12rem';
@@ -21,7 +22,6 @@ const App = () => {
 
       <div style={{ paddingLeft: sideBarWidth }}>
           <About/>
-          {/* <ProjectList /> */}
       </div>
 
     </div>

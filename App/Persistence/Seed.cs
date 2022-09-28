@@ -20,10 +20,14 @@ public static class Seed
         if (!context.Skills.Any())
         {
             var skills = new List<Skill> {
-            new Skill { Name = "WiX", Description = "WiX is a set of tools to create Windows installers.", Value = 80 },
-            new Skill { Name = ".Net", Description = ".Net is a solid backend that can run on Windows and Linux servers.", Value = 80 },
-            new Skill { Name = "React", Description = "React is a powerful user interface library.", Value = 80 },
-            new Skill { Name = "Unity", Description = "Unity is a game engine but can also be used to create user friendly, platform independent applications.", Value = 80 }
+            new Skill { Name = "WiX", Description = "WiX is a set of tools to create Windows installers.", Value = 70 },
+            new Skill { Name = ".Net", Description = ".Net is a solid backend that can run on Windows and Linux servers.", Value = 90 },
+            new Skill { Name = "React", Description = "React is a powerful user interface library.", Value = 90 },
+            new Skill { Name = "Unity", Description = "Unity is a game engine but can also be used to create user friendly, platform independent applications.", Value = 80 },
+            new Skill { Name = "Shader", Description = "", Value = 60 },
+            new Skill { Name = "CI/CD", Description = "", Value = 80 },
+            new Skill { Name = "C++", Description = "", Value = 40 },
+            new Skill { Name = "Nginx", Description = "", Value = 40 }
             };
 
             await context.Skills.AddRangeAsync(skills);

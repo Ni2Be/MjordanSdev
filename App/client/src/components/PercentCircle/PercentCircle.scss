@@ -1,0 +1,41 @@
+@import './../../theme/colors';
+
+@for $percentage from 0 to 100 {
+
+    .percentCircle {
+        width: inherit;
+        height: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            position: absolute;
+            text-align: center;
+            font-size: 40px;
+        }
+        
+        .percentCirclePercent-#{$percentage} {
+            background-color: none;
+            rotate: 90deg;
+
+            circle {
+                stroke-width: 20;
+                stroke-dasharray: 360;
+                stroke-dashoffset: 180;
+                animation-fill-mode: forwards;
+                animation: fill-up-#{$percentage} 5s linear 1 forwards;
+            }
+
+            @keyframes fill-up-#{$percentage} {
+                0% {
+                    stroke-dashoffset: 360;
+                }
+
+                100% {
+                    stroke-dashoffset: 360 - 3.6 * $percentage;
+                }
+            }
+        }
+    }
+}

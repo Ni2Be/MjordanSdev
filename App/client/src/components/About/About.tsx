@@ -1,6 +1,8 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import agent from "../../api/agent";
+import PercentCircle from "../PercentCircle/PercentCircle";
+import Skill from "../Skills/Skill";
 import Skills from "../Skills/Skills";
 import './About.scss'
 
@@ -31,9 +33,8 @@ function About() {
                     </div >
                 </Grid.Column>
                 <Grid.Column>
-                    <div className="aboutSkills">
-                        <Skills />
-                    </div>
+                    <h1>My Skills</h1>
+                    <Skills />
                 </Grid.Column>
             </Grid>
         </div>
