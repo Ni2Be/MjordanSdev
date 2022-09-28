@@ -1,57 +1,80 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./Skills.scss";
 import { ResponsiveCirclePacking } from '@nivo/circle-packing'
+import { ISkill } from "../../models/skills";
+import agent from "../../api/agent";
 
-
+interface IDataPoint {
+    name: string;
+    children: {
+        id: string;
+        name: string;
+        value: number;
+    }[];
+}
 
 const Skills: React.FC = () => {
+    const [skillMap, setSkillMap] = useState<Map<string, string>>(new Map());
+    const [dataPoints, setDataPoints] = useState<IDataPoint>({ name: 'root', children: [] })
 
-    const data = {
-        "name": "root",
-        "children": [
-            {
-                "id": "WiX",
-                "value": 555
-            },
-            {
-                "id": ".Net",
-                "value": 30
-            },
-            {
-                "id": "React",
-                "value": 35
-            },
-            {
-                "id": "Unity",
-                "value": 98
-            }]
-    };
+    useEffect(() => {
+
+        const fetchSkills = async () => {
+            const data: ISkill[] = await agent.Skills.getAll();
+
+            const newDataPoints: IDataPoint = {
+                name: "root",
+                children: []
+            };
+
+            data.forEach(skill => {
+                skillMap.set(skill.name, skill.description);
+                newDataPoints.children.push({
+                    id: skill.id,
+                    name: skill.name,
+                    value: skill.value
+                });
+            });
+            setSkillMap(skillMap);
+            setDataPoints(newDataPoints);
+        }
+
+        fetchSkills().catch(console.error);
+    }, [])
+
 
     return (
-        <ResponsiveCirclePacking
-            data={data}
-            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-            id='id'
-            colors={['var(--secondary-0)', 'var(--secondary-1)', 'var(--secondary-2)', 'var(--secondary-3)']}
-            colorBy='id'
-            childColor={{
-                from: 'color',
-                modifiers: [
-                    [
-                        'brighter',
-                        0.4
+        (dataPoints.children.length > 0) ?
+            <ResponsiveCirclePacking
+                data={dataPoints}
+                margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                id='name'
+                colors={['var(--secondary-0)', 'var(--secondary-1)', 'var(--secondary-2)', 'var(--secondary-3)']}
+                colorBy='id'
+                childColor={{
+                    from: 'color',
+                    modifiers: [
+                        [
+                            'brighter',
+                            0.4
+                        ]
                     ]
-                ]
-            }}
-            padding={1}
-            leavesOnly={true}
-            enableLabels={true}
-            label="id"
-            tooltip={dataPoint => {
-                return <div>{dataPoint.id}</div>;
-            }}
-            animate={false}
-        />
+                }}
+                padding={1}
+                leavesOnly={true}
+                enableLabels={true}
+                label="id"
+                tooltip={dataPoint => {
+                    return (
+                        <div>
+                            {dataPoint.id}<br />
+                            {skillMap.get(dataPoint.id)}
+                        </div>);
+                }}
+                animate={false}
+            />
+            :
+            <div></div>
     )
 }
 

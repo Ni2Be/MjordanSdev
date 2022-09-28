@@ -16,5 +16,18 @@ public static class Seed
             await context.Projects.AddRangeAsync(projects);
             await context.SaveChangesAsync();
         }
+
+        if (!context.Skills.Any())
+        {
+            var skills = new List<Skill> {
+            new Skill { Name = "WiX", Description = "WiX is a set of tools to create Windows installers.", Value = 80 },
+            new Skill { Name = ".Net", Description = ".Net is a solid backend that can run on Windows and Linux servers.", Value = 80 },
+            new Skill { Name = "React", Description = "React is a powerful user interface library.", Value = 80 },
+            new Skill { Name = "Unity", Description = "Unity is a game engine but can also be used to create user friendly, platform independent applications.", Value = 80 }
+            };
+
+            await context.Skills.AddRangeAsync(skills);
+            await context.SaveChangesAsync();
+        }
     }
 }

@@ -62,8 +62,13 @@ const Projects = {
     getAll: () => requests.get(`projects/list`)
 };
 
+const Skills = {
+    getAll: () => requests.get(`skills/list`)
+};
+
 const Agent = {
-    Projects
+    Projects,
+    Skills
 };
 
 export default Agent;
