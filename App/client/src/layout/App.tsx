@@ -5,6 +5,7 @@ import AnimatedBackground from "../components/AnimatedBackground/AnimatedBackgro
 import SideBar from "../components/SideBar/SideBar";
 import ProjectList from "../components/Projects/ProjectList";
 import { Grid } from "semantic-ui-react";
+import About from "../components/About/About";
 
 const App = () => {
   const sideBarWidth = '12rem';
@@ -16,11 +17,10 @@ const App = () => {
 
       <SideBar sideBarWidth={sideBarWidth} />
 
-      <Grid style={{ paddingLeft: sideBarWidth }}>
-        <Grid.Column>
-          <ProjectList />
-        </Grid.Column>
-      </Grid>
+      <div style={{ paddingLeft: sideBarWidth }}>
+          <About/>
+          {/* <ProjectList /> */}
+      </div>
 
     </div>
   );

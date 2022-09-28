@@ -1,19 +1,37 @@
+@use 'sass:color';
+
 :root {
     --primary: #FFFFFF;
     --primary-1: #D5F6FF;
     --primary-2: #82D1FF;
     --secondary: #CB7EFF;
+    --secondary-0: #CB7EFF;
     --secondary-1: #9962FF;
     --secondary-2: #7A29AF;
+    --secondary-3: #CB7EFF;
+    --secondary-4: #9962FF;
+    --secondary-5: #7A29AF;
+
+    --logo-rect: #82D1FF;
+
+    --text-color: #FFFFFF;
+    --text-color-p: #eeeeee;
+    --text-color-ul: #aaaaaa;
 }
 
 .light-theme {
     --primary: #FFFFFF;
-    --primary-1: #D5F6FF;
-    --primary-2: #82D1FF;
-    --secondary: #CB7EFF;
-    --secondary-1: #9962FF;
-    --secondary-2: #7A29AF;
+    --primary-1: #96c4d1;
+    --primary-2: #7bcfff;
+    --secondary: #2e3cff;
+    --secondary-1: #347bff;
+    --secondary-2: #5537ff;
+
+    --logo-rect: #2694d4;
+
+    --text-color: #000000;
+    --text-color-p: #111111;
+    --text-color-ul: #222222;
 }
 
 .dark-theme {
@@ -21,9 +39,18 @@
     --primary-1: #111111;
     --primary-2: #222222;
     --secondary: #ffffff;
-    --secondary-1: #e0f0ff;
-    --secondary-2: #9BE8FF;
+    --secondary-0: #fff0e0;
+    --secondary-1: #9BE8FF;
+    --secondary-2: #e0f0ff;
+    --secondary-3: #9BE8FF;
+    --secondary-4: #9BE8FF;
+    --secondary-5: #9BE8FF;
+
+    
+    --secondary-transparent: 233, 233, 233;// color.red(#e1d7d2), color.green(#e1d7d2), color.blue(#e1d7d2);
+    --logo-rect: #82D1FF;
 }
+
 
 @function theme-color($color) {
     @return var(--#{$color});

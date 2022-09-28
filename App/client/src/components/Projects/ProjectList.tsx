@@ -4,7 +4,7 @@ import agent from "../../api/agent";
 import { IProject } from "../../models/projects"
 import './ProjectList.scss'
 
-function AnimatedBackground() {
+function ProjectList() {
     const [projects, setProjects] = useState<IProject[]>()
 
     useEffect(() => {
@@ -37,4 +37,4 @@ function AnimatedBackground() {
     )
 }
 
-export default AnimatedBackground;
+export default ProjectList;
