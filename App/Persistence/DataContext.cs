@@ -12,6 +12,7 @@ public class DataContext : DbContext
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
     public DbSet<Project> Projects { get; set; }
+    public DbSet<Skill> Skills { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)

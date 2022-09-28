@@ -10,6 +10,7 @@ ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<ISkillService, SkillService>();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
@@ -52,6 +53,7 @@ app.UseHttpsRedirection();
 
 // Endpoints
 app.MapProjectEndpoints();
+app.MapSkillEndpoints();
 
 // Seed data
 using (var scope = app.Services.CreateScope())

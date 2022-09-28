@@ -36,8 +36,7 @@ function Box(props: ThreeElements['mesh']) {
   useEffect(() => {
     material.color = new THREE.Color(hovered ? 0xffffff : 0xeeeeff)
     setMaterial(material);
-    console.log(material.color);
-  }, [hovered, setHovered, material, setMaterial])
+  }, [hovered, material])
 
   return (
     <mesh material={material}
