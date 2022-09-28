@@ -13,7 +13,8 @@ const App = () => {
 
   return (
     <div className="App dark-theme" role="application">
-    <UnderConstruction/>
+      <UnderConstruction/>
+
       <AnimatedBackground />
 
       <SideBar sideBarWidth={sideBarWidth} />
