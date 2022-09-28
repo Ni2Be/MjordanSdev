@@ -1,5 +1,4 @@
 import React from "react"
-import { Container } from "semantic-ui-react";
 import PercentCircle from "../PercentCircle/PercentCircle";
 import "./Skill.scss";
 

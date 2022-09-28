@@ -19,8 +19,8 @@ const PercentCircle: React.FC<IProps> = ({ percentage, color = 'grey', innerComp
                 {colorGradientStart && colorGradientEnd &&
                     <defs>
                         <linearGradient id={"linear" + id} x1="0%" y1="0%" x2="100%" y2="100%" >
-                            <stop offset="0%" stop-color={colorGradientStart ?? colorGradientStart} stop-opacity={opacityGradientStart ? opacityGradientStart : 1.0} />
-                            <stop offset="100%" stop-color={colorGradientEnd ?? colorGradientEnd} stop-opacity={opacityGradientEnd ? opacityGradientEnd : 1.0} />
+                            <stop offset="0%" stopColor={colorGradientStart ?? colorGradientStart} stopOpacity={opacityGradientStart ? opacityGradientStart : 1.0} />
+                            <stop offset="100%" stopColor={colorGradientEnd ?? colorGradientEnd} stopOpacity={opacityGradientEnd ? opacityGradientEnd : 1.0} />
                         </linearGradient>
                     </defs>}
 

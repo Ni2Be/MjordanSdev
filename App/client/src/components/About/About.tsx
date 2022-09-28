@@ -1,8 +1,5 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
-import agent from "../../api/agent";
-import PercentCircle from "../PercentCircle/PercentCircle";
-import Skill from "../Skills/Skill";
 import Skills from "../Skills/Skills";
 import './About.scss'
 
