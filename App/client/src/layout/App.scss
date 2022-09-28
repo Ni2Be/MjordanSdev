@@ -1,3 +1,15 @@
+@import './../theme/colors';
+
+
 .App {
     font-style: normal;
+    
+    color: theme-color('text-color');
+    text-align: left;
+    p {
+        color: theme-color('text-color-p');
+    }
+    ul {
+        color: theme-color('text-color-ul');
+    }
 }
