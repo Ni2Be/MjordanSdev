@@ -14,12 +14,11 @@ const App = () => {
       <UnderConstruction/>
 
       <AnimatedBackground />
-
-      <SideBar sideBarWidth={sideBarWidth} />
-
-      <div style={{ paddingLeft: sideBarWidth }}>
-          <About/>
+      <div className="content">
+        <SideBar sideBarWidth={sideBarWidth} />
+        <About/>
       </div>
+
 
     </div>
   );

@@ -1,0 +1,29 @@
+@mixin scrollbars($size, $foreground-color, $background-color, $hover-color) {
+    // For Google Chrome
+    &::-webkit-scrollbar-thumb:hover {
+        background: $hover-color;
+    }
+
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    // For Internet Explorer
+    & {
+        scrollbar-face-color: $foreground-color;
+        scrollbar-track-color: $background-color;
+    }
+
+    // For Firefox
+    scrollbar-color: $foreground-color $background-color;
+    scrollbar-width: $size;
+}

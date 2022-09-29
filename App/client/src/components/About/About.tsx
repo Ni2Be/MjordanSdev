@@ -7,7 +7,7 @@ function About() {
 
     return (
         <div className="about">
-            <Grid columns="2" >
+            <Grid stackable columns="2" >
                 <Grid.Column >
                     <div className="aboutTextBox" >
                         <h1>Hi, I’m Jordan,</h1>

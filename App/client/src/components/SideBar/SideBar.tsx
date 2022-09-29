@@ -7,7 +7,7 @@ interface IProps{
     sideBarWidth?: string 
 }
 
-const SideBar: React.FC<IProps> = ({sideBarWidth: width = '12rem'}) => {
+const SideBar: React.FC<IProps> = ({sideBarWidth: width}) => {
 
     const [activeItem, setActiveItem] = useState('about');
 
