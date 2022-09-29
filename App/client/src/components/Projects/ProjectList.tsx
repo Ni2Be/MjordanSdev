@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import agent from "../../api/agent";
 import { IProject } from "../../models/projects"
 import './ProjectList.scss'
+import ProjectPreview from "./ProjectPreview";
 
 function ProjectList() {
     const [projects, setProjects] = useState<IProject[]>()
@@ -11,7 +12,8 @@ function ProjectList() {
 
         const fetchProjects = async () => {
             const data : IProject[] = await agent.Projects.getAll();
-            setProjects(data.sort((a, b) => b.id.localeCompare(a.id)));
+            setProjects(data.sort((a, b) => a.name.localeCompare(b.name)));
+            console.log(data);
         }
 
         fetchProjects().catch(console.error);
@@ -22,14 +24,7 @@ function ProjectList() {
             {
                 projects?.map(project => {
                     return (
-                        <div key={project.id} className="projectListElement">
-                            <p>
-                                {project.name}
-                            </p>
-                            <p>
-                                {project.description}
-                            </p>
-                        </div>
+                        <ProjectPreview key={project.id} project={project} />
                     );
                 })
             }

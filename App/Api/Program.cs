@@ -1,6 +1,7 @@
 using Api.Endpoints.Projects;
 using Application.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,6 +51,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(
+                        Path.Combine(
+                            Directory.GetCurrentDirectory(), @"images")
+                        ),
+    RequestPath = new PathString("/images")
+});
 
 // Endpoints
 app.MapProjectEndpoints();

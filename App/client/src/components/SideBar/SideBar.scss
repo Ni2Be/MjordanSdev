@@ -5,10 +5,16 @@
 @include glow("hover", theme-color('text-color'), 0, 0, 0, 0, 0rem, 1rem);
 
 .sideBar {
-  position: absolute;
   min-height: 100vh;
+  position: relative;
+  z-index: 99 !important;
+
   background-color: theme-color('primary-1');
   transition: background-color 1000ms ease-in-out;
+
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
 
   .logo {
     margin-top: 20px;

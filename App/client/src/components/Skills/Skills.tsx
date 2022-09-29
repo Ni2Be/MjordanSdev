@@ -3,7 +3,6 @@ import "./Skills.scss";
 import { ISkill } from "../../models/skills";
 import agent from "../../api/agent";
 import Skill from "./Skill";
-import { Button, Container, Popup, Segment } from "semantic-ui-react";
 
 const Skills: React.FC = () => {
     const [skills, setSkills] = useState<ISkill[]>();
@@ -23,7 +22,7 @@ const Skills: React.FC = () => {
             skills.length > 0 ?
             <div className="skills">
                 {skills.map((skill: ISkill) =>
-                    <Skill percentage={skill.value} name={skill.name} />
+                    <Skill key={skill.id} percentage={skill.value} name={skill.name} />
                 )}
             </div>
             :

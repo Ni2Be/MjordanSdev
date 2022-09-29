@@ -2,14 +2,29 @@
 
 
 .App {
+    overflow: hidden;
     font-style: normal;
     
+
     color: theme-color('text-color');
     text-align: left;
+
     p {
         color: theme-color('text-color-p');
     }
+
     ul {
         color: theme-color('text-color-ul');
+    }
+
+    .content {
+        background-color: theme-color('primary');
+        display: flex;
+    }
+
+    .something {
+        background-color: red;
+        width: 500px;
+        height: 500px;
     }
 }

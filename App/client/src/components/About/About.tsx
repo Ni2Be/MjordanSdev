@@ -1,8 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
-import agent from "../../api/agent";
-import PercentCircle from "../PercentCircle/PercentCircle";
-import Skill from "../Skills/Skill";
 import Skills from "../Skills/Skills";
 import './About.scss'
 
@@ -10,7 +8,7 @@ function About() {
 
     return (
         <div className="about">
-            <Grid columns="2" >
+            <Grid stackable columns="2" >
                 <Grid.Column >
                     <div className="aboutTextBox" >
                         <h1>Hi, I’m Jordan,</h1>
@@ -23,12 +21,11 @@ function About() {
                             <li>Windows installer in WiX Toolset – no problem!</li>
                             <li>Shader programming and ECS development in Unity, let’s go!</li>
                             <li>Anything else? Don't hesitate to ask, I'm sure we’ll find a solution!</li>
-                            <li>I should stop shouting?! Alight!!!</li>
                         </ul>
                         <h1>How to reach me?</h1>
                         <p>
                             Message me on LinkedIn – write a public Issue on GitHub <br />
-                            Or let me take you to the <a href="/contact">contact page</a>
+                            Or let me take you to the <Link to="/contact">contact page</Link>
                         </p>
                     </div >
                 </Grid.Column>

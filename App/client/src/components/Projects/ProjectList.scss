@@ -1,10 +1,10 @@
 .projectList {
-    position: absolute;
+    position: relative;
     padding: 7rem;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 
     p {
         color: white;
