@@ -3,11 +3,15 @@ import "./Skills.scss";
 import { ISkill } from "../../models/skills";
 import agent from "../../api/agent";
 import Skill from "./Skill";
+import {skillsDummyData} from "./DummyData"
 
 const Skills: React.FC = () => {
     const [skills, setSkills] = useState<ISkill[]>();
 
     useEffect(() => {
+        if (process.env.NODE_ENV !== 'production') {
+            setSkills(skillsDummyData);
+        }
 
         const fetchSkills = async () => {
             const data: ISkill[] = await agent.Skills.getAll();

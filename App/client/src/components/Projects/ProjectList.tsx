@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import agent from "../../api/agent";
 import { IProject } from "../../models/projects"
+import { projectsDummyData } from "./DummyData";
 import './ProjectList.scss'
 import ProjectPreview from "./ProjectPreview";
 
@@ -9,6 +10,9 @@ function ProjectList() {
     const [projects, setProjects] = useState<IProject[]>()
 
     useEffect(() => {
+        if (process.env.NODE_ENV !== 'production') {
+            setProjects(projectsDummyData);
+        }
 
         const fetchProjects = async () => {
             const data : IProject[] = await agent.Projects.getAll();
