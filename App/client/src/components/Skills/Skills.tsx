@@ -26,7 +26,7 @@ const Skills: React.FC = () => {
                 )}
             </div>
             :
-            <div></div>
+            <></>
     );
 }
 

@@ -32,8 +32,8 @@ const Logo: React.FC<IProps> = ({ text }) => {
                         </g>
                     </g>
                 </svg>
-                <p>{text}</p>
             </Link>
+            <p>{text}</p>
         </div>
     )
 }
