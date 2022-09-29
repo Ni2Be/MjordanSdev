@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import agent from "../../api/agent";
 import { IProject } from "../../models/projects"
 import './ProjectList.scss'
+import ProjectPreview from "./ProjectPreview";
 
 function ProjectList() {
     const [projects, setProjects] = useState<IProject[]>()
@@ -22,14 +23,7 @@ function ProjectList() {
             {
                 projects?.map(project => {
                     return (
-                        <div key={project.id} className="projectListElement">
-                            <p>
-                                {project.name}
-                            </p>
-                            <p>
-                                {project.description}
-                            </p>
-                        </div>
+                        <ProjectPreview project={project} />
                     );
                 })
             }

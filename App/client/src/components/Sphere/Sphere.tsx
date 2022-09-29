@@ -13,13 +13,18 @@ function Box(props: ThreeElements['mesh']) {
   const roughMap = useLoader(TextureLoader, "assets/mat/Lava_004_SD/Lava_004_ROUGH.jpg")
 
   const ref = useRef<THREE.Mesh>(null!)
+  const [rotation, setRotation] = useState(0)
   const [hovered, setHovered] = useState(false)
   const [clicked, setClicked] = useState(false)
   const [material, setMaterial] = useState(new THREE.MeshStandardMaterial())
   useFrame((state, delta) => {
-    ref.current.rotation.y += 0.15 * delta
-  })
+    const updated = rotation + 0.15 * delta;
+    setRotation(updated);
 
+    ref.current.rotation.y = updated;
+    console.log(rotation);
+  })
+  
   useEffect(() => {
     material.roughness = 0.8;
     material.metalness = 0.7;

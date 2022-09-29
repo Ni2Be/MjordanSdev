@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
 import Skills from "../Skills/Skills";
 import './About.scss'
@@ -25,7 +26,7 @@ function About() {
                         <h1>How to reach me?</h1>
                         <p>
                             Message me on LinkedIn – write a public Issue on GitHub <br />
-                            Or let me take you to the <a href="/contact">contact page</a>
+                            Or let me take you to the <Link to="/contact">contact page</Link>
                         </p>
                     </div >
                 </Grid.Column>

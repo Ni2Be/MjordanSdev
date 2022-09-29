@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu } from "semantic-ui-react"
 import Logo from "../Logo/Logo";
 import "./SideBar.scss";
@@ -10,9 +11,18 @@ interface IProps{
 const SideBar: React.FC<IProps> = ({sideBarWidth: width}) => {
 
     const [activeItem, setActiveItem] = useState('about');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        setActiveItem(location.pathname.split('/').at(1)!);
+        console.log(location.pathname.split('/').at(1))
+    }, [location])
+    
 
     const handleClick = (state: typeof activeItem) => {
         setActiveItem(state);
+        navigate(state);
     }
 
     return (
@@ -37,15 +47,15 @@ const SideBar: React.FC<IProps> = ({sideBarWidth: width}) => {
                 />
                 <Menu.Item
                     className='sideBarItem'
-                    name='contact'
-                    active={activeItem === 'contact'}
-                    onClick={() => handleClick('contact')}
-                />
-                <Menu.Item
-                    className='sideBarItem'
                     name='articles'
                     active={activeItem === 'articles'}
                     onClick={() => handleClick('articles')}
+                />
+                <Menu.Item
+                    className='sideBarItem'
+                    name='contact'
+                    active={activeItem === 'contact'}
+                    onClick={() => handleClick('contact')}
                 />
             </Menu>
         </div>
