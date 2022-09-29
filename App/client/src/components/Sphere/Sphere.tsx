@@ -22,7 +22,6 @@ function Box(props: ThreeElements['mesh']) {
     setRotation(updated);
 
     ref.current.rotation.y = updated;
-    console.log(rotation);
   })
   
   useEffect(() => {

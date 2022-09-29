@@ -12,7 +12,8 @@ function ProjectList() {
 
         const fetchProjects = async () => {
             const data : IProject[] = await agent.Projects.getAll();
-            setProjects(data.sort((a, b) => b.id.localeCompare(a.id)));
+            setProjects(data.sort((a, b) => a.name.localeCompare(b.name)));
+            console.log(data);
         }
 
         fetchProjects().catch(console.error);
@@ -23,7 +24,7 @@ function ProjectList() {
             {
                 projects?.map(project => {
                     return (
-                        <ProjectPreview project={project} />
+                        <ProjectPreview key={project.id} project={project} />
                     );
                 })
             }

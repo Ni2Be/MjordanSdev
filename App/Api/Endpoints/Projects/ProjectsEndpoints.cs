@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Microsoft.AspNetCore.Authorization;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Api.Endpoints.Projects;
 

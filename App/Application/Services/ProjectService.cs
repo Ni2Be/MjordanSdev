@@ -15,6 +15,6 @@ public class ProjectService : IProjectService
 
     public async Task<List<Project>> GetAll(CancellationToken cancellationToken)
     {
-        return await _dataContext.Projects.ToListAsync(cancellationToken);
+        return await _dataContext.Projects.Include(p => p.ImageUrls).ToListAsync(cancellationToken);
     }
 }

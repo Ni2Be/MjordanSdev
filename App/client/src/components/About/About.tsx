@@ -21,7 +21,6 @@ function About() {
                             <li>Windows installer in WiX Toolset – no problem!</li>
                             <li>Shader programming and ECS development in Unity, let’s go!</li>
                             <li>Anything else? Don't hesitate to ask, I'm sure we’ll find a solution!</li>
-                            <li>I should stop shouting?! Alight!!!</li>
                         </ul>
                         <h1>How to reach me?</h1>
                         <p>
