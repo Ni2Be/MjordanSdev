@@ -26,7 +26,7 @@ const ContactPage = () => {
                                 <Image 
                                 target={'_blank'} 
                                 rel="noopener noreferrer" 
-                                href="https://github.com/Ni2Be/MjordanSdev/issues/33"
+                                href="https://github.com/Ni2Be/MjordanSdev/discussions/37"
                                 style={{ filter: 'grayscale(100%) invert(70%)', width: '100%' }} 
                                 src='assets/images/github.svg' />
                             </Grid.Column>
