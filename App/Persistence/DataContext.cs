@@ -7,6 +7,7 @@ public class DataContext : DbContext
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
     public DbSet<Project> Projects { get; set; }
+    public DbSet<ProjectDetails> ProjectDetails { get; set; }
     public DbSet<Skill> Skills { get; set; }
     public DbSet<ImageUrl> ImageUrls { get; set; }
 
@@ -14,5 +15,10 @@ public class DataContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        builder.Entity<Project>()
+            .HasOne(p => p.ProjectDetails)
+            .WithOne(p => p.Project)
+            .HasForeignKey<ProjectDetails>(p => p.ProjectId);
     }
 }

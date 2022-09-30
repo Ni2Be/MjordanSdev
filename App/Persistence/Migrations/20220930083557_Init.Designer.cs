@@ -11,8 +11,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220929115315_ProjectImages")]
-    partial class ProjectImages
+    [Migration("20220930083557_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,7 +29,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ProjectId")
+                    b.Property<Guid?>("ProjectDetailsId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Url")
@@ -38,7 +38,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectId");
+                    b.HasIndex("ProjectDetailsId");
 
                     b.ToTable("ImageUrls");
                 });
@@ -49,10 +49,6 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -60,6 +56,31 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("Model.ProjectDetails", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BulletPoints")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId")
+                        .IsUnique();
+
+                    b.ToTable("ProjectDetails");
                 });
 
             modelBuilder.Entity("Model.Skill", b =>
@@ -86,12 +107,29 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Model.ImageUrl", b =>
                 {
-                    b.HasOne("Model.Project", null)
+                    b.HasOne("Model.ProjectDetails", null)
                         .WithMany("ImageUrls")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectDetailsId");
+                });
+
+            modelBuilder.Entity("Model.ProjectDetails", b =>
+                {
+                    b.HasOne("Model.Project", "Project")
+                        .WithOne("ProjectDetails")
+                        .HasForeignKey("Model.ProjectDetails", "ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Model.Project", b =>
+                {
+                    b.Navigation("ProjectDetails")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Model.ProjectDetails", b =>
                 {
                     b.Navigation("ImageUrls");
                 });

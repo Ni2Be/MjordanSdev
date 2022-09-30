@@ -15,6 +15,28 @@ public class ProjectService : IProjectService
 
     public async Task<List<Project>> GetAll(CancellationToken cancellationToken)
     {
-        return await _dataContext.Projects.Include(p => p.ImageUrls).ToListAsync(cancellationToken);
+        return await _dataContext.Projects.ToListAsync(cancellationToken);
+    }
+
+    public async Task<ProjectDetails?> GetDetails(Guid id, CancellationToken cancellationToken)
+    {
+        var projectDetails = await _dataContext.ProjectDetails
+                                 .Include(projectDetails => projectDetails.ImageUrls)
+                                 .Where(projectDetails => projectDetails.ProjectId == id)
+                                 .SingleOrDefaultAsync(cancellationToken);
+        return projectDetails;
+    }
+
+    public async Task<ImageUrl?> GetImage(Guid id, string imageName, CancellationToken cancellationToken)
+    {
+        var projectDetails = await _dataContext.ProjectDetails
+                                 .Include(projectDetails => projectDetails.ImageUrls)
+                                 .Where(projectDetails => projectDetails.ProjectId == id)
+                                 .SingleOrDefaultAsync(cancellationToken);
+        var image = projectDetails
+                                .ImageUrls
+                                .Where(imageUrl => imageUrl.Name == imageName)
+                                .SingleOrDefault();
+        return image;
     }
 }

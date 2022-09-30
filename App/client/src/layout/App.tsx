@@ -5,7 +5,7 @@ import AnimatedBackground from "../components/AnimatedBackground/AnimatedBackgro
 import SideBar from "../components/SideBar/SideBar";
 import About from "../components/About/About";
 import UnderConstruction from "../components/UnderConstruction/UnderConstruction";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ProjectList from "../components/Projects/ProjectList";
 import ProjectDetails from "../components/Projects/ProjectDetails";
 
@@ -23,11 +23,12 @@ const App = () => {
           <SideBar sideBarWidth={sideBarWidth} />
           <Routes>
             <Route path='/about' element={<About />} />
-            <Route path='/projects'  element={<ProjectList />} >
+            <Route path='/projects' >
+              <Route index element={<ProjectList/>}></Route>
               <Route path='/projects/:id' element={<ProjectDetails/>}></Route>
 
             </Route>
-            <Route path='*' element={<About />} />
+            <Route path='*' element={<Navigate to="/about" /> } />
           </Routes>
         </div>
       </BrowserRouter>

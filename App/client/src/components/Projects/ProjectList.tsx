@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 import agent from "../../api/agent";
-import { IProject } from "../../models/projects"
+import { IProject, IProjectDetails } from "../../models/projects"
 import { projectsDummyData } from "./DummyData";
 import ProjectDetails from "./ProjectDetails";
 import './ProjectList.scss'
@@ -11,8 +11,7 @@ import ProjectPreview from "./ProjectPreview";
 
 function ProjectList() {
     const [projects, setProjects] = useState<IProject[]>();
-    const [showDetails, setShowDetails] = useState(true);
-    const [selectedProject, setSelectedProject] = useState(true);
+    const [projectDetails, setProjectDetails] = useState<IProjectDetails[]>();
 
     useEffect(() => {
         if (process.env.NODE_ENV !== 'production') {
@@ -24,7 +23,6 @@ function ProjectList() {
             setProjects(data.sort((a, b) => a.name.localeCompare(b.name)));
             console.log(data);
         }
-
         fetchProjects().catch(console.error);
     }, [])
 

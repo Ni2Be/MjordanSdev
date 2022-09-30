@@ -44,12 +44,12 @@ const SideBar: React.FC<IProps> = ({sideBarWidth: width}) => {
                     active={activeItem === 'projects'}
                     onClick={() => handleClick('projects')}
                 />
-                <Menu.Item
+                {/* <Menu.Item
                     className='sideBarItem'
                     name='articles'
                     active={activeItem === 'articles'}
                     onClick={() => handleClick('articles')}
-                />
+                /> */}
                 <Menu.Item
                     className='sideBarItem'
                     name='contact'
