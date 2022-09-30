@@ -1,5 +1,5 @@
 using Api.Endpoints.Projects;
-using Application;
+using Application.Queries;
 using Application.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;

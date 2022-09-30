@@ -8,18 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application;
+namespace Application.Queries;
 
 public class ProjectsQuery
 {
-    private readonly DataContext _dataContext;
-    public ProjectsQuery(DataContext dataContext)
-    {
-        _dataContext = dataContext;
-    }
-
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    public IQueryable<Project> Projects([Service] DataContext dataContext) => dataContext.Projects;
+    public IQueryable<Project> Projects([Service] DataContext dataContext) 
+        => dataContext.Projects;
 }
