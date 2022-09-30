@@ -30,8 +30,7 @@ public class ProjectServiceTests
             List<Project> projects = new List<Project>{new Project
             {
                 Id = Guid.NewGuid(),
-                Name = "Project 1",
-                Description = "Et eirmod est lorem ut. Labore et est nonumy. Elitr labore vulputate ex feugait blandit eirmod dolor nonummy in eum justo doming lorem sed justo. Et rebum ut wisi. Sanctus illum "
+                Name = "Project 1"
             }};
             await db.Projects.AddRangeAsync(projects);
             await db.SaveChangesAsync();
