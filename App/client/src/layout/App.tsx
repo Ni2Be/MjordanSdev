@@ -8,6 +8,7 @@ import UnderConstruction from "../components/UnderConstruction/UnderConstruction
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ProjectList from "../components/Projects/ProjectList";
 import ProjectDetails from "../components/Projects/ProjectDetails";
+import Contact from "../components/Contact/Contact";
 
 const App = () => {
   const sideBarWidth = '12rem';
@@ -28,6 +29,7 @@ const App = () => {
               <Route path='/projects/:id' element={<ProjectDetails/>}></Route>
 
             </Route>
+            <Route path='/contact' element={<Contact />} />
             <Route path='*' element={<Navigate to="/about" /> } />
           </Routes>
         </div>
