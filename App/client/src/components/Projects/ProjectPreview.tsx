@@ -20,7 +20,7 @@ const ProjectPreview: React.FC<IProps> = ({ project }) => {
             setImageUrl(baseURL! + data.url)
         }
         fetchProjectPreviewImage(project.id).catch(console.error);
-    }, [])
+    }, [project.id])
 
     return (
         <>

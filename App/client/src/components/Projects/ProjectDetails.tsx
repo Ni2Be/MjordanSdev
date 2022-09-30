@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Button, Grid, Header, Icon, Modal, Placeholder, PlaceholderImage } from 'semantic-ui-react'
+import { Button, Grid, Icon, Modal } from 'semantic-ui-react'
 import agent from '../../api/agent';
 import { Image } from "semantic-ui-react"
 import { IProjectDetails } from '../../models/projects';
