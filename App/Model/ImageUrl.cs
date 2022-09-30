@@ -4,6 +4,7 @@ namespace Model;
 
 public class ImageUrl
 {
+    public ImageUrl() {}
     public ImageUrl(string name, string url)
     {
         Id = Guid.NewGuid();

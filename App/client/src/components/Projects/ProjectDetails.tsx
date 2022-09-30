@@ -8,7 +8,6 @@ import { IProjectDetails } from '../../models/projects';
 const baseURL = process.env.REACT_APP_API_URL;
 
 const getImageUrl = (projectDetails: IProjectDetails, name: string) => {
-    console.log(baseURL! + projectDetails.imageUrls.find(image => image.name === name));
     return baseURL! + projectDetails.imageUrls.find(image => image.name === name)?.url;
 }
 
@@ -35,10 +34,23 @@ const ProjectDetails = () => {
         navigate('/projects');
     }
 
-
     useEffect(() => {
         const fetchProjectDetails = async (id: string) => {
             const data: IProjectDetails = await agent.Projects.getDetails(id);
+            // const data: IProjectDetails = await agent.Projects.graphQL(`
+            // query{
+            //     projects  (where: {id: {eq: "${id}"}}){
+            //       projectDetails {
+            //         description,
+            //         bulletPoints,
+            //         imageUrls{
+            //           name,
+            //           url
+            //         }
+            //       }
+            //     }
+            //   }`).then(data => data.projects[0].projectDetails);
+
             setProjectDetails(data);
         }
         fetchProjectDetails(id!).catch(console.error);

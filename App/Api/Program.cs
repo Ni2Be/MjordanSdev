@@ -1,19 +1,28 @@
 using Api.Endpoints.Projects;
+using Application;
 using Application.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Model;
 using Persistence;
+using Path = System.IO.Path;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
+// GraphQL
+builder.Services.AddGraphQLServer()
+                .AddQueryType<ProjectsQuery>()
+                .AddProjections()
+                .AddFiltering()
+                .AddSorting();
 // Add services.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ISkillService, SkillService>();
 
-builder.Services.AddDbContext<DataContext>(options =>
+builder.Services.AddDbContextFactory<DataContext>(options =>
 {
     options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
 });
@@ -61,6 +70,8 @@ app.UseStaticFiles(new StaticFileOptions()
 });
 
 // Endpoints
+app.UseRouting();
+app.MapGraphQL();
 app.MapProjectEndpoints();
 app.MapSkillEndpoints();
 
