@@ -1,4 +1,5 @@
-[![Docker CI/CD](https://github.com/Ni2Be/MjordanSdev/actions/workflows/docker%20ci-cd.yml/badge.svg)](https://github.com/Ni2Be/MjordanSdev/actions/workflows/docker%20ci-cd.yml) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f5ace15d7d61475983abf85bad7eb4b9)](https://www.codacy.com/gh/Ni2Be/MjordanSdev/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ni2Be/MjordanSdev&amp;utm_campaign=Badge_Grade)
+[![Docker CI/CD](https://github.com/Ni2Be/MjordanSdev/actions/workflows/docker%20ci-cd.yml/badge.svg?branch=release)](https://github.com/Ni2Be/MjordanSdev/actions/workflows/docker%20ci-cd.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f5ace15d7d61475983abf85bad7eb4b9)](https://www.codacy.com/gh/Ni2Be/MjordanSdev/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Ni2Be/MjordanSdev&amp;utm_campaign=Badge_Grade)
 
 
 # MjordanS.dev
