@@ -16,7 +16,6 @@ const SideBar: React.FC<IProps> = ({sideBarWidth: width}) => {
 
     useEffect(() => {
         setActiveItem(location.pathname.split('/').at(1)!);
-        console.log(location.pathname.split('/').at(1))
     }, [location])
     
 
