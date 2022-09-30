@@ -24,8 +24,7 @@ function About() {
                         </ul>
                         <h1>How to reach me?</h1>
                         <p>
-                            Message me on LinkedIn – write a public Issue on GitHub <br />
-                            Or let me take you to the <Link to="/contact">contact page</Link>
+                            Let me take you to the <Link to="/contact">contact page</Link>
                         </p>
                     </div >
                 </Grid.Column>
