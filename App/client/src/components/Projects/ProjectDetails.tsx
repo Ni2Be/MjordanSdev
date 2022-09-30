@@ -16,8 +16,8 @@ const getBulletPoints = (projectDetails: IProjectDetails) => {
     return (
         <ul>
             {
-                projectDetails.bulletPoints.split(';').map((point) => {
-                    return <li>{point}</li>;
+                projectDetails.bulletPoints.split(';').map((point, i) => {
+                    return <li key={i}>{point}</li>;
                 })
             }
         </ul>
