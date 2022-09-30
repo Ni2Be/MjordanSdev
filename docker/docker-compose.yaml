@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  # Backend
+  mjordansdev-backend:
+    image: dev-mjordansdev-backend:latest
+    restart: always
+    ports:
+      - '60001:80'
+    networks:
+      - mjordansdev-network
+  # Wordpress
+  mjordansdev-frontend:
+    depends_on:
+      - mjordansdev-backend
+    image: dev-mjordansdev-frontend:latest
+    ports:
+      - '60000:80'
+    restart: always
+    networks:
+      - mjordansdev-network
+networks:
+  mjordansdev-network:

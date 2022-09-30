@@ -28,6 +28,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="images\projects\git logo.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="images\projects\logo.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>

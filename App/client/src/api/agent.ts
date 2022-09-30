@@ -59,7 +59,9 @@ const requests = {
 };
 
 const Projects = {
-    getAll: () => requests.get(`projects/list`)
+    getAll: () => requests.get(`projects/list`),
+    getDetails: (id: string) => requests.get(`projects/${id}`),
+    getImage: (id: string, name: string) => requests.get(`projects/${id}/image/${name}`)
 };
 
 const Skills = {
