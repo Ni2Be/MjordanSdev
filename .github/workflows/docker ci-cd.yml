@@ -27,6 +27,7 @@ jobs:
       with:
         lfs: true
     - name: Pull LFS objects
+      uses: actions/checkout@v3
       run: git lfs pull
       
     - name: Docker Setup
