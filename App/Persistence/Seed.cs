@@ -23,31 +23,18 @@ public static class Seed
                 }
             },
             new Project {
-                Name = "Dummy Project 2",
+                Name = "CounterpAi",
                 ProjectDetails = new ProjectDetails
                 {
-                    Description = "Elitr ea elitr duis erat est soluta et eos ut duis ipsum. Sed qui erat ut diam dolores dolore diam rebum sed lorem ut duo augue ut consequat.",
-                    BulletPoints = "some other;bullet;points",
+                    Description = "An AI based learn application aimed to teach Fux Gradus ad Parnassum Species Counterpoint. Fux defined rules that should lead to a pleasing music piece when applied correctly. The tool was used to study the if an LSTM based NN can learn those rules. The analysis showed that almost all rules could be successfully predicted by the NN.",
+                    BulletPoints = "Artificial Intelligence;Long Short-Term Memory Neuronal Network;Music Theory",
                     ImageUrls = new List<ImageUrl>{
-                        new ("preview_image", "images/projects/logo.png"),
-                        new ("details_image_0", "images/projects/git logo.png"),
-                        new ("details_image_1", "images/projects/logo.png")
+                        new ("preview_image", "images/projects/counterpAi/Program.png"),
+                        new ("details_image_0", "images/projects/counterpAi/Program.png"),
+                        new ("details_image_1", "images/projects/counterpAi/Results.png")
                     }
                 }
-            },
-            new Project {
-                Name = "Dummy Project 3",
-                ProjectDetails = new ProjectDetails
-                {
-                    Description = "Elitr ea elitr duis erat est soluta et eos ut duis ipsum. Sed qui erat ut diam dolores dolore diam rebum sed lorem ut duo augue ut consequat. Eu elit amet diam et erat sit odio aliquyam duis nonumy autem sit takimata lorem adipiscing et. Dolor lorem sit. Facer diam eos erat no eum et. ",
-                    BulletPoints = "some third;bullet;points",
-                    ImageUrls = new List<ImageUrl>{
-                        new ("preview_image", "images/projects/logo.png"),
-                        new ("details_image_0", "images/projects/git logo.png"),
-                        new ("details_image_1", "images/projects/logo.png")
-                    }
-                }
-            },
+            }
             };
 
             await context.Projects.AddRangeAsync(projects);

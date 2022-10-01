@@ -30,18 +30,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="images\projects\git logo.png">
+		<Content Update="images\**">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="images\projects\logo.png">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="images\projects\rctank\Drawing.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="images\projects\rctank\RC Tank Front.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
+		</Content>
 	</ItemGroup>
 
 </Project>
