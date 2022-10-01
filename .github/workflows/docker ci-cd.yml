@@ -24,7 +24,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        lfs: true
+        lfs: 'true'
+        submodules: 'recursive'
+        ssh-key: ${{ secrets.git_ssh_key }}
       
     - name: Docker Setup
       uses: docker/setup-buildx-action@v1
