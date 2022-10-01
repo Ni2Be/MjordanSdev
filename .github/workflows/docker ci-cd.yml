@@ -30,6 +30,7 @@ jobs:
           ssh-key: ${{ secrets.git_ssh_key }}
     - name: checkoutLFS
       uses: actions/checkout@v2
+    - run: git lfs checkout
     - run: git lfs pull
 
     - name: Docker Setup
