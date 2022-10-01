@@ -48,33 +48,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseCors(devCorsPolicy);
-    app.UseSwagger();
-    app.UseSwaggerUI();
-} else
-{
-    app.UseCors(productionCorsPolicy);
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(
-                        Path.Combine(
-                            Directory.GetCurrentDirectory(), @"images")
-                        ),
-    RequestPath = new PathString("/images")
-});
-
-// Endpoints
-app.UseRouting();
-app.MapGraphQL();
-app.MapProjectEndpoints();
-app.MapSkillEndpoints();
-
 // Seed data
 using (var scope = app.Services.CreateScope())
 {
@@ -90,5 +63,32 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(e, "Error during migration");
     }
 }
+
+// Configure the HTTP request pipeline.
+app.UseHttpsRedirection();
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(
+                        Path.Combine(
+                            Directory.GetCurrentDirectory(), @"images")
+                        ),
+    RequestPath = new PathString("/images")
+});
+app.UseRouting();
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors(devCorsPolicy);
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+else
+{
+    app.UseCors(productionCorsPolicy);
+}
+
+// Endpoints
+app.MapGraphQL();
+app.MapProjectEndpoints();
+app.MapSkillEndpoints();
 
 app.Run();
