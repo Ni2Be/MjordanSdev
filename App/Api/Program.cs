@@ -33,8 +33,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: productionCorsPolicy,
                       policy =>
                       {
-                          policy.WithOrigins("https://mjordans.dev",
-                                              "https://www.mjordans.dev");
+                          policy
+                              .WithOrigins("https://mjordans.dev",
+                                           "https://www.mjordans.dev")
+                              .AllowAnyMethod()
+                              .AllowAnyHeader();
                       });
 });
 var devCorsPolicy = "devCorsPolicy";
