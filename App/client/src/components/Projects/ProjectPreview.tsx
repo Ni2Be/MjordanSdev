@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { IProject, IImageUrl } from "../../models/projects"
+import { IProject, IImageUrl, IProjectDetails } from "../../models/projects"
 import './ProjectPreview.scss'
 import { Image } from "semantic-ui-react"
 import { Link, Outlet } from "react-router-dom";
-import agent from "../../api/agent";
 
 interface IProps {
     project: IProject
@@ -11,21 +10,15 @@ interface IProps {
 
 const baseURL = process.env.REACT_APP_API_URL;
 
-const ProjectPreview: React.FC<IProps> = ({ project }) => {
-    const [imageUrl, setImageUrl] = useState('');
-    
-    useEffect(() => {
-        const fetchProjectPreviewImage = async (id: string) => {
-            const data : IImageUrl = await agent.Projects.getImage(id, 'preview_image');
-            setImageUrl(baseURL! + data.url)
-        }
-        fetchProjectPreviewImage(project.id).catch(console.error);
-    }, [project.id])
+const getImageUrl = (projectDetails: IProjectDetails, name: string) => {
+    return baseURL! + projectDetails.imageUrls.find(image => image.name === name)?.url;
+}
 
+const ProjectPreview: React.FC<IProps> = ({ project }) => {
     return (
         <>
             <Link to={project.id} key={project.id} className="projectListElement">
-                <Image src={imageUrl} ></Image>
+                <Image src={getImageUrl(project.projectDetails, 'preview_image')} ></Image>
                 <p>
                     {project.name}
                 </p>
