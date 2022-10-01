@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { IProject, IImageUrl, IProjectDetails } from "../../models/projects"
+import React from "react";
+import { IProject, IProjectDetails } from "../../models/projects"
 import './ProjectPreview.scss'
 import { Image } from "semantic-ui-react"
 import { Link, Outlet } from "react-router-dom";
