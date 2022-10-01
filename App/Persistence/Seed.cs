@@ -16,9 +16,9 @@ public static class Seed
                     Description = "A from ground up designed, 3d-printed and programmed RC Tank. It can be operated in rough terrain either remote controlled or fully autonomously when configured with ultrasonic and/or laser distance sensors.",
                     BulletPoints = "Arduino C++;Remote Controllable;Fusion 360;3d Printing",
                     ImageUrls = new List<ImageUrl>{
-                        new ("preview_image", "images/projects/rctank/RC Tank Front.png"),
-                        new ("details_image_0", "images/projects/rctank/RC Tank Front.png"),
-                        new ("details_image_1", "images/projects/rctank/Drawing.png")
+                        new ("preview_image", "images/projects/rctank/rc_tank_front.png"),
+                        new ("details_image_0", "images/projects/rctank/rc_tank_front.png"),
+                        new ("details_image_1", "images/projects/rctank/drawing.png")
                     }
                 }
             },
@@ -29,9 +29,9 @@ public static class Seed
                     Description = "An AI based learn application aimed to teach Fux Gradus ad Parnassum Species Counterpoint. Fux defined rules that should lead to a pleasing music piece when applied correctly. The tool was used to study the if an LSTM based NN can learn those rules. The analysis showed that almost all rules could be successfully predicted by the NN.",
                     BulletPoints = "Artificial Intelligence;Long Short-Term Memory Neuronal Network;Music Theory",
                     ImageUrls = new List<ImageUrl>{
-                        new ("preview_image", "images/projects/counterpAi/Program.png"),
-                        new ("details_image_0", "images/projects/counterpAi/Program.png"),
-                        new ("details_image_1", "images/projects/counterpAi/Results.png")
+                        new ("preview_image", "images/projects/counterpai/program.png"),
+                        new ("details_image_0", "images/projects/counterpai/program.png"),
+                        new ("details_image_1", "images/projects/counterpai/results.png")
                     }
                 }
             }
