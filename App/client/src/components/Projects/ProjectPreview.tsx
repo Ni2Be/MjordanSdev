@@ -18,7 +18,7 @@ const ProjectPreview: React.FC<IProps> = ({ project }) => {
     return (
         <>
             <Link to={project.id} key={project.id} className="projectListElement">
-                <Image src={getImageUrl(project.projectDetails, 'preview_image')} ></Image>
+                <Image className="previewImage" src={getImageUrl(project.projectDetails, 'preview_image')} ></Image>
                 <p>
                     {project.name}
                 </p>

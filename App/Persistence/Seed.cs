@@ -10,15 +10,15 @@ public static class Seed
         {
             var projects = new List<Project> {
             new Project {
-                Name = "Dummy Project 1",
+                Name = "RC Tank",
                 ProjectDetails = new ProjectDetails
                 {
-                    Description = "Elitr ea elitr duis erat est soluta et eos ut duis ipsum. Sed qui erat ut diam dolores dolore diam rebum sed lorem ut duo augue ut consequat. Eu elit amet diam et erat sit odio aliquyam duis nonumy autem sit takimata lorem adipiscing et. Dolor lorem sit. Facer diam eos erat no eum et. Ut at in et sanctus sit clita sed eros sed. Dolore tation esse sadipscing possim dolor. Amet amet erat qui et congue takimata odio consetetur diam duo lorem et dolor. Vel eos rebum nonumy magna dolor lorem sit sed. Gubergren et dolor ut est et nobis sed dolore autem sed voluptua takimata.",
-                    BulletPoints = "some;bullet;points",
+                    Description = "A from ground up designed, 3d-printed and programmed RC Tank. It can be operated in rough terrain either remote controlled or fully autonomously when configured with ultrasonic and/or laser distance sensors.",
+                    BulletPoints = "Arduino C++;Remote Controllable;Fusion 360;3d Printing",
                     ImageUrls = new List<ImageUrl>{
-                        new ("preview_image", "images/projects/logo.png"),
-                        new ("details_image_0", "images/projects/git logo.png"),
-                        new ("details_image_1", "images/projects/logo.png")
+                        new ("preview_image", "images/projects/rctank/RC Tank Front.png"),
+                        new ("details_image_0", "images/projects/rctank/RC Tank Front.png"),
+                        new ("details_image_1", "images/projects/rctank/Drawing.png")
                     }
                 }
             },
