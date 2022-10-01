@@ -1,16 +1,36 @@
 .projectListElement {
     width: 200px;
     height: 200px;
+    margin: 5px;
     overflow: hidden;
     border-style: solid;
     border-radius: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    color: transparent;
+    &:hover {
+        color: white;
+        width: 210px;
+        height: 210px;
+        margin: 0;
+    }
+    
     p {
         position: absolute;
         text-align: center;
         font-size: 20px;
+        padding: 1rem;
+        padding-right: 100;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .previewImage {
+        filter: blur(6px);
+        -webkit-filter: blur(6px);
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+
     }
 }

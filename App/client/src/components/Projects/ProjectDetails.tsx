@@ -37,20 +37,6 @@ const ProjectDetails = () => {
     useEffect(() => {
         const fetchProjectDetails = async (id: string) => {
             const data: IProjectDetails = await agent.Projects.getDetails(id);
-            // const data: IProjectDetails = await agent.Projects.graphQL(`
-            // query{
-            //     projects  (where: {id: {eq: "${id}"}}){
-            //       projectDetails {
-            //         description,
-            //         bulletPoints,
-            //         imageUrls{
-            //           name,
-            //           url
-            //         }
-            //       }
-            //     }
-            //   }`).then(data => data.projects[0].projectDetails);
-
             setProjectDetails(data);
         }
         fetchProjectDetails(id!).catch(console.error);
@@ -75,12 +61,12 @@ const ProjectDetails = () => {
                             </p>
                         </Grid.Column>
                         <Grid.Column>
-                            <Image style={{ maxHeight: 180, maxWidth: 320 }} src={projectDetails ? getImageUrl(projectDetails!, 'details_image_0') : ''} />
+                            <Image className="fluid" src={projectDetails ? getImageUrl(projectDetails!, 'details_image_0') : ''} />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column>
-                            <Image style={{ maxHeight: 180, maxWidth: 320 }} src={projectDetails ? getImageUrl(projectDetails!, 'details_image_1') : ''} />
+                            <Image className="fluid" src={projectDetails ? getImageUrl(projectDetails!, 'details_image_1') : ''} />
                         </Grid.Column>
                         <Grid.Column>
                             <h1>Bullet Points</h1>
