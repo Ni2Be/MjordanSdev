@@ -27,6 +27,7 @@ jobs:
         lfs: 'true'
         submodules: 'recursive'
         ssh-key: ${{ secrets.git_ssh_key }}
+    - run: git lfs pull
       
     - name: Docker Setup
       uses: docker/setup-buildx-action@v1
