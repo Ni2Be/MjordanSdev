@@ -36,7 +36,7 @@ const requests = {
             .then(responseBody),
     post: (url: string, body: {}) =>
         axios
-            .post(url, body, {headers: {'crossorigin':'true'}})
+            .post(url, body)
             .then(responseBody),
     put: (url: string, body: {}) =>
         axios
