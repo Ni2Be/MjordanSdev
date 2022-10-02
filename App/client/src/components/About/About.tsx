@@ -20,7 +20,7 @@ function About() {
                             <li>I have a passion for the whole full stack. From micro-services in .Net over web apps in React to CI/CD pipelines, I&apos;ve got your back!</li>
                             <li>Windows installer in WiX Toolset – no problem!</li>
                             <li>Shader programming and ECS development in Unity, let&apos;s go!</li>
-                            <li>Anything else? Don't hesitate to ask, I'm sure we&apos;ll find a solution!</li>
+                            <li>Anything else? Don&apos;t hesitate to ask, I&apos;m sure we&apos;ll find a solution!</li>
                         </ul>
                         <h1>How to reach me?</h1>
                         <p>

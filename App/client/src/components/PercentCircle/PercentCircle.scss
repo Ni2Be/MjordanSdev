@@ -16,14 +16,12 @@
     .percentCircle {
         fill: none;
         stroke-width: 5px;
-        animation-fill-mode: forwards;
-
         animation: fill-up 3s linear forwards;
-    }
 
-    @keyframes fill-up {
-        0% {
-            stroke-dasharray: 0 100;
+        @keyframes fill-up {
+            0% {
+                stroke-dasharray: 0 100;
+            }
         }
     }
 }
