@@ -25,12 +25,12 @@ const App = () => {
           <Routes>
             <Route path='/about' element={<About />} />
             <Route path='/projects' >
-              <Route index element={<ProjectList/>}></Route>
-              <Route path='/projects/:id' element={<ProjectDetails/>}></Route>
+              <Route index element={<ProjectList />}></Route>
+              <Route path='/projects/:id' element={<ProjectDetails />}></Route>
 
             </Route>
             <Route path='/contact' element={<Contact />} />
-            <Route path='*' element={<Navigate to="/about" /> } />
+            <Route path='*' element={<Navigate to="/about" />} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -59,7 +59,7 @@ const requests = {
 };
 
 const Projects = {
-    graphQL: (graph: string) => requests.post(`graphql`, {query: graph}).then(data => data.data),
+    graphQL: (graph: string) => requests.post(`graphql`, { query: graph }).then(data => data.data),
     getAll: () => requests.get(`projects/list`),
     getDetails: (id: string) => requests.get(`projects/${id}`),
     getImage: (id: string, name: string) => requests.get(`projects/${id}/image/${name}`)

@@ -1,8 +1,9 @@
 @import './../../theme/colors';
 @import './../../theme/util';
+@import './../../theme/globals';
 
 .contact {
-    padding-top: 0.3 * 100vh;
+    padding-top: $site-padding-top;
     width: 100%;
 
     @media only screen and (max-width: 900px) {
