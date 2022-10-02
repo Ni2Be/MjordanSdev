@@ -40,8 +40,7 @@ const ProjectDetails = () => {
             setProjectDetails(data);
         }
         fetchProjectDetails(id!).catch(console.error);
-    }, [])
-
+    }, [id])
 
     return (
         <Modal

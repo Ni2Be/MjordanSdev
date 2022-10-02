@@ -9,20 +9,21 @@
     justify-content: center;
     align-items: center;
     color: transparent;
+
     &:hover {
         color: white;
         width: 210px;
         height: 210px;
         margin: 0;
     }
-    
+
     p {
         position: absolute;
         text-align: center;
         font-size: 20px;
         padding: 1rem;
         padding-right: 100;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
     }
 
     .previewImage {
