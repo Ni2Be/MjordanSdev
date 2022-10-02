@@ -4,6 +4,7 @@
     from {
         rotate: 0deg;
     }
+
     to {
         rotate: 360deg;
     }
@@ -13,6 +14,7 @@
     0% {
         filter: hue-rotate(0deg);
     }
+
     100% {
         filter: hue-rotate(360deg);
     }
@@ -34,20 +36,24 @@ $logo-rect-4-color: theme-color('logo-rect');
         color: cyan;
         text-align: center;
     }
-    
+
     svg {
         #rect-0 {
             stroke: $logo-rect-0-color;
         }
+
         #rect-1 {
             stroke: $logo-rect-1-color;
         }
+
         #rect-2 {
             stroke: $logo-rect-2-color;
         }
+
         #rect-3 {
             stroke: $logo-rect-3-color;
         }
+
         #rect-4 {
             stroke: $logo-rect-4-color;
         }
@@ -57,27 +63,31 @@ $logo-rect-4-color: theme-color('logo-rect');
         animation: rotate 3s;
         animation-iteration-count: 1;
         animation-direction: alternate;
-        
+
         #rect-0 {
             animation: color-change 5s;
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
+
         #rect-1 {
             animation: color-change 6s;
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
+
         #rect-2 {
             animation: color-change 7s;
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
+
         #rect-3 {
             animation: color-change 8s;
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
+
         #rect-4 {
             animation: color-change 9s;
             animation-iteration-count: infinite;

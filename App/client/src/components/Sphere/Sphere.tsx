@@ -23,7 +23,7 @@ function Box(props: ThreeElements['mesh']) {
 
     ref.current.rotation.y = updated;
   })
-  
+
   useEffect(() => {
     material.roughness = 0.8;
     material.metalness = 0.7;
@@ -43,6 +43,7 @@ function Box(props: ThreeElements['mesh']) {
   }, [hovered, material])
 
   return (
+    material &&
     <mesh material={material}
       {...props}
       ref={ref}
