@@ -22,9 +22,12 @@ function About() {
                             <li>Shader programming and ECS development in Unity, let&apos;s go!</li>
                             <li>Anything else? Don&apos;t hesitate to ask, I&apos;m sure we&apos;ll find a solution!</li>
                         </ul>
+                        <p>
+                            See <Link to="/projects">my projects.</Link>
+                        </p>
                         <h1>How to reach me?</h1>
                         <p>
-                            Let me take you to the <Link to="/contact">contact page</Link>
+                            Let me take you to the <Link to="/contact">contact page.</Link>
                         </p>
                     </div >
                 </Grid.Column>

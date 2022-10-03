@@ -4,6 +4,7 @@ import { Button, Grid, Icon, Modal } from 'semantic-ui-react'
 import agent from '../../api/agent';
 import { Image } from "semantic-ui-react"
 import { IProjectDetails } from '../../models/projects';
+import './ProjectDetails.scss'
 
 const baseURL = process.env.REACT_APP_API_URL;
 
@@ -42,8 +43,10 @@ const ProjectDetails = () => {
         fetchProjectDetails(id!).catch(console.error);
     }, [id])
 
+    // TODO some solution for theming for modals
     return (
         <Modal
+            className='projectDetail dark-theme'
             basic
             dimmer='blurring'
             onClose={() => backToProjectsList()}
@@ -60,12 +63,12 @@ const ProjectDetails = () => {
                             </p>
                         </Grid.Column>
                         <Grid.Column>
-                            <Image className="fluid" src={projectDetails ? getImageUrl(projectDetails!, 'details_image_0') : ''} />
+                            <Image className="fluid detailImage" src={projectDetails ? getImageUrl(projectDetails!, 'details_image_0') : ''} />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column>
-                            <Image className="fluid" src={projectDetails ? getImageUrl(projectDetails!, 'details_image_1') : ''} />
+                            <Image className="fluid detailImage" width='200px' src={projectDetails ? getImageUrl(projectDetails!, 'details_image_1') : ''} />
                         </Grid.Column>
                         <Grid.Column>
                             <h1>Bullet Points</h1>
