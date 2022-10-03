@@ -34,6 +34,19 @@ public static class Seed
                         new ("details_image_1", "images/projects/counterpai/results.png")
                     }
                 }
+            },
+            new Project {
+                Name = "Event Information System",
+                ProjectDetails = new ProjectDetails
+                {
+                    Description = "A program that allows to easily share information between event personal. Information like “Security personal needed at the entrance” can be requested by one click and then be confirmed by the central.\r\nThe system is highly customizable and can be branded and be adjusted to specific needs of an event.\r\n",
+                    BulletPoints = "Node.js;Webhooks;Event business",
+                    ImageUrls = new List<ImageUrl>{
+                        new ("preview_image", "images/projects/vis/devices.png"),
+                        new ("details_image_0", "images/projects/vis/devices.png"),
+                        new ("details_image_1", "images/projects/vis/overview.svg")
+                    }
+                }
             }
             };
 

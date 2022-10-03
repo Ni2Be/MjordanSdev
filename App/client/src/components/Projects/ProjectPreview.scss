@@ -1,7 +1,11 @@
+@import './../../theme/colors';
+@import './../../theme/util';
+
+
 .projectListElement {
-    width: 200px;
-    height: 200px;
-    margin: 5px;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
     overflow: hidden;
     border-style: solid;
     border-radius: 2px;
@@ -11,24 +15,27 @@
     color: transparent;
 
     &:hover {
-        color: white;
-        width: 210px;
-        height: 210px;
+        color: transparent;
+        width: 250px + 20px;
+        height: 250px + 20px;
         margin: 0;
     }
 
     p {
         position: absolute;
         text-align: center;
+        width: 250px;
         font-size: 20px;
         padding: 1rem;
         padding-right: 100;
-        background-color: rgba(0, 0, 0, 0.5);
+        
+        transition: 0.5s;
+        text-shadow: 0.15rem 0.15rem 0.3rem theme-color('text-shadow-color');
     }
 
     .previewImage {
-        filter: blur(6px);
-        -webkit-filter: blur(6px);
+        filter: blur(4px);
+        -webkit-filter: blur(4px);
         width: inherit;
         height: inherit;
         object-fit: cover;
