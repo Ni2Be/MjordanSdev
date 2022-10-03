@@ -26,10 +26,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="images\projects\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Update="images\**">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
