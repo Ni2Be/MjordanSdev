@@ -1,22 +1,25 @@
 @use 'sass:color';
 
 :root {
-    --primary: #FFFFFF;
-    --primary-1: #D5F6FF;
-    --primary-2: #82D1FF;
-    --secondary: #CB7EFF;
-    --secondary-0: #CB7EFF;
-    --secondary-1: #9962FF;
-    --secondary-2: #7A29AF;
-    --secondary-3: #CB7EFF;
-    --secondary-4: #9962FF;
-    --secondary-5: #7A29AF;
+    --primary: #ff1717;
+    --primary-1: #ff1717;
+    --primary-2: #ff1717;
+    --secondary: #ff1717;
+    --secondary-0: #ff1717;
+    --secondary-1: #ff1717;
+    --secondary-2: #ff1717;
+    --secondary-3: #ff1717;
+    --secondary-4: #ff1717;
+    --secondary-5: #ff1717;
 
-    --logo-rect: #82D1FF;
+    --secondary-transparent: #ff1717;
 
-    --text-color: #FFFFFF;
-    --text-color-p: #eeeeee;
-    --text-color-ul: #aaaaaa;
+    --logo-rect: #ff1717;
+
+    --text-color: #ff1717;
+    --text-color-p: #ff1717;
+    --text-color-ul: #ff1717;
+    --image-background: #ff1717;
 }
 
 .light-theme {
@@ -26,12 +29,14 @@
     --secondary: #2e3cff;
     --secondary-1: #347bff;
     --secondary-2: #5537ff;
+    --secondary-transparent: 233, 233, 233;
 
     --logo-rect: #2694d4;
 
     --text-color: #000000;
     --text-color-p: #111111;
     --text-color-ul: #222222;
+    --image-background: #ffffff;
 }
 
 .dark-theme {
@@ -46,11 +51,15 @@
     --secondary-4: #b1e079;
     --secondary-5: #f9f871;
 
+    --secondary-transparent: 233, 233, 233;
     
-    --secondary-transparent: 233, 233, 233;// color.red(#e1d7d2), color.green(#e1d7d2), color.blue(#e1d7d2);
     --logo-rect: #82D1FF;
+    --text-color: #FFFFFF;
+    --text-color-p: #eeeeee;
+    --text-color-ul: #aaaaaa;
+    --text-shadow-color: #111111;
+    --image-background-color: #ffffff;
 }
-
 
 @function theme-color($color) {
     @return var(--#{$color});
