@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber"
 import Planet from "../Sphere/Sphere";
 import "./AnimatedBackground.scss"
 import { ResizeObserver } from '@juggle/resize-observer';
-import { PresentationControls } from "@react-three/drei";
 
 function AnimatedBackground() {
 

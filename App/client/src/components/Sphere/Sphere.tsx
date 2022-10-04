@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
 import * as THREE from "three"
-import { useEffect, useRef, useState } from "react"
-import { useFrame, ThreeElements, useLoader } from "@react-three/fiber"
-import { TextureLoader } from "three"
+import { useRef, useState } from "react"
+import { useFrame, ThreeElements } from "@react-three/fiber"
 import { useTexture } from "@react-three/drei";
 
 function Box(props: ThreeElements['mesh']) {
