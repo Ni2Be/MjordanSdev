@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
 import * as THREE from "three"
-import { useEffect, useRef, useState } from "react"
-import { useFrame, ThreeElements, useLoader } from "@react-three/fiber"
-import { TextureLoader } from "three"
+import { useRef, useState } from "react"
+import { useFrame, ThreeElements } from "@react-three/fiber"
+import { useTexture } from "@react-three/drei";
 
 function Box(props: ThreeElements['mesh']) {
 
-  const [colorMap, normalMap, displacementMap, ambientOccMap, roughMap] = useLoader(TextureLoader, 
+  const [colorMap, normalMap, displacementMap, ambientOccMap, roughMap] = useTexture (
                                 ["assets/mat/Lava_004_SD/Lava_004_COLOR.jpg",
                                 "assets/mat/Lava_004_SD/Lava_004_NORM.jpg",
                                 "assets/mat/Lava_004_SD/Lava_004_DISP.png",
@@ -15,20 +15,14 @@ function Box(props: ThreeElements['mesh']) {
                                 );
 
   const ref = useRef<THREE.Mesh>(null!);
-  const [rotation, setRotation] = useState(0);
-  const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
   const [material, setMaterial] = useState(new THREE.MeshStandardMaterial({ precision: 'highp' }));
   useFrame((_, delta) => {
-    const updated = rotation + 0.15 * delta;
-    setRotation(updated);
-
-    ref.current.rotation.y = updated;
+    ref.current.rotation.y += 0.02 * delta;
   })
 
   useMemo(() => {
-    material.roughness = 0.8;
-    material.metalness = 0.7;
+    material.roughness = 1.0;
+    material.metalness = 1.0;
     material.map = colorMap;
     material.normalMap = normalMap;
     material.displacementMap = displacementMap;
@@ -39,21 +33,12 @@ function Box(props: ThreeElements['mesh']) {
     setMaterial(material);
   }, [ambientOccMap, colorMap, displacementMap, material, normalMap, roughMap])
 
-  useEffect(() => {
-    material.color = new THREE.Color(hovered ? 0xffffff : 0xeeeeff)
-    setMaterial(material);
-  }, [hovered, material])
-
   return (
     <mesh
       {...props}
-      geometry={new THREE.SphereGeometry(1, 30, 30)}
+      geometry={new THREE.SphereGeometry(1, 200, 200)}
       material={material}
-      ref={ref}
-      scale={clicked ? 1.5 : 1}
-      onClick={(_) => setClicked(!clicked)}
-      onPointerOver={(_) => setHovered(true)}
-      onPointerOut={(_) => setHovered(false)}>
+      ref={ref}>
     </mesh>
   )
 }
