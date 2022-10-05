@@ -51,6 +51,40 @@
         width: inherit;
         height: inherit;
         object-fit: cover;
+    }
 
+    .placeholderImage {
+        object-fit: cover;
+        transform: rotate(-45deg);
+        width: calc(100% + 350px);
+        height: calc(100% + 350px);
+        margin-left: -125px;
+        margin-top: -125px;
+        background: linear-gradient(to right,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0));
+        background-size: 125px 150%;
+
+        transition-timing-function: ease-in;
+        animation: shimmer 4s infinite;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        opacity: 0;
+        background-position: top left;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        background-position: top right;
     }
 }

@@ -2,6 +2,17 @@ import axios, { AxiosResponse } from "axios";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
+export const developmentSleep = (ms: number) => (response: AxiosResponse) => {
+    if (process.env.REACT_APP_DEVELOPMENT_SLEEPT === "true") {
+      return new Promise<AxiosResponse>((resolve) =>
+        setTimeout(() => resolve(response), ms)
+      );
+    } else {
+      return response;
+    }
+  };
+
+
 axios.interceptors.response.use(undefined, error => {
     console.log(error);
     console.log(error.response);
@@ -29,22 +40,27 @@ const requests = {
     get: (url: string) =>
         axios
             .get(url)
+            .then(developmentSleep(500))
             .then(responseBody),
     getWithParams: (url: string, params: URLSearchParams) =>
         axios
             .get(url, { params: params })
+            .then(developmentSleep(500))
             .then(responseBody),
     post: (url: string, body: {}) =>
         axios
             .post(url, body)
+            .then(developmentSleep(500))
             .then(responseBody),
     put: (url: string, body: {}) =>
         axios
             .put(url, body)
+            .then(developmentSleep(500))
             .then(responseBody),
     delete: (url: string) =>
         axios
             .delete(url)
+            .then(developmentSleep(500))
             .then(responseBody),
 
     postForm: (url: string, file: Blob) => {
@@ -54,6 +70,7 @@ const requests = {
             .post(url, formData, {
                 headers: { "Content-type": "multipart/form-data" }
             })
+            .then(developmentSleep(500))
             .then(responseBody);
     }
 };
