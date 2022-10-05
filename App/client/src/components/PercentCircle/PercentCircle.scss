@@ -1,16 +1,13 @@
 @import './../../theme/colors';
 
 .percentCircleOuter {
-    width: inherit;
-    height: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    p {
+    .innerComponent {
         position: absolute;
-        text-align: center;
-        font-size: 40px;
+        font-size: 20px;
     }
 
     .percentCircle {

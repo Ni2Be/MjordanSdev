@@ -12,7 +12,7 @@ ConfigurationManager configuration = builder.Configuration;
 
 // GraphQL
 builder.Services.AddGraphQLServer()
-                .AddQueryType<ProjectsQuery>()
+                .AddQueryType<mJordansDevQuery>()
                 .AddProjections()
                 .AddFiltering()
                 .AddSorting();

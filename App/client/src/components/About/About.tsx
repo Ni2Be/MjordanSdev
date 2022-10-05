@@ -32,8 +32,10 @@ function About() {
                     </div >
                 </Grid.Column>
                 <Grid.Column>
-                    <h1>My Skills</h1>
-                    <Skills />
+                    <div className="skillsBox" >
+                        <h1>Skills</h1>
+                        <Skills />
+                    </div>
                 </Grid.Column>
             </Grid>
         </div>

@@ -28,7 +28,8 @@ namespace Persistence.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Value = table.Column<int>(type: "INTEGER", nullable: false)
+                    Value = table.Column<int>(type: "INTEGER", nullable: false),
+                    Type = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,6 +52,30 @@ namespace Persistence.Migrations
                         name: "FK_ProjectDetails_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SkillSkill",
+                columns: table => new
+                {
+                    ChildSkillsId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ParentSkillsId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SkillSkill", x => new { x.ChildSkillsId, x.ParentSkillsId });
+                    table.ForeignKey(
+                        name: "FK_SkillSkill_Skills_ChildSkillsId",
+                        column: x => x.ChildSkillsId,
+                        principalTable: "Skills",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SkillSkill_Skills_ParentSkillsId",
+                        column: x => x.ParentSkillsId,
+                        principalTable: "Skills",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -84,6 +109,17 @@ namespace Persistence.Migrations
                 table: "ProjectDetails",
                 column: "ProjectId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Skills_Name",
+                table: "Skills",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SkillSkill_ParentSkillsId",
+                table: "SkillSkill",
+                column: "ParentSkillsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -92,10 +128,13 @@ namespace Persistence.Migrations
                 name: "ImageUrls");
 
             migrationBuilder.DropTable(
-                name: "Skills");
+                name: "SkillSkill");
 
             migrationBuilder.DropTable(
                 name: "ProjectDetails");
+
+            migrationBuilder.DropTable(
+                name: "Skills");
 
             migrationBuilder.DropTable(
                 name: "Projects");

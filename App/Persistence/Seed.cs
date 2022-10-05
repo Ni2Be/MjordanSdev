@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using Microsoft.EntityFrameworkCore;
+using Model;
+using System;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Persistence;
@@ -56,18 +58,144 @@ public static class Seed
 
         if (!context.Skills.Any())
         {
+            // Low level
+            var csharp = new Skill { Name = "C#", Description = "", Value = 90, Type = "Low Level" };
+            var cPP = new Skill { Name = "C++", Description = "", Value = 82, Type = "Low Level" };
+            var yaml = new Skill { Name = "yaml", Description = "", Value = 95, Type = "Low Level" };
+            var ts = new Skill { Name = "TS", Description = "", Value = 86, Type = "Low Level" };
+            var hlsl = new Skill { Name = "HLSL", Description = "", Value = 88, Type = "Low Level" };
+            var glsl = new Skill { Name = "GLSL", Description = "", Value = 83, Type = "Low Level" };
+            var css = new Skill { Name = "CSS", Description = "", Value = 89, Type = "Low Level" };
+            var html = new Skill { Name = "HTML", Description = "", Value = 89, Type = "Low Level" };
+            var graphQL = new Skill { Name = "GraphQL", Description = "", Value = 90, Type = "Low Level" };
+            var hotChocolate = new Skill { Name = "HotChocolate", Description = "", Value = 90, Type = "Low Level" };
+            var docker = new Skill { Name = "Docker", Description = "", Value = 89, Type = "Low Level" };
+            var wix = new Skill { Name = "WiX", Description = "WiX is a set of tools to create Windows installers.", Value = 79, Type = "Low Level" };
+            await context.Skills.AddRangeAsync(new List<Skill>{
+                       csharp,
+                       cPP,
+                       yaml,
+                       ts,
+                       hlsl,
+                       glsl,
+                       css,
+                       html,
+                       graphQL,
+                       hotChocolate,
+                       wix,
+                       docker
+                    });
+            await context.SaveChangesAsync();
+
+
+            // Mid level
+            var dotnet = new Skill
+            {
+                Name = ".Net",
+                Description = ".Net is a solid backend that can run on Windows and Linux servers.",
+                Value = 90,
+                Type = "Mid Level",
+                ChildSkills = new List<Skill>{
+                       csharp, graphQL, hotChocolate
+                    }
+            };
+            var wpf = new Skill
+            {
+                Name = "WPF",
+                Description = "WPF is a UI framework from Microsoft.",
+                Value = 85,
+                Type = "Mid Level",
+                ChildSkills = new List<Skill>{
+                       csharp
+                    }
+            };
+            var react = new Skill
+            {
+                Name = "React",
+                Description = "React is a powerful user interface library.",
+                Value = 90,
+                Type = "Mid Level",
+                ChildSkills = new List<Skill>{
+                        ts, css, html
+                    }
+            };
+            var shader = new Skill
+            {
+                Name = "Shader",
+                Description = "",
+                Value = 80,
+                Type = "Mid Level",
+                ChildSkills = new List<Skill>{
+                        hlsl, glsl
+                    }
+            };
+            var nginx = new Skill
+            {
+                Name = "Nginx",
+                Description = "",
+                Value = 69,
+                Type = "Mid Level",
+                ChildSkills = new List<Skill>{
+                        yaml
+                    }
+            };
+            var cicd = new Skill
+            {
+                Name = "CI/CD",
+                Description = "",
+                Value = 80,
+                Type = "Mid Level",
+                ChildSkills = new List<Skill>{
+                        yaml, docker
+                    }
+            };
+            await context.Skills.AddRangeAsync(new List<Skill>{
+                       dotnet,
+                       react,
+                       shader
+                    });
+            await context.SaveChangesAsync();
+
+
+            // High level
             var skills = new List<Skill> {
-            new Skill { Name = "WiX", Description = "WiX is a set of tools to create Windows installers.", Value = 70 },
-            new Skill { Name = ".Net", Description = ".Net is a solid backend that can run on Windows and Linux servers.", Value = 90 },
-            new Skill { Name = "React", Description = "React is a powerful user interface library.", Value = 90 },
-            new Skill { Name = "Unity", Description = "Unity is a game engine but can also be used to create user friendly, platform independent applications.", Value = 80 },
-            new Skill { Name = "Shader", Description = "", Value = 60 },
-            new Skill { Name = "CI/CD", Description = "", Value = 80 },
-            new Skill { Name = "C++", Description = "", Value = 40 },
-            new Skill { Name = "Nginx", Description = "", Value = 40 }
+
+                new Skill {
+                    Name = "Backend",
+                    Description = "Backend includes everything that runs on a server, in the cloud or just as a backend for frontend on the same machine.",
+                    Value = 90,
+                    Type = "High Level",
+                    ChildSkills = new List<Skill>{
+                       dotnet, wix, docker, cicd
+                    }  },
+                new Skill {
+                    Name = "Frontend",
+                    Description = "Frontend includes everything that gives an interface to the user.",
+                    Value = 90,
+                    Type = "High Level",
+                    ChildSkills = new List<Skill>{
+                       wpf, react, shader, cicd
+                    }  },
+                new Skill {
+                    Name = "Unity",
+                    Description = "Unity is a game engine but can also be used to create user friendly, platform independent applications.",
+                    Value = 95,
+                    Type = "High Level",
+                    ChildSkills = new List<Skill>{
+                        csharp, hlsl
+                    } },
+                new Skill { 
+                    Name = "Hosting", 
+                    Description = "", 
+                    Value = 88,
+                    Type = "High Level",
+                    ChildSkills = new List<Skill>{
+                        nginx, docker, cicd
+                    } }
             };
 
             await context.Skills.AddRangeAsync(skills);
+
             await context.SaveChangesAsync();
         }
     }
