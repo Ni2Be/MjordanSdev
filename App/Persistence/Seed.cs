@@ -59,18 +59,18 @@ public static class Seed
         if (!context.Skills.Any())
         {
             // Low level
-            var csharp = new Skill { Name = "C#", Description = "", Value = 90 };
-            var cPP = new Skill { Name = "C++", Description = "", Value = 76 };
-            var yaml = new Skill { Name = "yaml", Description = "", Value = 95 };
-            var ts = new Skill { Name = "TS", Description = "", Value = 86 };
-            var hlsl = new Skill { Name = "HLSL", Description = "", Value = 88 };
-            var glsl = new Skill { Name = "GLSL", Description = "", Value = 79 };
-            var css = new Skill { Name = "CSS", Description = "", Value = 89 };
-            var html = new Skill { Name = "HTML", Description = "", Value = 89 };
-            var graphQL = new Skill { Name = "GraphQL", Description = "", Value = 90 };
-            var hotChocolate = new Skill { Name = "HotChocolate", Description = "", Value = 90 };
-            var docker = new Skill { Name = "Docker", Description = "", Value = 89 };
-            var wix = new Skill { Name = "WiX", Description = "WiX is a set of tools to create Windows installers.", Value = 79 };
+            var csharp = new Skill { Name = "C#", Description = "", Value = 90, Type = "Low Level" };
+            var cPP = new Skill { Name = "C++", Description = "", Value = 76, Type = "Low Level" };
+            var yaml = new Skill { Name = "yaml", Description = "", Value = 95, Type = "Low Level" };
+            var ts = new Skill { Name = "TS", Description = "", Value = 86, Type = "Low Level" };
+            var hlsl = new Skill { Name = "HLSL", Description = "", Value = 88, Type = "Low Level" };
+            var glsl = new Skill { Name = "GLSL", Description = "", Value = 79, Type = "Low Level" };
+            var css = new Skill { Name = "CSS", Description = "", Value = 89, Type = "Low Level" };
+            var html = new Skill { Name = "HTML", Description = "", Value = 89, Type = "Low Level" };
+            var graphQL = new Skill { Name = "GraphQL", Description = "", Value = 90, Type = "Low Level" };
+            var hotChocolate = new Skill { Name = "HotChocolate", Description = "", Value = 90, Type = "Low Level" };
+            var docker = new Skill { Name = "Docker", Description = "", Value = 89, Type = "Low Level" };
+            var wix = new Skill { Name = "WiX", Description = "WiX is a set of tools to create Windows installers.", Value = 79, Type = "Low Level" };
             await context.Skills.AddRangeAsync(new List<Skill>{
                        csharp,
                        cPP,
@@ -94,6 +94,7 @@ public static class Seed
                 Name = ".Net",
                 Description = ".Net is a solid backend that can run on Windows and Linux servers.",
                 Value = 90,
+                Type = "Mid Level",
                 ChildSkills = new List<Skill>{
                        csharp, graphQL, hotChocolate
                     }
@@ -103,6 +104,7 @@ public static class Seed
                 Name = "WPF",
                 Description = "WPF is a UI framework from Microsoft.",
                 Value = 85,
+                Type = "Mid Level",
                 ChildSkills = new List<Skill>{
                        csharp
                     }
@@ -112,6 +114,7 @@ public static class Seed
                 Name = "React",
                 Description = "React is a powerful user interface library.",
                 Value = 90,
+                Type = "Mid Level",
                 ChildSkills = new List<Skill>{
                         ts, css, html
                     }
@@ -121,6 +124,7 @@ public static class Seed
                 Name = "Shader",
                 Description = "",
                 Value = 70,
+                Type = "Mid Level",
                 ChildSkills = new List<Skill>{
                         hlsl, glsl
                     }
@@ -130,6 +134,7 @@ public static class Seed
                 Name = "Nginx",
                 Description = "",
                 Value = 69,
+                Type = "Mid Level",
                 ChildSkills = new List<Skill>{
                         yaml
                     }
@@ -139,6 +144,7 @@ public static class Seed
                 Name = "CI/CD",
                 Description = "",
                 Value = 80,
+                Type = "Mid Level",
                 ChildSkills = new List<Skill>{
                         yaml, docker
                     }
@@ -158,6 +164,7 @@ public static class Seed
                     Name = "Backend",
                     Description = "Backend includes everything that runs on a server, in the cloud or just as a backend for frontend on the same machine.",
                     Value = 90,
+                    Type = "High Level",
                     ChildSkills = new List<Skill>{
                        dotnet, wix, docker, cicd
                     }  },
@@ -165,6 +172,7 @@ public static class Seed
                     Name = "Frontend",
                     Description = "Frontend includes everything that gives an interface to the user.",
                     Value = 90,
+                    Type = "High Level",
                     ChildSkills = new List<Skill>{
                        wpf, react, shader, cicd
                     }  },
@@ -172,10 +180,15 @@ public static class Seed
                     Name = "Unity",
                     Description = "Unity is a game engine but can also be used to create user friendly, platform independent applications.",
                     Value = 95,
+                    Type = "High Level",
                     ChildSkills = new List<Skill>{
                         csharp, hlsl
                     } },
-                new Skill { Name = "Hosting", Description = "", Value = 88,
+                new Skill { 
+                    Name = "Hosting", 
+                    Description = "", 
+                    Value = 88,
+                    Type = "High Level",
                     ChildSkills = new List<Skill>{
                         nginx, docker, cicd
                     } }

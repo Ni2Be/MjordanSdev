@@ -4,13 +4,31 @@ import "./Skill.scss";
 
 interface IProps {
     percentage: number,
-    name: string
+    name: string,
+    type: string
 }
 
-const Skill: React.FC<IProps> = ({ percentage, name }) => {
+const gradientStart = (type: string) => {
+    switch (type) {
+        case 'Low Level': return '#05a';
+        case 'Mid Level': return '#5a0';
+        case 'High Level': return '#a50';
+        default: return '#05a';
+    }
+}
+const gradientEnd = (type: string) => {
+    switch (type) {
+        case 'Low Level': return '#0a5';
+        case 'Mid Level': return '#0a5';
+        case 'High Level': return '#05a';
+        default: return '#0a5';
+    }
+}
+
+const Skill: React.FC<IProps> = ({ percentage, name, type }) => {
 
     return (
-        <PercentCircle percentage={percentage} size='130px' colorGradientStart="#05a" colorGradientEnd="#0a5" opacityGradientStart={0.9} opacityGradientEnd={0.3} innerComponent={<p>{name}</p>} ></PercentCircle>
+        <PercentCircle percentage={percentage} size='130px' colorGradientStart={gradientStart(type)} colorGradientEnd={gradientEnd(type)} opacityGradientStart={0.9} opacityGradientEnd={0.3} innerComponent={<p>{name}</p>} ></PercentCircle>
     )
 }
 
