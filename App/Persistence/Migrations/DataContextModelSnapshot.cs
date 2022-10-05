@@ -95,12 +95,34 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Value")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Skills");
+                });
+
+            modelBuilder.Entity("SkillSkill", b =>
+                {
+                    b.Property<Guid>("ChildSkillsId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("ParentSkillsId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ChildSkillsId", "ParentSkillsId");
+
+                    b.HasIndex("ParentSkillsId");
+
+                    b.ToTable("SkillSkill");
                 });
 
             modelBuilder.Entity("Model.ImageUrl", b =>
@@ -119,6 +141,21 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("SkillSkill", b =>
+                {
+                    b.HasOne("Model.Skill", null)
+                        .WithMany()
+                        .HasForeignKey("ChildSkillsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Model.Skill", null)
+                        .WithMany()
+                        .HasForeignKey("ParentSkillsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Model.Project", b =>

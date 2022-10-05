@@ -5,6 +5,8 @@
 .about {
     padding-top: $site-padding-top;
     width: 100%;
+    height: 100vh;
+    overflow: scroll;
 
     @media only screen and (max-width: 900px) {
         padding-top: 0.05 * 100vh;
@@ -20,5 +22,14 @@
 
         overflow-y: scroll;
         @include scrollbars(thin, theme-color('secondary-1'), theme-color('secondary-2'), theme-color('secondary-3'));
+    }
+
+    .skillsBox {
+        justify-content: center;
+        width: auto;
+    }
+
+    .contact:hover {
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='48' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚀</text></svg>"), auto;
     }
 }

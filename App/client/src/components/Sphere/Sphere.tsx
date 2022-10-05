@@ -4,14 +4,14 @@ import { useRef, useState } from "react"
 import { useFrame, ThreeElements } from "@react-three/fiber"
 import { useTexture } from "@react-three/drei";
 
-function Box(props: ThreeElements['mesh']) {
+function Sphere(props: ThreeElements['mesh']) {
 
   const [colorMap, normalMap, displacementMap, ambientOccMap, roughMap] = useTexture (
-                                ["assets/mat/Lava_004_SD/Lava_004_COLOR.jpg",
-                                "assets/mat/Lava_004_SD/Lava_004_NORM.jpg",
-                                "assets/mat/Lava_004_SD/Lava_004_DISP.png",
-                                "assets/mat/Lava_004_SD/Lava_004_OCC.jpg",
-                                "assets/mat/Lava_004_SD/Lava_004_ROUGH.jpg"]
+                                [window.location.origin + "/assets/mat/Lava_004_SD/Lava_004_COLOR.jpg",
+                                 window.location.origin + "/assets/mat/Lava_004_SD/Lava_004_NORM.jpg",
+                                 window.location.origin + "/assets/mat/Lava_004_SD/Lava_004_DISP.png",
+                                 window.location.origin + "/assets/mat/Lava_004_SD/Lava_004_OCC.jpg",
+                                 window.location.origin + "/assets/mat/Lava_004_SD/Lava_004_ROUGH.jpg"]
                                 );
 
   const ref = useRef<THREE.Mesh>(null!);
@@ -43,4 +43,4 @@ function Box(props: ThreeElements['mesh']) {
   )
 }
 
-export default Box;
+export default Sphere;
