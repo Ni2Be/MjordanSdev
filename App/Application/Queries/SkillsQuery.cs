@@ -15,6 +15,6 @@ public partial class mJordansDevQuery
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    public IQueryable<Project> Projects([Service] DataContext dataContext) 
-        => dataContext.Projects;
+    public IQueryable<Skill> Skills([Service] DataContext dataContext) 
+        => dataContext.Skills;
 }
