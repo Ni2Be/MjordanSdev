@@ -27,13 +27,15 @@ function About() {
                         </p>
                         <h1>How to reach me?</h1>
                         <p>
-                            Let me take you to the <Link to="/contact">contact page.</Link>
+                            Let me take you to the <Link className="contact" to="/contact">contact page.</Link>
                         </p>
                     </div >
                 </Grid.Column>
                 <Grid.Column>
-                    <h1>My Skills</h1>
-                    <Skills />
+                    <div className="skillsBox" >
+                        <h1>Skills</h1>
+                        <Skills />
+                    </div>
                 </Grid.Column>
             </Grid>
         </div>

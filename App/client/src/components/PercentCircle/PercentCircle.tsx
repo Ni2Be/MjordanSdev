@@ -23,22 +23,13 @@ const PercentCircle: React.FC<IProps> = ({ percentage, color = 'grey', innerComp
                             <stop offset="100%" stopColor={colorGradientEnd ?? colorGradientEnd} stopOpacity={opacityGradientEnd ? opacityGradientEnd : 1.0} />
                         </linearGradient>
                     </defs>}
-                {colorGradientStart && colorGradientEnd ?
                     <path className="percentCircle"
                         strokeDasharray={`${percentage}, 100`}
                         d="M18 2.0845
                         a 15.9155 15.9155 0 0 1 0 31.831
                         a 15.9155 15.9155 0 0 1 0 -31.831"
-                        stroke={"url(#linear" + id + ")"}
+                        stroke={colorGradientStart && colorGradientEnd ? "url(#linear" + id + ")": color}
                     />
-                    :
-                    <path className="percentCircle"
-                        strokeDasharray={`${percentage}, 100`}
-                        d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                        stroke={color}
-                    />}
             </svg>
             {innerComponent ? innerComponent : <p style={{ color: color }} >{percentage}%</p>}
         </div>
