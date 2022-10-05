@@ -60,11 +60,11 @@ public static class Seed
         {
             // Low level
             var csharp = new Skill { Name = "C#", Description = "", Value = 90, Type = "Low Level" };
-            var cPP = new Skill { Name = "C++", Description = "", Value = 76, Type = "Low Level" };
+            var cPP = new Skill { Name = "C++", Description = "", Value = 82, Type = "Low Level" };
             var yaml = new Skill { Name = "yaml", Description = "", Value = 95, Type = "Low Level" };
             var ts = new Skill { Name = "TS", Description = "", Value = 86, Type = "Low Level" };
             var hlsl = new Skill { Name = "HLSL", Description = "", Value = 88, Type = "Low Level" };
-            var glsl = new Skill { Name = "GLSL", Description = "", Value = 79, Type = "Low Level" };
+            var glsl = new Skill { Name = "GLSL", Description = "", Value = 83, Type = "Low Level" };
             var css = new Skill { Name = "CSS", Description = "", Value = 89, Type = "Low Level" };
             var html = new Skill { Name = "HTML", Description = "", Value = 89, Type = "Low Level" };
             var graphQL = new Skill { Name = "GraphQL", Description = "", Value = 90, Type = "Low Level" };
@@ -123,7 +123,7 @@ public static class Seed
             {
                 Name = "Shader",
                 Description = "",
-                Value = 70,
+                Value = 80,
                 Type = "Mid Level",
                 ChildSkills = new List<Skill>{
                         hlsl, glsl
