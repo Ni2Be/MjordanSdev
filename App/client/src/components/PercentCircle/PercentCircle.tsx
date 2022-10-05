@@ -3,6 +3,7 @@ import "./PercentCircle.scss";
 
 interface IProps {
     percentage: number,
+    size: string,
     color?: string,
     colorGradientStart?: string,
     colorGradientEnd?: string,
@@ -11,10 +12,10 @@ interface IProps {
     innerComponent?: React.ReactNode
 }
 
-const PercentCircle: React.FC<IProps> = ({ percentage, color = 'grey', innerComponent, colorGradientStart, colorGradientEnd, opacityGradientStart, opacityGradientEnd }) => {
+const PercentCircle: React.FC<IProps> = ({ percentage, size, color = 'grey', innerComponent, colorGradientStart, colorGradientEnd, opacityGradientStart, opacityGradientEnd }) => {
     const id = Math.random();
     return (
-        <div className="percentCircleOuter">
+        <div className="percentCircleOuter" style={{width:size}}>
             <svg viewBox="-2 -2 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 {colorGradientStart && colorGradientEnd &&
                     <defs>
@@ -23,15 +24,17 @@ const PercentCircle: React.FC<IProps> = ({ percentage, color = 'grey', innerComp
                             <stop offset="100%" stopColor={colorGradientEnd ?? colorGradientEnd} stopOpacity={opacityGradientEnd ? opacityGradientEnd : 1.0} />
                         </linearGradient>
                     </defs>}
-                    <path className="percentCircle"
-                        strokeDasharray={`${percentage}, 100`}
-                        d="M18 2.0845
+                <path className="percentCircle"
+                    strokeDasharray={`${percentage}, 100`}
+                    d="M18 2.0845
                         a 15.9155 15.9155 0 0 1 0 31.831
                         a 15.9155 15.9155 0 0 1 0 -31.831"
-                        stroke={colorGradientStart && colorGradientEnd ? "url(#linear" + id + ")": color}
-                    />
+                    stroke={colorGradientStart && colorGradientEnd ? "url(#linear" + id + ")" : color}
+                />
             </svg>
-            {innerComponent ? innerComponent : <p style={{ color: color }} >{percentage}%</p>}
+            <div className="innerComponent">
+                {innerComponent ? innerComponent : <p style={{ color: color }} >{percentage}%</p>}
+            </div>
         </div>
     )
 }

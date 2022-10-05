@@ -27,7 +27,7 @@ function About() {
                         </p>
                         <h1>How to reach me?</h1>
                         <p>
-                            Let me take you to the <Link className="contact" to="/contact">contact page.</Link>
+                            Let me take you to the <Link to="/contact">contact page.</Link>
                         </p>
                     </div >
                 </Grid.Column>

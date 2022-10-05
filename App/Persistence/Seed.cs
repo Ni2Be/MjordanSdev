@@ -60,8 +60,8 @@ public static class Seed
         {
             // Low level
             var csharp = new Skill { Name = "C#", Description = "", Value = 90 };
-            var cPP = new Skill { Name = "C++", Description = "", Value = 69 };
-            var yaml = new Skill { Name = "yaml", Description = "", Value = 99 };
+            var cPP = new Skill { Name = "C++", Description = "", Value = 76 };
+            var yaml = new Skill { Name = "yaml", Description = "", Value = 95 };
             var ts = new Skill { Name = "TS", Description = "", Value = 86 };
             var hlsl = new Skill { Name = "HLSL", Description = "", Value = 88 };
             var glsl = new Skill { Name = "GLSL", Description = "", Value = 79 };
@@ -102,7 +102,7 @@ public static class Seed
             {
                 Name = "WPF",
                 Description = "WPF is a UI framework from Microsoft.",
-                Value = 90,
+                Value = 85,
                 ChildSkills = new List<Skill>{
                        csharp
                     }
@@ -171,11 +171,11 @@ public static class Seed
                 new Skill {
                     Name = "Unity",
                     Description = "Unity is a game engine but can also be used to create user friendly, platform independent applications.",
-                    Value = 80,
+                    Value = 95,
                     ChildSkills = new List<Skill>{
                         csharp, hlsl
                     } },
-                new Skill { Name = "Hosting", Description = "", Value = 55,
+                new Skill { Name = "Hosting", Description = "", Value = 88,
                     ChildSkills = new List<Skill>{
                         nginx, docker, cicd
                     } }

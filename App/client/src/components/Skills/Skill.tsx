@@ -10,9 +10,7 @@ interface IProps {
 const Skill: React.FC<IProps> = ({ percentage, name }) => {
 
     return (
-        <div className="skill">
-            <PercentCircle percentage={percentage} colorGradientStart="#05a" colorGradientEnd="#0a5" opacityGradientStart={0.9} opacityGradientEnd={0.3} innerComponent={<p style={{ fontSize: '2rem' }}>{name}</p>} ></PercentCircle>
-        </div>
+        <PercentCircle percentage={percentage} size='130px' colorGradientStart="#05a" colorGradientEnd="#0a5" opacityGradientStart={0.9} opacityGradientEnd={0.3} innerComponent={<p>{name}</p>} ></PercentCircle>
     )
 }
 
