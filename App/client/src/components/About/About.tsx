@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
+import SkillDiagram from "../Skills/SkillDiagram";
 import Skills from "../Skills/Skills";
 import './About.scss'
 
@@ -34,6 +35,7 @@ function About() {
                 <Grid.Column>
                     <div className="skillsBox" >
                         <h1>Skills</h1>
+                        <SkillDiagram/>
                         <Skills />
                     </div>
                 </Grid.Column>

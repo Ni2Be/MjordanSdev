@@ -14,8 +14,9 @@ interface IProps {
 
 const PercentCircle: React.FC<IProps> = ({ percentage, size, color = 'grey', innerComponent, colorGradientStart, colorGradientEnd, opacityGradientStart, opacityGradientEnd }) => {
     const id = Math.random();
+
     return (
-        <div className="percentCircleOuter" style={{width:size}}>
+        <div className="percentCircleOuter" style={{ width: size }}>
             <svg viewBox="-2 -2 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 {colorGradientStart && colorGradientEnd &&
                     <defs>
