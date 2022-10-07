@@ -2,6 +2,15 @@
 
 .skillDiagram {
     svg {
-        border: 3px solid green;
+    }
+
+    text {
+color: whitesmoke;
+    }
+
+    .grid {
+        stroke: rgb(190, 190, 190);
+        stroke-opacity: 0.3;
+        shape-rendering: crispEdges;
     }
 }

@@ -15,6 +15,9 @@ const Skills: React.FC = () => {
     const [skills, setSkills] = useState<ISkill[]>();
 
     useEffect(() => {
+        if (process.env.NODE_ENV !== "production")
+            setSkills(skillsDummyData);
+
         const fetchSkills = async () => {
             const data: ISkill[] = await agent.Skills.getAll();
             data.sort((a, b) => mapType(b.type) - mapType(a.type));
