@@ -5,9 +5,11 @@ import { IProject } from "../../models/projects"
 import { projectsDummyData } from "./DummyData";
 import './ProjectList.scss'
 import ProjectPreview from "./ProjectPreview";
+import ProjectPreviewPlaceholder from "./ProjectPreviewPlaceholder";
 
 function ProjectList() {
     const [projects, setProjects] = useState<IProject[]>();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (process.env.NODE_ENV !== 'production') {
@@ -28,6 +30,7 @@ function ProjectList() {
                     }
                 }
               }`).then(data => data.projects);
+              setLoading(false);
               setProjects(projects);
         }
         fetchProjects().catch(console.error);
@@ -35,6 +38,7 @@ function ProjectList() {
 
     return (
         <div className="projectList" >
+            {loading && Array(3).fill(0).map(p => <ProjectPreviewPlaceholder/>)}
             {
                 projects?.map(project => {
                     return (
