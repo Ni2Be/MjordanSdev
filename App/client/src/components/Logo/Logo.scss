@@ -20,42 +20,21 @@
     }
 }
 
-$logo-rect-0-color: theme-color('logo-rect');
-$logo-rect-1-color: theme-color('logo-rect');
-$logo-rect-2-color: theme-color('logo-rect');
-$logo-rect-3-color: theme-color('logo-rect');
-$logo-rect-4-color: theme-color('logo-rect');
-
-
 .logo {
     width: inherit;
     position: relative;
     padding: 1rem;
 
     p {
-        color: cyan;
+        color: theme-color('logo-color');
+        font-weight: 900;
         text-align: center;
     }
 
     svg {
-        #rect-0 {
-            stroke: $logo-rect-0-color;
-        }
-
-        #rect-1 {
-            stroke: $logo-rect-1-color;
-        }
-
-        #rect-2 {
-            stroke: $logo-rect-2-color;
-        }
-
-        #rect-3 {
-            stroke: $logo-rect-3-color;
-        }
-
-        #rect-4 {
-            stroke: $logo-rect-4-color;
+        path {
+            display: inline;
+            fill: theme-color('logo-color');
         }
     }
 
@@ -64,32 +43,8 @@ $logo-rect-4-color: theme-color('logo-rect');
         animation-iteration-count: 1;
         animation-direction: alternate;
 
-        #rect-0 {
+        path {
             animation: color-change 5s;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-
-        #rect-1 {
-            animation: color-change 6s;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-
-        #rect-2 {
-            animation: color-change 7s;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-
-        #rect-3 {
-            animation: color-change 8s;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-
-        #rect-4 {
-            animation: color-change 9s;
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
