@@ -19,9 +19,8 @@ const ProjectPreview: React.FC<IProps> = ({ project }) => {
         <>
             <Link to={project.id} key={project.id} className="projectListElement">
                 <Image className="previewImage" src={getImageUrl(project.projectDetails, 'preview_image')} ></Image>
-                <p>
-                    {project.name}
-                </p>
+                <span className="container"/>
+                <p>{project.name}</p>
             </Link>
             <Outlet></Outlet>
         </>
