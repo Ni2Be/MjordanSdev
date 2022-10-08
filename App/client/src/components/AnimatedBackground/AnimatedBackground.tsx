@@ -1,6 +1,6 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber"
-import Planet from "../Sphere/Sphere";
+import Planet from "../../library/Sphere/Sphere";
 import "./AnimatedBackground.scss"
 import { ResizeObserver } from '@juggle/resize-observer';
 

@@ -1,5 +1,5 @@
 import React from "react"
-import PercentCircle from "../PercentCircle/PercentCircle";
+import PercentCircle from "../../library/PercentCircle/PercentCircle";
 import "./Skill.scss";
 
 interface IProps {
