@@ -3,8 +3,10 @@
 
 
 .projectListElement {
-    width: 250px;
-    height: 250px;
+    $size: 260px;
+
+    width: $size;
+    height: $size;
     margin: 10px;
     overflow: hidden;
     border-style: solid;
@@ -16,20 +18,30 @@
 
     &:hover {
         color: transparent;
-        width: 250px + 20px;
-        height: 250px + 20px;
+        width: $size + 20px;
+        height: $size + 20px;
         margin: 0;
+    }
+
+    .container {
+        position: absolute;
+        text-align: center;
+        width: inherit;
+        height: $size * 0.3;
+        font-size: 20px;
+        padding: 1rem;
+        background-color: white;
+        opacity: 0.5;
     }
 
     p {
         position: absolute;
         text-align: center;
-        width: 250px;
+        width: inherit;
         font-size: 20px;
         padding: 1rem;
-        padding-right: 100;
-        
-        transition: 0.5s;
+        color: #222222;
+        opacity: 0.8;
         text-shadow: 0.15rem 0.15rem 0.3rem theme-color('text-shadow-color');
     }
 

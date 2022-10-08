@@ -49,6 +49,19 @@ public static class Seed
                         new ("details_image_1", "images/projects/vis/overview.svg")
                     }
                 }
+            },
+            new Project {
+                Name = "Fluid Simulation",
+                ProjectDetails = new ProjectDetails
+                {
+                    Description = "A shallow water fluid simulation based on Lattice Boltzmann methods. It was realized as a Unity Asset based on compute shaders that can be used at runtime. It also includes shaders to visualize pressure and the flow field.",
+                    BulletPoints = "Compute shaders;Unity;Fluid simulation",
+                    ImageUrls = new List<ImageUrl>{
+                        new ("preview_image", "images/projects/lbm/lbm.webp"),
+                        new ("details_image_0", "images/projects/lbm/lbm.webp"),
+                        new ("details_image_1", "images/projects/lbm/tau.png")
+                    }
+                }
             }
             };
 
