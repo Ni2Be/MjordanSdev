@@ -4,6 +4,7 @@ import { Button, Grid, Icon, Modal } from 'semantic-ui-react'
 import agent from '../../api/agent';
 import { Image } from "semantic-ui-react"
 import { IProjectDetails } from '../../models/projects';
+import parse from 'html-react-parser';
 import './ProjectDetails.scss'
 
 const baseURL = process.env.REACT_APP_API_URL;
@@ -59,7 +60,7 @@ const ProjectDetails = () => {
                         <Grid.Column>
                             <h1>Description</h1>
                             <p>
-                                {projectDetails?.description}
+                                {projectDetails?.description && parse(projectDetails?.description!)}
                             </p>
                         </Grid.Column>
                         <Grid.Column>

@@ -62,6 +62,19 @@ public static class Seed
                         new ("details_image_1", "images/projects/lbm/tau.png")
                     }
                 }
+            },
+            new Project {
+                Name = "MjordanS",
+                ProjectDetails = new ProjectDetails
+                {
+                    Description = "This site was realized in .Net and React and an automatic deployment with GitHub actions and docker. The full source code is accessible <a href=\"https://github.com/Ni2Be/MjordanSdev\">here</a>.",
+                    BulletPoints = ".Net;React;CI/CD;Docker;GraphQL",
+                    ImageUrls = new List<ImageUrl>{
+                        new ("preview_image", "images/projects/mjordans/logo.svg"),
+                        new ("details_image_0", "images/projects/mjordans/overview.svg"),
+                        new ("details_image_1", "images/projects/mjordans/technologies.svg")
+                    }
+                }
             }
             };
 
