@@ -1,6 +1,7 @@
 using Api.Endpoints.Projects;
 using Application.Queries;
 using Application.Services;
+using Infrastructure.Sanitizers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Model;
@@ -21,6 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ISkillService, SkillService>();
+builder.Services.AddScoped<IHtmlStringSanitizer, HtmlStringSanitizer>();
 
 builder.Services.AddDbContextFactory<DataContext>(options =>
 {
