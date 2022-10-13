@@ -39,10 +39,7 @@ public class ProjectService : IProjectService
 
     public async Task<Result<ProjectDetails>> GetDetails(Guid id, CancellationToken cancellationToken)
     {
-        var projectDetails = await _dataContext.ProjectDetails
-                                 .Include(projectDetails => projectDetails.ImageUrls)
-                                 .Where(projectDetails => projectDetails.ProjectId == id)
-                                 .SingleOrDefaultAsync(cancellationToken);
+        var projectDetails = await GetProjectDetails(id, cancellationToken);
 
         if (projectDetails is null)
             return Result.Fail("Project not found.");
@@ -52,10 +49,7 @@ public class ProjectService : IProjectService
 
     public async Task<Result<ImageUrl>> GetImage(Guid id, string imageName, CancellationToken cancellationToken)
     {
-        var projectDetails = await _dataContext.ProjectDetails
-                                 .Include(projectDetails => projectDetails.ImageUrls)
-                                 .Where(projectDetails => projectDetails.ProjectId == id)
-                                 .SingleOrDefaultAsync(cancellationToken);
+        var projectDetails = await GetProjectDetails(id, cancellationToken);
 
         if (projectDetails is null)
             return Result.Fail("Project not found.");
@@ -69,5 +63,13 @@ public class ProjectService : IProjectService
             return Result.Fail("Image not found.");
 
         return image;
+    }
+
+    private async Task<ProjectDetails?> GetProjectDetails(Guid id, CancellationToken cancellationToken)
+    {
+        return await _dataContext.ProjectDetails
+                                 .Include(projectDetails => projectDetails.ImageUrls)
+                                 .Where(projectDetails => projectDetails.ProjectId == id)
+                                 .SingleOrDefaultAsync(cancellationToken);
     }
 }
