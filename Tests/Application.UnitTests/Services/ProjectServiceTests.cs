@@ -44,9 +44,9 @@ public class ProjectServiceTests
 
             // assert
             Assert.NotNull(result);
-            Assert.Equal(projects.Count, result.Count);
-            Assert.Equal(projects.First().Name, result.First().Name);
-            _testOutputHelper.WriteLine($"Expected '{projects.First().Name}' found '{result.First().Name}'.");
+            Assert.Equal(projects.Count, result.Value.Count);
+            Assert.Equal(projects.First().Name, result.Value.First().Name);
+            _testOutputHelper.WriteLine($"Expected '{projects.First().Name}' found '{result.Value.First().Name}'.");
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿using Infrastructure.Sanitizers;
+﻿using FluentResults;
+using Infrastructure.Sanitizers;
 using Microsoft.EntityFrameworkCore;
 using Model;
 using Persistence;
-using Persistence.Migrations;
-using System;
 
 namespace Application.Services;
 public class ProjectService : IProjectService
@@ -17,7 +16,7 @@ public class ProjectService : IProjectService
         _htmlStringSanitizer = htmlStringSanitizer;
     }
 
-    public async Task<Guid> Add(Project project, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Add(Project project, CancellationToken cancellationToken)
     {
         await Task.Run(() =>
         {
@@ -26,36 +25,49 @@ public class ProjectService : IProjectService
 
         var id = _dataContext.Add(project).Entity.Id;
         var success = await _dataContext.SaveChangesAsync() > 0;
-        if (success) 
-            return id;
 
-        throw new Exception("Problem saving new Project");
+        if (!success)
+            return Result.Fail("Problem saving new Project");
+
+        return id;
     }
 
-    public async Task<List<Project>> GetAll(CancellationToken cancellationToken)
+    public async Task<Result<List<Project>>> GetAll(CancellationToken cancellationToken)
     {
         return await _dataContext.Projects.ToListAsync(cancellationToken);
     }
 
-    public async Task<ProjectDetails?> GetDetails(Guid id, CancellationToken cancellationToken)
+    public async Task<Result<ProjectDetails>> GetDetails(Guid id, CancellationToken cancellationToken)
     {
         var projectDetails = await _dataContext.ProjectDetails
                                  .Include(projectDetails => projectDetails.ImageUrls)
                                  .Where(projectDetails => projectDetails.ProjectId == id)
                                  .SingleOrDefaultAsync(cancellationToken);
+
+        if (projectDetails is null)
+            return Result.Fail("Project not found.");
+
         return projectDetails;
     }
 
-    public async Task<ImageUrl?> GetImage(Guid id, string imageName, CancellationToken cancellationToken)
+    public async Task<Result<ImageUrl>> GetImage(Guid id, string imageName, CancellationToken cancellationToken)
     {
         var projectDetails = await _dataContext.ProjectDetails
                                  .Include(projectDetails => projectDetails.ImageUrls)
                                  .Where(projectDetails => projectDetails.ProjectId == id)
                                  .SingleOrDefaultAsync(cancellationToken);
+
+        if (projectDetails is null)
+            return Result.Fail("Project not found.");
+
         var image = projectDetails
                                 .ImageUrls
                                 .Where(imageUrl => imageUrl.Name == imageName)
                                 .SingleOrDefault();
+
+        if (image is null)
+            return Result.Fail("Image not found.");
+
         return image;
     }
 }

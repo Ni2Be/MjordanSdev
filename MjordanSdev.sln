@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.UnitTests", "Infrastructure.UnitTests\Infrastructure.UnitTests.csproj", "{93646E24-40CA-47B8-BA0A-80D4A7339411}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{354DFA8F-44C9-4AB3-938E-6CC10F4D8E88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE0C3467-9A06-48CE-8D7A-965C2D9E4A6E} = {354DFA8F-44C9-4AB3-938E-6CC10F4D8E88}
+		{93646E24-40CA-47B8-BA0A-80D4A7339411} = {354DFA8F-44C9-4AB3-938E-6CC10F4D8E88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {23B59934-7CD2-451F-A714-F3AFD7C97ABA}

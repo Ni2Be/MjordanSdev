@@ -4,7 +4,6 @@ using Application.Services;
 using Infrastructure.Sanitizers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using Model;
 using Persistence;
 using Path = System.IO.Path;
 
