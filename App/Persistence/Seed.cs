@@ -1,12 +1,10 @@
-﻿using Infrastructure.Sanitizers;
-using Model;
+﻿using Model;
 
 namespace Persistence;
 public static class Seed
 {
     public static async Task SeedData(DataContext context)
     {
-        var htmlSanitizer = new HtmlStringSanitizer();
         if (!context.Projects.Any())
         {
             var projects = new List<Project> {
@@ -66,7 +64,7 @@ public static class Seed
                 Name = "MjordanS",
                 ProjectDetails = new ProjectDetails
                 {
-                    Description = htmlSanitizer.Sanitize("This site was realized in .Net and React and an automatic deployment with GitHub actions and docker. The full source code is accessible <a href=\"https://github.com/Ni2Be/MjordanSdev\">here</a>."),
+                    Description = "This site was realized in .Net and React and an automatic deployment with GitHub actions and docker. The full source code is accessible <a href=\"https://github.com/Ni2Be/MjordanSdev\">here</a>.",
                     BulletPoints = ".Net;React;CI/CD;Docker;GraphQL",
                     ImageUrls = new List<ImageUrl>{
                         new ("preview_image", "images/projects/mjordans/logo.svg"),
