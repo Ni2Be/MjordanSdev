@@ -38,7 +38,7 @@ function ProjectList() {
 
     return (
         <div className="projectList" >
-            {loading && Array(3).fill(0).map((p, i) => <ProjectPreviewPlaceholder key={i}/>)}
+            {loading && Array(3).fill(0).map((_, i) => <ProjectPreviewPlaceholder key={i}/>)}
             {
                 projects?.map(project => {
                     return (
