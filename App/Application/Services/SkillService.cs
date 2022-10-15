@@ -13,7 +13,7 @@ public class SkillService : ISkillService
         _dataContext = dataContext;
     }
 
-    public async Task<Result<Guid>> Add(Skill skill, CancellationToken cancellationToken = new CancellationToken())
+    public async Task<Result<Guid>> Add(Skill skill, CancellationToken cancellationToken)
     {
         var id = _dataContext.Add(skill).Entity.Id;
         var success = await _dataContext.SaveChangesAsync() > 0;

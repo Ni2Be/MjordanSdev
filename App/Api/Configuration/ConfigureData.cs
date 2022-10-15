@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Configuration;
 
-public static class ConfigureData
+internal static class ConfigureData
 {
-    public static async void Configure(WebApplication app)
+    internal static async Task Configure(WebApplication app)
     {
         // Migrate data
         using (var scope = app.Services.CreateScope())

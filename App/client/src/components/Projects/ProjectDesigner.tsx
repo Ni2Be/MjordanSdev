@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Button, Grid, Icon, Modal } from 'semantic-ui-react'
+import { Button, Icon, Modal } from 'semantic-ui-react'
 import agent from '../../api/agent';
-import { Image } from "semantic-ui-react"
 import { IProjectDetails } from '../../models/projects';
 import parse from 'html-react-parser';
 import './ProjectDetails.scss'
@@ -11,18 +10,6 @@ const baseURL = process.env.REACT_APP_API_URL;
 
 const getImageUrl = (projectDetails: IProjectDetails, name: string) => {
     return baseURL! + projectDetails.imageUrls.find(image => image.name === name)?.url;
-}
-
-const getBulletPoints = (projectDetails: IProjectDetails) => {
-    return (
-        <ul>
-            {
-                projectDetails.bulletPoints.split(';').map((point, i) => {
-                    return <li key={i}>{point}</li>;
-                })
-            }
-        </ul>
-    );
 }
 
 const replaceImagePlaceholder = (html: string, projectDetails: IProjectDetails) => {
@@ -85,7 +72,7 @@ const ProjectDesigner = () => {
     const html = useMemo(() => {
         if (projectDetails)
             return replaceImagePlaceholder(designContent, projectDetails);
-    }, [projectDetails])
+    }, [designContent, projectDetails])
 
     return (
         <Modal

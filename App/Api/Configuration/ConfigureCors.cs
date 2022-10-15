@@ -1,10 +1,10 @@
 ﻿namespace Api.Configuration;
 
-public static class ConfigureCors
+internal static class ConfigureCors
 {
-    public const string ProductionCorsPolicy = "ProductionCorsPolicy";
-    public const string DevCorsPolicy = "DevCorsPolicy";
-    public static void Configure(WebApplicationBuilder builder)
+    internal const string ProductionCorsPolicy = "ProductionCorsPolicy";
+    internal const string DevCorsPolicy = "DevCorsPolicy";
+    internal static void Configure(WebApplicationBuilder builder)
     {
         builder.Services.AddCors(options =>
         {
