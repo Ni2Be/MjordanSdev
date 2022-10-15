@@ -33,7 +33,6 @@ function About() {
                 </Grid.Column>
                 <Grid.Column>
                     <div className="skillsBox" >
-                        <h1>Skills</h1>
                         <Skills />
                     </div>
                 </Grid.Column>
