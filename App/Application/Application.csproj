@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.14.0" />
+    <PackageReference Include="FluentResults" Version="3.14.0" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.15.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
     <ProjectReference Include="..\Persistence\Persistence.csproj" />
   </ItemGroup>
