@@ -1,6 +1,4 @@
 ﻿using Application.Services;
-using Microsoft.AspNetCore.Authorization;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Api.Endpoints.Projects;
 
@@ -16,16 +14,27 @@ public static class ProjectEndpoints
     public static async Task<IResult> GetAllProjects(IProjectService projectService, CancellationToken cancellationToken)
     {
         var projects = await projectService.GetAll(cancellationToken);
-        return Results.Ok(projects);
+        if (projects.IsSuccess)
+            return Results.Ok(projects.Value);
+        else
+            return Results.NotFound(projects.ToResult());
     }
+
     public static async Task<IResult> GetDetails(string id, IProjectService projectService, CancellationToken cancellationToken)
     {
         var project = await projectService.GetDetails(Guid.Parse(id), cancellationToken);
-        return Results.Ok(project);
+        if (project.IsSuccess)
+            return Results.Ok(project.Value);
+        else
+            return Results.NotFound(project.ToResult());
     }
+
     public static async Task<IResult> GetImage(string id, string imageName, IProjectService projectService, CancellationToken cancellationToken)
     {
         var imageUrl = await projectService.GetImage(Guid.Parse(id), imageName, cancellationToken);
-        return Results.Ok(imageUrl);
+        if (imageUrl.IsSuccess)
+            return Results.Ok(imageUrl.Value);
+        else
+            return Results.NotFound(imageUrl.ToResult());
     }
 }

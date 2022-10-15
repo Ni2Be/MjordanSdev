@@ -2,17 +2,17 @@ import React from "react"
 import "./PercentCircle.scss";
 
 interface IProps {
+    children?: React.ReactElement | React.ReactElement[],
     percentage: number,
     size: string,
     color?: string,
     colorGradientStart?: string,
     colorGradientEnd?: string,
     opacityGradientStart?: number,
-    opacityGradientEnd?: number,
-    innerComponent?: React.ReactNode
+    opacityGradientEnd?: number
 }
 
-const PercentCircle: React.FC<IProps> = ({ percentage, size, color = 'grey', innerComponent, colorGradientStart, colorGradientEnd, opacityGradientStart, opacityGradientEnd }) => {
+const PercentCircle: React.FC<IProps> = ({ children, percentage, size, color = 'grey', colorGradientStart, colorGradientEnd, opacityGradientStart, opacityGradientEnd }) => {
     const id = Math.random();
     return (
         <div className="percentCircleOuter" style={{width:size}}>
@@ -33,7 +33,7 @@ const PercentCircle: React.FC<IProps> = ({ percentage, size, color = 'grey', inn
                 />
             </svg>
             <div className="innerComponent">
-                {innerComponent ? innerComponent : <p style={{ color: color }} >{percentage}%</p>}
+                {children ? children : <p style={{ color: color }} >{percentage}%</p>}
             </div>
         </div>
     )

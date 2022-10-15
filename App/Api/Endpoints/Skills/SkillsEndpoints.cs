@@ -1,5 +1,4 @@
 ﻿using Application.Services;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Api.Endpoints.Projects;
 
@@ -10,10 +9,12 @@ public static class SkillEndpoints
         app.MapGet("skills/list", GetAllSkills);
     }
 
-    
     public static async Task<IResult> GetAllSkills(ISkillService skillService, CancellationToken cancellationToken)
     {
         var projects = await skillService.GetAll(cancellationToken);
-        return Results.Ok(projects);
+        if (projects.IsSuccess)
+            return Results.Ok(projects.Value);
+        else
+            return Results.BadRequest(projects.ToResult());
     }
 }

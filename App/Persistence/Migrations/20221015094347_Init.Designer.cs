@@ -11,7 +11,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221005163617_Init")]
+    [Migration("20221015094347_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,6 +67,9 @@ namespace Persistence.Migrations
                     b.Property<string>("BulletPoints")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("DefaultDetails")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
                         .IsRequired()
