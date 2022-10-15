@@ -7,6 +7,7 @@ export interface IProject {
 export interface IProjectDetails {
     id: string;
     name: string;
+    defaultDetails: boolean;
     description: string;
     bulletPoints: string;
     imageUrls: IImageUrl[]

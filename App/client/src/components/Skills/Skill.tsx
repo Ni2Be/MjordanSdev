@@ -1,6 +1,5 @@
 import React from "react"
 import PercentCircle from "../PercentCircle/PercentCircle";
-import "./Skill.scss";
 
 interface IProps {
     percentage: number,
@@ -28,7 +27,15 @@ const gradientEnd = (type: string) => {
 const Skill: React.FC<IProps> = ({ percentage, name, type }) => {
 
     return (
-        <PercentCircle percentage={percentage} size='130px' colorGradientStart={gradientStart(type)} colorGradientEnd={gradientEnd(type)} opacityGradientStart={0.9} opacityGradientEnd={0.3} innerComponent={<p>{name}</p>} ></PercentCircle>
+        <PercentCircle 
+            percentage={percentage} 
+            size='130px' 
+            colorGradientStart={gradientStart(type)} 
+            colorGradientEnd={gradientEnd(type)} 
+            opacityGradientStart={0.9} 
+            opacityGradientEnd={0.3} >
+            <p>{name}</p>
+        </PercentCircle>
     )
 }
 
