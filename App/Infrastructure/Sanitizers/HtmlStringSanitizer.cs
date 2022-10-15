@@ -1,11 +1,5 @@
 ﻿using Ganss.Xss;
-using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Sanitizers;
 public class HtmlStringSanitizer : IHtmlStringSanitizer
@@ -16,11 +10,16 @@ public class HtmlStringSanitizer : IHtmlStringSanitizer
     {
         _allowedUrls = new HashSet<string> {
             "github.com",
-            "mjordans.dev"
+            "mjordans.dev",
+            "api.mjordans.dev"
         };
 
         _htmlSanitizer = new HtmlSanitizer();
-        Configure();
+
+        _htmlSanitizer.AllowedSchemes.Clear();
+        _htmlSanitizer.AllowedSchemes.Add("https");
+
+        _htmlSanitizer.AllowedAttributes.Add("className");
     }
 
     public string Sanitize(string html)
@@ -37,12 +36,5 @@ public class HtmlStringSanitizer : IHtmlStringSanitizer
             var uri = url.Groups[1].Value;
             return _allowedUrls.Contains(uri) ? $"https://{uri}/" : "[unallowed url]";
         });
-
-    }
-
-    private void Configure()
-    {
-        _htmlSanitizer.AllowedSchemes.Clear();
-        _htmlSanitizer.AllowedSchemes.Add("https");
     }
 }

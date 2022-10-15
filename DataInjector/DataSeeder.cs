@@ -28,6 +28,7 @@ public class DataSeeder
                     Name = "RC Tank",
                     ProjectDetails = new ProjectDetails
                     {
+                        DefaultDetails = true,
                         Description = "A from ground up designed, 3d-printed and programmed RC Tank. It can be operated in rough terrain either remote controlled or fully autonomously when configured with ultrasonic and/or laser distance sensors.",
                         BulletPoints = "Arduino C++;Remote Controllable;Fusion 360;3d Printing",
                         ImageUrls = new List<ImageUrl>{
@@ -43,6 +44,7 @@ public class DataSeeder
                     Name = "CounterpAi",
                     ProjectDetails = new ProjectDetails
                     {
+                        DefaultDetails = true,
                         Description = "An AI based learn application aimed to teach Fux Gradus ad Parnassum Species Counterpoint. Fux defined rules that should lead to a pleasing music piece when applied correctly. The tool was used to study the if an LSTM based NN can learn those rules. The analysis showed that almost all rules could be successfully predicted by the NN.",
                         BulletPoints = "Artificial Intelligence;Long Short-Term Memory Neuronal Network;Music Theory",
                         ImageUrls = new List<ImageUrl>{
@@ -58,6 +60,7 @@ public class DataSeeder
                     Name = "Event Information System",
                     ProjectDetails = new ProjectDetails
                     {
+                        DefaultDetails = true,
                         Description = "A program that allows to easily share information between event personal. Information like “Security personal needed at the entrance” can be requested by one click and then be confirmed by the central.\r\nThe system is highly customizable and can be branded and be adjusted to specific needs of an event.\r\n",
                         BulletPoints = "Node.js;Webhooks;Event business",
                         ImageUrls = new List<ImageUrl>{
@@ -73,6 +76,7 @@ public class DataSeeder
                     Name = "Fluid Simulation",
                     ProjectDetails = new ProjectDetails
                     {
+                        DefaultDetails = true,
                         Description = "A shallow water fluid simulation based on Lattice Boltzmann methods. It was realized as a Unity Asset based on compute shaders that can be used at runtime. It also includes shaders to visualize pressure and the flow field.",
                         BulletPoints = "Compute shaders;Unity;Fluid simulation",
                         ImageUrls = new List<ImageUrl>{
@@ -88,7 +92,33 @@ public class DataSeeder
                     Name = "MjordanS",
                     ProjectDetails = new ProjectDetails
                     {
-                        Description = "This site was realized in .Net and React and an automatic deployment with GitHub actions and docker. The full source code is accessible <a href=\"https://github.com/Ni2Be/MjordanSdev\">here</a>.",
+                        DefaultDetails = false,
+                        Description = @"
+<div rows=""2"" className=""ui two column grid"">
+    <div className=""row"">
+        <div className=""column"">
+            <h1>Description</h1>
+            <p>This site was realized in .Net and React and an automatic deployment with GitHub actions and docker. The full source code is accessible <a href=""https://github.com/Ni2Be/MjordanSdev"">here</a>.</p></div><div className=""column"">
+            <img src=""{{details_image_0}}"" className=""ui image fluid detailImage"" style=""background-color:transparent"" />
+        </div>
+    </div>
+    <div className=""row"">
+        <div className=""column"">
+            <img src=""{{details_image_1}}"" className=""ui image fluid detailImage"" style=""background-color:transparent"" width=""200px"">
+        </div>
+        <div className=""column"">
+            <h1>Bullet Points</h1>
+            <ul>
+                <li>.Net</li>
+                <li>React</li>
+                <li>CI/CD</li>
+                <li>Docker</li>
+                <li>GraphQL</li>
+            </ul>
+        </div>
+    </div>
+</div>
+                        ",
                         BulletPoints = ".Net;React;CI/CD;Docker;GraphQL",
                         ImageUrls = new List<ImageUrl>{
                         new ("preview_image", "images/projects/mjordans/logo.svg"),

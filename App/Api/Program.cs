@@ -34,7 +34,6 @@ builder.Services.AddDbContextFactory<DataContext>(options =>
 // Configure CORS
 ConfigureCors.Configure(builder);
 
-
 var app = builder.Build();
 
 // Migrate / Seed Data

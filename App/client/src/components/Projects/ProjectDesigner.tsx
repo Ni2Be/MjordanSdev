@@ -25,15 +25,17 @@ const getBulletPoints = (projectDetails: IProjectDetails) => {
     );
 }
 
-const replaceImagePlaceholder = (projectDetails: IProjectDetails) => {
-    let html = projectDetails.description;
+const replaceImagePlaceholder = (html: string, projectDetails: IProjectDetails) => {
     projectDetails.imageUrls.forEach((imageUrl) => {
         html = html.replace(`{{${imageUrl.name}}}`, getImageUrl(projectDetails, imageUrl.name));
     });
     return html;
 }
 
-const ProjectDetails = () => {
+/*
+    Helper component to design custom project details.
+*/
+const ProjectDesigner = () => {
     const { id } = useParams();
     const [showModal, setShowModal] = useState(true);
     const navigate = useNavigate();
@@ -44,6 +46,34 @@ const ProjectDetails = () => {
         navigate('/projects');
     }
 
+    const designContent =
+    `
+        <div rows="2" class="ui two column grid">
+            <div class="row">
+                <div class="column">
+                    <h1>Description</h1>
+                    <p>This site was realized in .Net and React and an automatic deployment with GitHub actions and docker. The full source code is accessible <a href="https://github.com/Ni2Be/MjordanSdev">here</a>.</p></div><div class="column">
+                    <img src="{{details_image_0}}" class="ui image fluid detailImage" style="background-color:transparent" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <img src="{{details_image_1}}" class="ui image fluid detailImage" style="background-color:transparent" width="200px">
+                </div>
+                <div class="column">
+                    <h1>Bullet Points</h1>
+                    <ul>
+                        <li>.Net</li>
+                        <li>React</li>
+                        <li>CI/CD</li>
+                        <li>Docker</li>
+                        <li>GraphQL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    `;
+
     useEffect(() => {
         const fetchProjectDetails = async (id: string) => {
             const data: IProjectDetails = await agent.Projects.getDetails(id);
@@ -52,12 +82,11 @@ const ProjectDetails = () => {
         fetchProjectDetails(id!).catch(console.error);
     }, [id])
 
-    const customHtml = useMemo(() => {
-        if (projectDetails && !projectDetails.defaultDetails)
-            return replaceImagePlaceholder(projectDetails);
+    const html = useMemo(() => {
+        if (projectDetails)
+            return replaceImagePlaceholder(designContent, projectDetails);
     }, [projectDetails])
 
-    // TODO some solution for theming for modals
     return (
         <Modal
             className='projectDetail dark-theme'
@@ -68,32 +97,7 @@ const ProjectDetails = () => {
             open={showModal}
             size='large'>
             <Modal.Content >
-                {projectDetails?.defaultDetails ?
-                    <Grid columns={2} rows={2}>
-                        <Grid.Row>
-                            <Grid.Column>
-                                <h1>Description</h1>
-                                <p>
-                                    {projectDetails?.description && parse(projectDetails?.description!)}
-                                </p>
-                            </Grid.Column>
-                            <Grid.Column>
-                                <Image className="fluid detailImage" src={projectDetails ? getImageUrl(projectDetails!, 'details_image_0') : ''} />
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <Grid.Column>
-                                <Image className="fluid detailImage" width='200px' src={projectDetails ? getImageUrl(projectDetails!, 'details_image_1') : ''} />
-                            </Grid.Column>
-                            <Grid.Column>
-                                <h1>Bullet Points</h1>
-                                {projectDetails && getBulletPoints(projectDetails)}
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                    :
-                    customHtml && parse(customHtml)
-                }
+                {html && parse(html)}
             </Modal.Content>
             <Modal.Actions>
                 <Button basic color='grey' inverted onClick={() => backToProjectsList()}>
@@ -104,4 +108,4 @@ const ProjectDetails = () => {
     )
 }
 
-export default ProjectDetails;
+export default ProjectDesigner;
