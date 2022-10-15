@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "App\Persiste
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "Tests\Application.UnitTests\Application.UnitTests.csproj", "{AE0C3467-9A06-48CE-8D7A-965C2D9E4A6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.UnitTests", "Infrastructure.UnitTests\Infrastructure.UnitTests.csproj", "{93646E24-40CA-47B8-BA0A-80D4A7339411}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.UnitTests", "Infrastructure.UnitTests\Infrastructure.UnitTests.csproj", "{93646E24-40CA-47B8-BA0A-80D4A7339411}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{354DFA8F-44C9-4AB3-938E-6CC10F4D8E88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataInjector", "DataInjector\DataInjector.csproj", "{95F82DDB-BBCE-437F-B52A-8477EE6AD94F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{93646E24-40CA-47B8-BA0A-80D4A7339411}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93646E24-40CA-47B8-BA0A-80D4A7339411}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93646E24-40CA-47B8-BA0A-80D4A7339411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95F82DDB-BBCE-437F-B52A-8477EE6AD94F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95F82DDB-BBCE-437F-B52A-8477EE6AD94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95F82DDB-BBCE-437F-B52A-8477EE6AD94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95F82DDB-BBCE-437F-B52A-8477EE6AD94F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
