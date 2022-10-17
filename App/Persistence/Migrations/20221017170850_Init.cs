@@ -86,24 +86,25 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    OwnerId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Url = table.Column<string>(type: "TEXT", nullable: false),
-                    ProjectDetailsId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    Url = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ImageUrls", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ImageUrls_ProjectDetails_ProjectDetailsId",
-                        column: x => x.ProjectDetailsId,
+                        name: "FK_ImageUrls_ProjectDetails_OwnerId",
+                        column: x => x.OwnerId,
                         principalTable: "ProjectDetails",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImageUrls_ProjectDetailsId",
+                name: "IX_ImageUrls_OwnerId",
                 table: "ImageUrls",
-                column: "ProjectDetailsId");
+                column: "OwnerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectDetails_ProjectId",
