@@ -12,6 +12,7 @@ public class ImageUrl
         Url = url;
     }
     public Guid Id { get; set; }
+    public IImageOwner Owner { get; set; }
     public string Name { get; set; }
     public string Url { get; set; }
 }
