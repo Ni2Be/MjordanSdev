@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model;
+using System.Reflection.Emit;
 
 namespace Persistence;
 public class DataContext : DbContext
@@ -20,5 +21,10 @@ public class DataContext : DbContext
             .HasOne(p => p.ProjectDetails)
             .WithOne(p => p.Project)
             .HasForeignKey<ProjectDetails>(p => p.ProjectId);
+
+        builder.Entity<ProjectDetails>()
+            .HasMany(p => p.ImageUrls)
+            .WithOne(i => i.Owner as ProjectDetails)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
