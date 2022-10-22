@@ -9,6 +9,6 @@ public partial class mJordansDevQuery
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    public IQueryable<Project> Projects([Service] DataContext dataContext) 
+    public IQueryable<Project> Projects([Service] DataContext dataContext)
         => dataContext.Projects;
 }
