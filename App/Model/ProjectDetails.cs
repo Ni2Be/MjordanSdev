@@ -1,5 +1,5 @@
 ﻿namespace Model;
-public class ProjectDetails
+public class ProjectDetails : IImageOwner
 {
     public Guid Id { get; set; }
     public Project Project { get; set; }

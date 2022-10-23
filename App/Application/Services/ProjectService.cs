@@ -12,8 +12,8 @@ public class ProjectService : IProjectService
 
     public ProjectService(DataContext dataContext, IHtmlStringSanitizer htmlStringSanitizer)
     {
-        _dataContext = dataContext;
-        _htmlStringSanitizer = htmlStringSanitizer;
+        _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
+        _htmlStringSanitizer = htmlStringSanitizer ?? throw new ArgumentNullException(nameof(htmlStringSanitizer));
     }
 
     public async Task<Result<Guid>> Add(Project project, CancellationToken cancellationToken)

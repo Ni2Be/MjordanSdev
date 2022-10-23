@@ -3,6 +3,7 @@ using Api.Endpoints.Projects;
 using Application.Queries;
 using Application.Services;
 using DataInjector;
+using HotChocolate.Utilities;
 using Infrastructure.Sanitizers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -18,26 +19,23 @@ builder.Services.AddGraphQLServer()
                 .AddProjections()
                 .AddFiltering()
                 .AddSorting();
-// Add services.
+
+// Add services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<DataSeeder>();
-builder.Services.AddScoped<IProjectService, ProjectService>();
-builder.Services.AddScoped<ISkillService, SkillService>();
-builder.Services.AddScoped<IHtmlStringSanitizer, HtmlStringSanitizer>();
-
 builder.Services.AddDbContextFactory<DataContext>(options =>
 {
     options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
 });
+DependencyInjectionRegistry.AddServices(builder.Services, builder.Environment.IsDevelopment());
 
 // Configure CORS
-ConfigureCors.Configure(builder);
+ConfigureCors.Configure(builder.Services);
 
 var app = builder.Build();
 
 // Migrate / Seed Data
-ConfigureData.Configure(app);
+await ConfigureData.Configure(app);
 
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();

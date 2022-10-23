@@ -4,9 +4,9 @@ internal static class ConfigureCors
 {
     internal const string ProductionCorsPolicy = "ProductionCorsPolicy";
     internal const string DevCorsPolicy = "DevCorsPolicy";
-    internal static void Configure(WebApplicationBuilder builder)
+    internal static IServiceCollection Configure(IServiceCollection services)
     {
-        builder.Services.AddCors(options =>
+        services.AddCors(options =>
         {
             options.AddPolicy(name: ProductionCorsPolicy,
                               policy =>
@@ -18,11 +18,13 @@ internal static class ConfigureCors
                                       .AllowAnyHeader();
                               });
         });
-        builder.Services.AddCors(options =>
+        services.AddCors(options =>
         {
             options.AddPolicy(name: DevCorsPolicy, builder => {
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
             });
         });
+
+        return services;
     }
 }

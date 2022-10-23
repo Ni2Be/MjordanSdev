@@ -10,7 +10,7 @@ public class SkillService : ISkillService
 
     public SkillService(DataContext dataContext)
     {
-        _dataContext = dataContext;
+        _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
     }
 
     public async Task<Result<Guid>> Add(Skill skill, CancellationToken cancellationToken)
