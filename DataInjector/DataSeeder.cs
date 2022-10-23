@@ -127,6 +127,22 @@ public class DataSeeder
                         }
                     }
                 }, CancellationToken.None);
+            await _projectService.Add(
+                new Project
+                {
+                    Name = "Noise Lib",
+                    ProjectDetails = new ProjectDetails
+                    {
+                        DefaultDetails = true,
+                        Description = "A Unity Library that allows to generate and work with noises. It includes the most common noises: Simplex, Cellular and Voronoi, all can be generated in 2d or 3d and in a fractal Brownian motion variant. Most noises can also be generated in an octave shifting and non-shifting version, the shifting versions are intended for animations (e.g., water textures) and the non-shifting versions can be used for tiled world generation.\r\nAll noises are generated as Render Textures and the library includes functions to combine noises in different ways. \r\n",
+                        BulletPoints = "Unity;Computeshader;Noise",
+                        ImageUrls = new List<ImageUrl>{
+                            new ("preview_image", "images/projects/noiselib/combiner.png"),
+                            new ("details_image_0", "images/projects/noiselib/combiner.png"),
+                            new ("details_image_1", "images/projects/noiselib/noise.webp")
+                            }
+                    }
+                }, CancellationToken.None);
         }
 
         if (!_context.Skills.Any())
