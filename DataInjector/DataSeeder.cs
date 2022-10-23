@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using System.Data;
 using Application.Services;
 using Model;
 using Persistence;
@@ -6,20 +6,30 @@ using Persistence;
 namespace DataInjector;
 public class DataSeeder
 {
+    private readonly bool _isDevelopment;
     private readonly DataContext _context;
     private readonly IProjectService _projectService;
     private readonly ISkillService _skillService;
 
 
-    public DataSeeder(DataContext dataContext, IProjectService projectService, ISkillService skillService)
+    public DataSeeder(DataContext dataContext, IProjectService projectService, ISkillService skillService, bool isDevelopment)
     {
-        _context = dataContext;
-        _projectService = projectService;
-        _skillService = skillService;
+        _context = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
+        _projectService = projectService ?? throw new ArgumentNullException(nameof(projectService));
+        _skillService = skillService ?? throw new ArgumentNullException(nameof(skillService));
+        _isDevelopment = isDevelopment;
     }
 
     public async Task SeedData()
     {
+        if (_isDevelopment)
+        {
+            Console.WriteLine("Cleaning database");
+            _context.Projects.RemoveRange(_context.Projects);
+            _context.Skills.RemoveRange(_context.Skills);
+            _context.SaveChanges();
+        }
+
         if (!this._context.Projects.Any())
         {
             await _projectService.Add(
@@ -229,7 +239,7 @@ public class DataSeeder
             var backend = new Skill {
                 Name = "Backend",
                 Description = "Backend includes everything that runs on a server, in the cloud or just as a backend for frontend on the same machine.",
-                Value = 90,
+                Value = 100,
                 Type = "High Level",
                 ChildSkills = new List<Skill>{
                        dotnet, wix, docker, cicd
@@ -237,7 +247,7 @@ public class DataSeeder
             var frontend = new Skill {
                 Name = "Frontend",
                 Description = "Frontend includes everything that gives an interface to the user.",
-                Value = 90,
+                Value = 100,
                 Type = "High Level",
                 ChildSkills = new List<Skill>{
                        wpf, react, shader, cicd
@@ -245,7 +255,7 @@ public class DataSeeder
             var unity = new Skill {
                 Name = "Unity",
                 Description = "Unity is a game engine but can also be used to create user friendly, platform independent applications.",
-                Value = 95,
+                Value = 100,
                 Type = "High Level",
                 ChildSkills = new List<Skill>{
                         csharp, hlsl
@@ -254,7 +264,7 @@ public class DataSeeder
             {
                 Name = "Hosting",
                 Description = "",
-                Value = 88,
+                Value = 100,
                 Type = "High Level",
                 ChildSkills = new List<Skill>{
                         nginx, docker, cicd

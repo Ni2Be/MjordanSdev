@@ -11,13 +11,13 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221015094347_Init")]
+    [Migration("20221017170850_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
 
             modelBuilder.Entity("Model.ImageUrl", b =>
                 {
@@ -29,7 +29,7 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ProjectDetailsId")
+                    b.Property<Guid>("OwnerId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Url")
@@ -38,7 +38,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectDetailsId");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("ImageUrls");
                 });
@@ -132,9 +132,13 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Model.ImageUrl", b =>
                 {
-                    b.HasOne("Model.ProjectDetails", null)
+                    b.HasOne("Model.ProjectDetails", "Owner")
                         .WithMany("ImageUrls")
-                        .HasForeignKey("ProjectDetailsId");
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("Model.ProjectDetails", b =>
