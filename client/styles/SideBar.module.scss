@@ -1,0 +1,53 @@
+@use 'sass:math';
+@import './theme/colors';
+@import './theme/keyframes';
+
+@include glow("hover", theme-color('text-color'), 0, 0, 0, 0, 0rem, 1rem);
+
+.sideBar {
+  min-height: 100vh;
+  position: relative;
+  z-index: 99 !important;
+
+  background-color: theme-color('primary-1');
+  transition: background-color 1000ms ease-in-out;
+
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
+
+  .logo {
+    margin-top: 20px;
+  }
+
+  .sideBarMenu {
+    font-family: 'LexendExa';
+    margin-top: 0;
+    padding-top: 0;
+    width: inherit;
+    overflow-x: hidden;
+    position: absolute;
+    top: math.div(100vh, 2.7);
+
+    .sideBarItem {
+      color: theme-color('text-color');
+      width: inherit;
+      text-align: center;
+      font-weight: 100;
+
+      &:hover {
+        color: theme-color('text-color');
+        animation: glow-hover 2s ease-in-out infinite alternate;
+        transition: all 0.1s ease-in;
+        transition: color 1000ms ease-in-out;
+      }
+
+      &.active {
+        color: theme-color('text-color');
+        font-weight: 900;
+        transition: all 0.1s ease-in;
+        transition: color 1000ms ease-in-out;
+      }
+    }
+  }
+}

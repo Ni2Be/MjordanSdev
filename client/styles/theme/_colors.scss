@@ -1,0 +1,67 @@
+@use 'sass:color';
+
+.rdp {
+    --primary: #ff1717;
+    --primary-1: #ff1717;
+    --primary-2: #ff1717;
+    --secondary: #ff1717;
+    --secondary-0: #ff1717;
+    --secondary-1: #ff1717;
+    --secondary-2: #ff1717;
+    --secondary-3: #ff1717;
+    --secondary-4: #ff1717;
+    --secondary-5: #ff1717;
+
+    --secondary-transparent: #ff1717;
+
+    --logo-color: #952b2b;
+
+    --text-color: #ff1717;
+    --text-color-p: #ff1717;
+    --text-color-ul: #ff1717;
+    --image-background: #ff1717;
+}
+
+.lightTheme {
+    --primary: #FFFFFF;
+    --primary-1: #96c4d1;
+    --primary-2: #7bcfff;
+    --secondary: #2e3cff;
+    --secondary-1: #347bff;
+    --secondary-2: #5537ff;
+    --secondary-transparent: 233, 233, 233;
+
+    --logo-color: #952b2b;
+
+    --text-color: #000000;
+    --text-color-p: #111111;
+    --text-color-ul: #222222;
+    --image-background: #ffffff;
+}
+
+.darkTheme {
+    --primary: #000000;
+    --primary-1: #111111;
+    --primary-2: #222222;
+    --secondary: #ffffff;
+    --secondary-0: #3C5F63;
+    --secondary-1: #3b817a;
+    --secondary-2: #4ca285;
+    --secondary-3: #76c283;
+    --secondary-4: #b1e079;
+    --secondary-5: #f9f871;
+
+    --secondary-transparent: 233, 233, 233;
+    
+    --logo-color: #3b817a;
+
+    --text-color: #FFFFFF;
+    --text-color-p: #eeeeee;
+    --text-color-ul: #aaaaaa;
+    --text-shadow-color: #111111;
+    --image-background-color: #ffffff;
+}
+
+@function theme-color($color) {
+    @return var(--#{$color});
+}

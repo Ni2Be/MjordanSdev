@@ -1,0 +1,35 @@
+@mixin scrollbars($size, $foreground-color, $background-color, $hover-color) {
+    // For Google Chrome
+    &::-webkit-scrollbar-thumb:hover {
+        background: $hover-color;
+    }
+
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    // For Internet Explorer
+    & {
+        scrollbar-face-color: $foreground-color;
+        scrollbar-track-color: $background-color;
+    }
+
+    // For Firefox
+    scrollbar-color: $foreground-color $background-color;
+    scrollbar-width: $size;
+}
+
+@function get-text-shadow() {
+    @return 0.3px 0.5px 0.7px hsl(theme-color('text-shadow-color') / 0.34),
+    0.4px 0.8px 1px hsl(theme-color('text-shadow-color') / 0.34),
+    1px 2px 2.5px hsl(theme-color('text-shadow-color') / 0.34);
+}

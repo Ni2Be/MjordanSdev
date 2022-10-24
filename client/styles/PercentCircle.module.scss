@@ -1,0 +1,24 @@
+@import './theme/colors';
+
+.percentCircleOuter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .innerComponent {
+        position: absolute;
+        font-size: 20px;
+    }
+
+    .percentCircle {
+        fill: none;
+        stroke-width: 5px;
+        animation: fill-up 3s linear forwards;
+
+        @keyframes fill-up {
+            0% {
+                stroke-dasharray: 0 100;
+            }
+        }
+    }
+}

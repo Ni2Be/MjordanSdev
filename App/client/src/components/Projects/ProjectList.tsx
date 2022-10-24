@@ -1,11 +1,28 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import agent from "../../api/agent";
 import { IProject } from "../../models/projects"
 import { projectsDummyData } from "./DummyData";
 import './ProjectList.scss'
 import ProjectPreview from "./ProjectPreview";
 import ProjectPreviewPlaceholder from "./ProjectPreviewPlaceholder";
+
+function searchEngineOptimization(projects: IProject[]) {
+    return (
+        <Helmet>
+            <title>Jordans Projects</title>
+            <meta name="description" content="See some of my projects."></meta>
+            {
+                projects?.map(project => {
+                    return (
+                        <link rel="canonical" href={`${window.location.origin}/projects/${project.id}`} />
+                    );
+                })
+            }
+        </Helmet>
+    );
+}
 
 function ProjectList() {
     const [projects, setProjects] = useState<IProject[]>();
@@ -30,15 +47,16 @@ function ProjectList() {
                     }
                 }
               }`).then(data => data.projects);
-              setLoading(false);
-              setProjects(projects);
+            setLoading(false);
+            setProjects(projects);
         }
         fetchProjects().catch(console.error);
     }, [])
 
     return (
         <div className="projectList" >
-            {loading && Array(3).fill(0).map((_, i) => <ProjectPreviewPlaceholder key={i}/>)}
+            {projects && searchEngineOptimization(projects)}
+            {loading && Array(3).fill(0).map((_, i) => <ProjectPreviewPlaceholder key={i} />)}
             {
                 projects?.map(project => {
                     return (

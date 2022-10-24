@@ -1,0 +1,7 @@
+
+@mixin glow($name, $color, $startX, $endX, $startY, $endY, $startSize, $endSize)
+    @keyframes glow-#{$name}
+        0% 
+            text-shadow: #{$startX} #{$startY} #{$startSize} #{$color}
+        100% 
+            text-shadow: #{$endX} #{$endY} #{$endSize} #{$color}
