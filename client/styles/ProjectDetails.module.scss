@@ -1,0 +1,7 @@
+@import './theme/colors';
+
+.projectDetail {
+    .detailImage {
+        background-color: theme-color('image-background-color');
+    }
+}

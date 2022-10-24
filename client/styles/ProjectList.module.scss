@@ -1,0 +1,11 @@
+@import './theme/globals';
+
+.projectList {
+    position: relative;
+    padding: 7rem;
+    padding-top: $site-padding-top;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

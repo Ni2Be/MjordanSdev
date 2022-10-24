@@ -1,27 +1,17 @@
+import Link from "next/link";
 import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import { Grid } from "semantic-ui-react";
+import styles from '../../styles/About.module.scss'
 import Skills from "../Skills/Skills";
-import './About.scss'
 
-function searchEngineOptimization() {
-    return (
-        <Helmet>
-            <title>About Jordan</title>
-            <meta name="description" content="Who am I and how can I support you? Get an overview over my skill-set." />
-        </Helmet>
-    );
-}
 
 function About() {
 
     return (
-        <div className="about">
-            {searchEngineOptimization()}
+        <div className={styles.about}>
             <Grid stackable columns="2" >
                 <Grid.Column >
-                    <div className="aboutTextBox" >
+                    <div className={styles.aboutTextBox} >
                         <h1>Hi, I&apos;m Jordan,</h1>
                         <p>
                             I&apos;m a full stack developer and consultant from Germany. Currently I work for Bosch Access Systems as software engineer, product owner and product security manager.
@@ -34,16 +24,16 @@ function About() {
                             <li>Anything else? Don&apos;t hesitate to ask, I&apos;m sure we&apos;ll find a solution!</li>
                         </ul>
                         <p>
-                            See <Link to="/projects">my projects.</Link>
+                            See <Link href="/projects">my projects.</Link>
                         </p>
                         <h1>How to reach me?</h1>
                         <p>
-                            Let me take you to the <Link to="/contact">contact page.</Link>
+                            Let me take you to the <Link href="/contact">contact page.</Link>
                         </p>
                     </div >
                 </Grid.Column>
                 <Grid.Column>
-                    <div className="skillsBox" >
+                    <div className={styles.skillsBox} >
                         <Skills />
                     </div>
                 </Grid.Column>
