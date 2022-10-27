@@ -1,17 +1,22 @@
 using Api.Configuration;
 using Api.Endpoints.Projects;
+using Application.Email;
 using Application.Queries;
-using Application.Services;
-using DataInjector;
-using HotChocolate.Utilities;
-using Infrastructure.Sanitizers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Persistence;
+using Serilog;
 using Path = System.IO.Path;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
+
+// Logging
+const string template = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Indent:l}{NewLine}{Message}{NewLine}{Exception}";
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console(outputTemplate: template)
+    .CreateBootstrapLogger();
+builder.Host.UseSerilog();
 
 // GraphQL
 builder.Services.AddGraphQLServer()
@@ -27,7 +32,7 @@ builder.Services.AddDbContextFactory<DataContext>(options =>
 {
     options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
 });
-DependencyInjectionRegistry.AddServices(builder.Services, builder.Environment.IsDevelopment());
+DependencyInjectionRegistry.AddServices(builder.Services, configuration, builder.Environment.IsDevelopment());
 
 // Configure CORS
 ConfigureCors.Configure(builder.Services);
