@@ -1,4 +1,5 @@
 using Api.Configuration;
+using Api.Endpoints.Contact;
 using Api.Endpoints.Projects;
 using Application.Queries;
 using Microsoft.EntityFrameworkCore;

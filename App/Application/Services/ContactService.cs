@@ -1,4 +1,5 @@
-﻿using Infrastructure.Email;
+﻿using Infrastructure.Captcha;
+using Infrastructure.Email;
 using Microsoft.Extensions.Logging;
 using Result = FluentResults.Result;
 
@@ -11,7 +12,7 @@ public class ContactService : IContactService
     public ContactService(IEmailService emailService, ILogger<ContactService> logger)
     {
         _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger)); ;
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     public async Task<Result> SendMail(Message message, CancellationToken cancellationToken)

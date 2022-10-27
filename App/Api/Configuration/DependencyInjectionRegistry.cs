@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using DataInjector;
+using Infrastructure.Captcha;
 using Infrastructure.Email;
 using Infrastructure.Sanitizers;
 using Persistence;
@@ -17,6 +18,8 @@ public static class DependencyInjectionRegistry
         services.AddScoped<ISkillService, SkillService>();
         services.Configure<HtmlStringSanitizerOptoins>(configuraiton.GetSection("HtmlStringSanitizerOptoins"));
         services.AddScoped<IHtmlStringSanitizer, HtmlStringSanitizer>();
+        services.Configure<ReCaptchaConfig>(configuraiton.GetSection("ReCaptchaConfig"));
+        services.AddScoped<IReCaptchaService, ReCaptchaService>();
 
         services.AddScoped(provider =>
                             new DataSeeder(provider.GetService<DataContext>(),
