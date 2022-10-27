@@ -11,6 +11,7 @@ public static class DependencyInjectionRegistry
     {
         services.AddScoped<IProjectService, ProjectService>();
         services.AddScoped<ISkillService, SkillService>();
+        services.Configure<HtmlStringSanitizerOptoins>(configuraiton.GetSection("HtmlStringSanitizerOptoins"));
         services.AddScoped<IHtmlStringSanitizer, HtmlStringSanitizer>();
         services.AddScoped(provider => 
                             new DataSeeder(provider.GetService<DataContext>(),
