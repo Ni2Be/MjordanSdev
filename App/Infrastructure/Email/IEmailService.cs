@@ -1,5 +1,6 @@
-﻿namespace Application.Email;
+﻿namespace Infrastructure.Email;
 public interface IEmailService
 {
-    Task SendEmailAsync(Message message);
+    Task<bool> SendPureTextEmailAsync(Message message, CancellationToken cancellationToken);
+    Task<bool> SendHtmlEmailAsync(Message message, CancellationToken cancellationToken);
 }

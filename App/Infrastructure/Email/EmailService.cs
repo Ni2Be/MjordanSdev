@@ -1,37 +1,61 @@
 ﻿using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MimeKit;
-using Serilog;
 using ContentType = MimeKit.ContentType;
 
-namespace Application.Email;
+namespace Infrastructure.Email;
 
 public class EmailService : IEmailService
 {
     private readonly EmailConfiguration _emailConfig;
-    private readonly ILogger _logger;
+    private readonly ILogger<EmailService> _logger;
 
-    public EmailService(IOptions<EmailConfiguration> emailConfig, ILogger logger)
+    public EmailService(IOptions<EmailConfiguration> emailConfig, ILogger<EmailService> logger)
     {
         _emailConfig = emailConfig.Value;
         _logger = logger;
     }
 
-    public async Task SendEmailAsync(Message message)
+    public async Task<bool> SendPureTextEmailAsync(Message message, CancellationToken cancellationToken)
     {
-        var mailMessage = CreateEmailMessage(message);
+        var mailMessage = CreateEmailMessage(message, false);
 
-        await SendAsync(mailMessage);
+        return await SendAsync(mailMessage, cancellationToken);
     }
 
-    private MimeMessage CreateEmailMessage(Message message)
+    public async Task<bool> SendHtmlEmailAsync(Message message, CancellationToken cancellationToken)
+    {
+        var mailMessage = CreateEmailMessage(message, true);
+
+        return await SendAsync(mailMessage, cancellationToken);
+    }
+
+    private MimeMessage CreateEmailMessage(Message message, bool htmlBody)
     {
         var emailMessage = new MimeMessage();
         emailMessage.From.Add(new MailboxAddress(_emailConfig.FromName, _emailConfig.FromMail));
-        emailMessage.To.AddRange(message.To);
+
+        emailMessage.To.AddRange(message.To.Select(x => new MailboxAddress(x.Name, x.Email)));
         emailMessage.Subject = message.Subject;
 
+        if (htmlBody)
+            emailMessage.Body = CreateHtmlBody(message);
+        else
+            emailMessage.Body = CreatePureTextBody(message);
+        
+        return emailMessage;
+    }
+
+    private MimeEntity CreatePureTextBody(Message message)
+    {
+        var bodyBuilder = new BodyBuilder { TextBody = message.Content };
+        return bodyBuilder.ToMessageBody();
+    }
+
+    private MimeEntity CreateHtmlBody(Message message)
+    {
         var bodyBuilder = new BodyBuilder { HtmlBody = message.Content };
 
         if (message.Attachments != null && message.Attachments.Any())
@@ -48,23 +72,23 @@ public class EmailService : IEmailService
                 bodyBuilder.Attachments.Add(attachment.FileName, fileBytes, ContentType.Parse(attachment.ContentType));
             }
         }
-
-        emailMessage.Body = bodyBuilder.ToMessageBody();
-        return emailMessage;
+        return bodyBuilder.ToMessageBody();
     }
 
-    private async Task SendAsync(MimeMessage mailMessage)
+    private async Task<bool> SendAsync(MimeMessage mailMessage, CancellationToken cancellationToken)
     {
         try
         {
             using var client = new SmtpClient();
             client.Connect(_emailConfig.SmtpServer, _emailConfig.Port, SecureSocketOptions.StartTls);
-            await client.AuthenticateAsync(_emailConfig.UserName, _emailConfig.Password);
-            await client.SendAsync(mailMessage);
+            await client.AuthenticateAsync(_emailConfig.UserName, _emailConfig.Password, cancellationToken);
+            await client.SendAsync(mailMessage, cancellationToken);
         }
         catch (Exception ex)
         {
-            _logger.Error("Could not send mail.", ex);
+            _logger.LogError("Could not send mail.", ex);
+            throw;
         }
+        return true;
     }
 }

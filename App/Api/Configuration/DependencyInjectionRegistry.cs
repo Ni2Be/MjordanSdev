@@ -1,6 +1,6 @@
-﻿using Application.Email;
-using Application.Services;
+﻿using Application.Services;
 using DataInjector;
+using Infrastructure.Email;
 using Infrastructure.Sanitizers;
 using Persistence;
 
@@ -10,6 +10,9 @@ public static class DependencyInjectionRegistry
 {
     public static IServiceCollection AddServices(IServiceCollection services, IConfiguration configuraiton, bool isDevelopment)
     {
+        services.Configure<EmailConfiguration>(configuraiton.GetSection("EmailConfiguration"));
+        services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<IContactService, ContactService>();
         services.AddScoped<IProjectService, ProjectService>();
         services.AddScoped<ISkillService, SkillService>();
         services.Configure<HtmlStringSanitizerOptoins>(configuraiton.GetSection("HtmlStringSanitizerOptoins"));
@@ -21,8 +24,6 @@ public static class DependencyInjectionRegistry
                                            provider.GetService<ISkillService>(),
                                            isDevelopment));
 
-        services.Configure<EmailConfiguration>(configuraiton.GetSection("EmailConfiguration"));
-        services.AddScoped<IEmailService, EmailService>();
 
         return services;
     }

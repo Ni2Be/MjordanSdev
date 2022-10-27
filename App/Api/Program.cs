@@ -1,6 +1,5 @@
 using Api.Configuration;
 using Api.Endpoints.Projects;
-using Application.Email;
 using Application.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -68,5 +67,6 @@ else
 app.MapGraphQL();
 app.MapProjectEndpoints();
 app.MapSkillEndpoints();
+app.MapContactEndpoints();
 
 app.Run();
