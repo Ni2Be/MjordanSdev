@@ -1,10 +1,36 @@
 version: '3'
 
+secrets:
+  mjordansdev_emailfromname:
+    external: true
+  mjordansdev_emailfrommail:
+    external: true
+  mjordansdev_emailsmtp:
+    external: true
+  mjordansdev_emailuser:
+    external: true
+  mjordansdev_emailpass:
+    external: true
+  mjordansdev_recaptchasec:
+    external: true
+
+
 services:
   # Backend
   mjordansdev-backend:
     image: ghcr.io/ni2be/mjordansdev-backend:latest
     restart: always
+    environment:
+      - EmailConfiguration:FromName=/run/secrets/mjordansdev_emailfromname
+      - EmailConfiguration:FromMail=/run/secrets/mjordansdev_emailfrommail
+      - EmailConfiguration:SmtpServer=/run/secrets/mjordansdev_emailsmtp
+      - EmailConfiguration:Port=587
+      - EmailConfiguration:UserName=/run/secrets/mjordansdev_emailuser
+      - EmailConfiguration:Password=/run/secrets/mjordansdev_emailpass
+      - ReCaptchaConfig:SecretKey=/run/secrets/mjordansdev_recaptchasec
+      
+    secrets:
+      - fromName
     ports:
       - '60001:80'
     networks:
@@ -14,6 +40,8 @@ services:
     depends_on:
       - mjordansdev-backend
     image: ghcr.io/ni2be/mjordansdev-frontend:latest
+    environment:
+      - REACT_APP_RECAPTCHA_SITEKEY=6LczhLoiAAAAAHgDHWtMlFA8fyWmHnrgeMm5RmeS
     ports:
       - '60000:80'
     restart: always

@@ -32,7 +32,7 @@ const App = () => {
               <Route path='/projects/pd/:id' element={<ProjectDesigner />}></Route>
             </Route>
             <Route path='/contact' element={
-              <GoogleReCaptchaProvider reCaptchaKey="6LczhLoiAAAAAHgDHWtMlFA8fyWmHnrgeMm5RmeS">
+              <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_RECAPTCHA_SITEKEY!}>
                 <Contact />
               </GoogleReCaptchaProvider>
             } />
