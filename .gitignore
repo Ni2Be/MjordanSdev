@@ -8,6 +8,8 @@ appsettings.Internal.json
 out
 *.sqlite*
 .next
+.secret
+.secrets
 
 # User-specific files
 *.rsuser

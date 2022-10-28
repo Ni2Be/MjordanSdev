@@ -1,10 +1,19 @@
-version: '3'
+version: '3.1'
+
+secrets:
+  mjordansdev_secrets:
+    file: .secrets
 
 services:
   # Backend
   mjordansdev-backend:
     image: ghcr.io/ni2be/mjordansdev-backend:latest
     restart: always
+    environment:
+      mjordansdev_secrets_FILE: /run/secrets/mjordansdev_secrets
+      AllowedOrigins : "https://mjordans.dev;https://www.mjordans.dev"
+    secrets:
+      - mjordansdev_secrets
     ports:
       - '60001:80'
     networks:
