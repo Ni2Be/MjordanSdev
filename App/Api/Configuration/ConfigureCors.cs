@@ -18,6 +18,7 @@ internal static class ConfigureCors
                                   policy
                                       .WithOrigins(origins)
                                       .AllowAnyMethod()
+                                      .AllowCredentials()
                                       .AllowAnyHeader();
                               });
         });
