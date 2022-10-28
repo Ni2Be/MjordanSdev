@@ -18,6 +18,9 @@ Log.Logger = new LoggerConfiguration()
     .CreateBootstrapLogger();
 builder.Host.UseSerilog();
 
+// Docker Helper
+configuration.AddJsonFile("/run/secrets/mjordansdev_secrets", optional: true);
+
 // GraphQL
 builder.Services.AddGraphQLServer()
                 .AddQueryType<mJordansDevQuery>()
@@ -35,7 +38,7 @@ builder.Services.AddDbContextFactory<DataContext>(options =>
 DependencyInjectionRegistry.AddServices(builder.Services, configuration, builder.Environment.IsDevelopment());
 
 // Configure CORS
-ConfigureCors.Configure(builder.Services);
+ConfigureCors.Configure(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
@@ -53,11 +56,11 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = new PathString("/images")
 });
 app.UseRouting();
+app.UseSwagger();
+app.UseSwaggerUI();
 if (app.Environment.IsDevelopment())
 {
     app.UseCors(ConfigureCors.DevCorsPolicy);
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 else
 {

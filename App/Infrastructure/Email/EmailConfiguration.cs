@@ -2,6 +2,8 @@
 
 public class EmailConfiguration
 {
+    public string ToName { get; set; }
+    public string ToMail { get; set; }
     public string FromName { get; set; }
     public string FromMail { get; set; }
     public string SmtpServer { get; set; }

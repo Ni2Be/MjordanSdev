@@ -20,7 +20,6 @@ public static class DependencyInjectionRegistry
         services.AddScoped<IHtmlStringSanitizer, HtmlStringSanitizer>();
         services.Configure<ReCaptchaConfig>(configuraiton.GetSection("ReCaptchaConfig"));
         services.AddScoped<IReCaptchaService, ReCaptchaService>();
-
         services.AddScoped(provider =>
                             new DataSeeder(provider.GetService<DataContext>(),
                                            provider.GetService<IProjectService>(),

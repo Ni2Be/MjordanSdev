@@ -20,6 +20,5 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY ./docker/nginx.conf /etc/nginx/conf.d
 
 EXPOSE 80/tcp
-ENV REACT_APP_RECAPTCHA_SITEKEY ""
 
 CMD ["nginx", "-g", "daemon off;"]

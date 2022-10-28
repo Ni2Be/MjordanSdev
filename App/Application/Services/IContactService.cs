@@ -1,9 +1,8 @@
-﻿using Infrastructure.Email;
-using FluentResults;
-using Infrastructure.Captcha;
+﻿using FluentResults;
+using Application.Dtos;
 
 namespace Application.Services;
 public interface IContactService
 {
-    public Task<Result> SendMail(Message message, CancellationToken cancellationToken);
+    public Task<Result> SendContactInfoMail(ContactInfo contactInfo, CancellationToken cancellationToken);
 }

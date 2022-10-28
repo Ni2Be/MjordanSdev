@@ -1,6 +1,6 @@
-﻿using Infrastructure.Email;
-using Application.Services;
+﻿using Application.Services;
 using Infrastructure.Captcha;
+using Application.Dtos;
 
 namespace Api.Endpoints.Contact;
 
@@ -11,23 +11,23 @@ public static class ContactEndpoints
         app.MapPost("contact/mail", SendMail);
     }
 
-    public class SendMailRequest
+    public class ContactRequest
     {
-        public Message message { get; set; }
+        public ContactInfo contactInfo { get; set; }
         public ReCaptchaRequest reCaptchaRequest { get; set; }
     }
 
     public static async Task<IResult> SendMail(
         IContactService contactService, 
         IReCaptchaService recaptchaService, 
-        SendMailRequest maildto, 
+        ContactRequest contactRequest, 
         CancellationToken cancellationToken)
     {
-        var captchaResult = await recaptchaService.GetGoogleResponse(maildto.reCaptchaRequest, cancellationToken);
+        var captchaResult = await recaptchaService.GetGoogleResponse(contactRequest.reCaptchaRequest, cancellationToken);
         if (!recaptchaService.Validate(captchaResult))
             return Results.BadRequest(captchaResult.ErrorCodes);
 
-        var result = await contactService.SendMail(maildto.message, cancellationToken);
+        var result = await contactService.SendContactInfoMail(contactRequest.contactInfo, cancellationToken);
         if (result.IsSuccess)
             return Results.Ok();
         else

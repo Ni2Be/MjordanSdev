@@ -35,9 +35,9 @@ public class EmailService : IEmailService
     private MimeMessage CreateEmailMessage(Message message, bool htmlBody)
     {
         var emailMessage = new MimeMessage();
-        emailMessage.From.Add(new MailboxAddress(_emailConfig.FromName, _emailConfig.FromMail));
+        emailMessage.From.Add(new MailboxAddress(message.From.Name, message.From.Mail));
 
-        emailMessage.To.AddRange(message.To.Select(x => new MailboxAddress(x.Name, x.Email)));
+        emailMessage.To.AddRange(message.To.Select(x => new MailboxAddress(x.Name, x.Mail)));
         emailMessage.Subject = message.Subject;
 
         if (htmlBody)
