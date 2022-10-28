@@ -14,8 +14,8 @@ public class EmailService : IEmailService
 
     public EmailService(IOptions<EmailConfiguration> emailConfig, ILogger<EmailService> logger)
     {
-        _emailConfig = emailConfig.Value;
-        _logger = logger;
+        _emailConfig = emailConfig?.Value ?? throw new ArgumentNullException(nameof(emailConfig));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     public async Task<bool> SendPureTextEmailAsync(Message message, CancellationToken cancellationToken)
