@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.UnitTests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{354DFA8F-44C9-4AB3-938E-6CC10F4D8E88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataInjector", "DataInjector\DataInjector.csproj", "{95F82DDB-BBCE-437F-B52A-8477EE6AD94F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataInjector", "DataInjector\DataInjector.csproj", "{95F82DDB-BBCE-437F-B52A-8477EE6AD94F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{8F0DD430-081D-41DB-A254-3E94C8013BB7}"
 EndProject
