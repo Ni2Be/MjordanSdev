@@ -7,7 +7,7 @@ using Persistence;
 
 namespace Api.Configuration;
 
-public static class DependencyInjectionRegistry
+public static class ConfigureServices
 {
     public static IServiceCollection AddServices(IServiceCollection services, IConfiguration configuraiton, bool isDevelopment)
     {
@@ -25,7 +25,6 @@ public static class DependencyInjectionRegistry
                                            provider.GetService<IProjectService>(),
                                            provider.GetService<ISkillService>(),
                                            isDevelopment));
-
 
         return services;
     }

@@ -14,8 +14,12 @@ public class HtmlStringSanitizerOptoins
 
 public static class ServiceExtensions
 {
+    public static void AddHtmlStringSanitizer(this IServiceCollection services)
+    {
+        AddHtmlStringSanitizer(services, null);
+    }
     public static void AddHtmlStringSanitizer(this IServiceCollection services,
-        Action<HtmlStringSanitizerOptoins>? options = null)
+        Action<HtmlStringSanitizerOptoins>? options)
     {
         services.Configure(options);
         services.AddScoped<IHtmlStringSanitizer, HtmlStringSanitizer>();

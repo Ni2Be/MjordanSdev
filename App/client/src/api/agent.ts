@@ -63,7 +63,6 @@ const requests = {
             .delete(url)
             .then(developmentSleep(500))
             .then(responseBody),
-
     postForm: (url: string, file: Blob) => {
         let formData = new FormData();
         formData.append("File", file);
