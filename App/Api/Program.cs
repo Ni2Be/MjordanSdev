@@ -35,7 +35,7 @@ builder.Services.AddDbContextFactory<DataContext>(options =>
 {
     options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
 });
-DependencyInjectionRegistry.AddServices(builder.Services, configuration, builder.Environment.IsDevelopment());
+ConfigureServices.AddServices(builder.Services, configuration, builder.Environment.IsDevelopment());
 
 // Configure CORS
 ConfigureCors.Configure(builder.Services, builder.Configuration);
