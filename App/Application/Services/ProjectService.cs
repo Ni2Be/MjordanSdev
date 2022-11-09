@@ -16,7 +16,7 @@ public class ProjectService : IProjectService
         _htmlStringSanitizer = htmlStringSanitizer ?? throw new ArgumentNullException(nameof(htmlStringSanitizer));
     }
 
-    public async Task<Result<Guid>> Add(Project project, CancellationToken cancellationToken)
+    public async Task<Result<string>> Add(Project project, CancellationToken cancellationToken)
     {
         await Task.Run(() =>
         {
@@ -37,7 +37,7 @@ public class ProjectService : IProjectService
         return await _dataContext.Projects.ToListAsync(cancellationToken);
     }
 
-    public async Task<Result<ProjectDetails>> GetDetails(Guid id, CancellationToken cancellationToken)
+    public async Task<Result<ProjectDetails>> GetDetails(string id, CancellationToken cancellationToken)
     {
         var projectDetails = await GetProjectDetails(id, cancellationToken);
 
@@ -47,7 +47,7 @@ public class ProjectService : IProjectService
         return projectDetails;
     }
 
-    public async Task<Result<ImageUrl>> GetImage(Guid id, string imageName, CancellationToken cancellationToken)
+    public async Task<Result<ImageUrl>> GetImage(string id, string imageName, CancellationToken cancellationToken)
     {
         var projectDetails = await GetProjectDetails(id, cancellationToken);
 
@@ -65,7 +65,7 @@ public class ProjectService : IProjectService
         return image;
     }
 
-    private async Task<ProjectDetails?> GetProjectDetails(Guid id, CancellationToken cancellationToken)
+    private async Task<ProjectDetails?> GetProjectDetails(string id, CancellationToken cancellationToken)
     {
         return await _dataContext.ProjectDetails
                                  .Include(projectDetails => projectDetails.ImageUrls)
