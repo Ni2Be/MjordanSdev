@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0.0-focal-amd64 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:7.0.100-jammy-amd64 AS build-env
 WORKDIR /app
 
 COPY . .
