@@ -35,6 +35,7 @@ public class DataSeeder
             await _projectService.Add(
                 new Project
                 {
+                    Id = "RcTank",
                     Name = "RC Tank",
                     ProjectDetails = new ProjectDetails
                     {
@@ -51,6 +52,7 @@ public class DataSeeder
             await _projectService.Add(
                 new Project
                 {
+                    Id = "CounterpAi",
                     Name = "CounterpAi",
                     ProjectDetails = new ProjectDetails
                     {
@@ -67,6 +69,7 @@ public class DataSeeder
             await _projectService.Add(
                 new Project
                 {
+                    Id = "EventInformationSystem",
                     Name = "Event Information System",
                     ProjectDetails = new ProjectDetails
                     {
@@ -83,6 +86,7 @@ public class DataSeeder
             await _projectService.Add(
                 new Project
                 {
+                    Id = "FluidSimulation",
                     Name = "Fluid Simulation",
                     ProjectDetails = new ProjectDetails
                     {
@@ -99,6 +103,7 @@ public class DataSeeder
             await _projectService.Add(
                 new Project
                 {
+                    Id = "MjordanS",
                     Name = "MjordanS",
                     ProjectDetails = new ProjectDetails
                     {
@@ -140,6 +145,7 @@ public class DataSeeder
             await _projectService.Add(
                 new Project
                 {
+                    Id = "NoiseLib",
                     Name = "Noise Lib",
                     ProjectDetails = new ProjectDetails
                     {
