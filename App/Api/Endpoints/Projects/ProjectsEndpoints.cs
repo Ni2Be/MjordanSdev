@@ -22,7 +22,7 @@ public static class ProjectEndpoints
 
     public static async Task<IResult> GetDetails(string id, IProjectService projectService, CancellationToken cancellationToken)
     {
-        var project = await projectService.GetDetails(Guid.Parse(id), cancellationToken);
+        var project = await projectService.GetDetails(id, cancellationToken);
         if (project.IsSuccess)
             return Results.Ok(project.Value);
         else
@@ -31,7 +31,7 @@ public static class ProjectEndpoints
 
     public static async Task<IResult> GetImage(string id, string imageName, IProjectService projectService, CancellationToken cancellationToken)
     {
-        var imageUrl = await projectService.GetImage(Guid.Parse(id), imageName, cancellationToken);
+        var imageUrl = await projectService.GetImage(id, imageName, cancellationToken);
         if (imageUrl.IsSuccess)
             return Results.Ok(imageUrl.Value);
         else
