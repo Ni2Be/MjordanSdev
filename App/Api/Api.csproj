@@ -6,6 +6,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="HotChocolate.AspNetCore" Version="12.15.0" />
 		<PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.15.0" />
