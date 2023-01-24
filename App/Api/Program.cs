@@ -1,17 +1,25 @@
 using Api.Configuration;
+using Api.Endpoints.Contact;
 using Api.Endpoints.Projects;
 using Application.Queries;
-using Application.Services;
-using DataInjector;
-using HotChocolate.Utilities;
-using Infrastructure.Sanitizers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Persistence;
+using Serilog;
 using Path = System.IO.Path;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
+
+// Logging
+const string template = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Indent:l}{NewLine}{Message}{NewLine}{Exception}";
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console(outputTemplate: template)
+    .CreateBootstrapLogger();
+builder.Host.UseSerilog();
+
+// Docker Helper
+configuration.AddJsonFile("/run/secrets/mjordansdev_secrets", optional: true);
 
 // GraphQL
 builder.Services.AddGraphQLServer()
@@ -27,10 +35,10 @@ builder.Services.AddDbContextFactory<DataContext>(options =>
 {
     options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
 });
-DependencyInjectionRegistry.AddServices(builder.Services, builder.Environment.IsDevelopment());
+ConfigureServices.AddServices(builder.Services, configuration, builder.Environment.IsDevelopment());
 
 // Configure CORS
-ConfigureCors.Configure(builder.Services);
+ConfigureCors.Configure(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
@@ -48,11 +56,11 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = new PathString("/images")
 });
 app.UseRouting();
+app.UseSwagger();
+app.UseSwaggerUI();
 if (app.Environment.IsDevelopment())
 {
     app.UseCors(ConfigureCors.DevCorsPolicy);
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 else
 {
@@ -63,5 +71,6 @@ else
 app.MapGraphQL();
 app.MapProjectEndpoints();
 app.MapSkillEndpoints();
+app.MapContactEndpoints();
 
 app.Run();

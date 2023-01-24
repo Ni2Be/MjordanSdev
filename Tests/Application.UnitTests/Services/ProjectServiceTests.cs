@@ -31,7 +31,7 @@ public class ProjectServiceTests
         {
             List<Project> projects = new List<Project>{new Project
             {
-                Id = Guid.NewGuid(),
+                Id = "Project1",
                 Name = "Project 1"
             }};
             await db.Projects.AddRangeAsync(projects);

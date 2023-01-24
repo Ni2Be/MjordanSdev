@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { IContactRequest } from "../models/contact";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
@@ -62,7 +63,6 @@ const requests = {
             .delete(url)
             .then(developmentSleep(500))
             .then(responseBody),
-
     postForm: (url: string, file: Blob) => {
         let formData = new FormData();
         formData.append("File", file);
@@ -86,9 +86,15 @@ const Skills = {
     getAll: () => requests.get(`skills/list`)
 };
 
+const Contact = {
+    sendContactRequest: (contactRequest: IContactRequest): Promise<string> =>
+      requests.post(`contact/mail`, contactRequest)
+};
+
 const Agent = {
     Projects,
-    Skills
+    Skills,
+    Contact
 };
 
 export default Agent;
