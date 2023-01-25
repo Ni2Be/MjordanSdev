@@ -22,10 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Dependency Review
-        uses: actions/dependency-review-action@v3.0.3
-        with:
-          vulnerability-check: true
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+          lfs: 'true'
+          submodules: 'recursive'
+          ssh-key: ${{ secrets.git_ssh_key }}
+    - run: git lfs pull
+    - name: Dependency Review
+      uses: actions/dependency-review-action@v3.0.3
+      with:
+        vulnerability-check: true
 
   build:
 
