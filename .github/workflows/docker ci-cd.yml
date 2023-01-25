@@ -29,10 +29,13 @@ jobs:
           submodules: 'recursive'
           ssh-key: ${{ secrets.git_ssh_key }}
     - run: git lfs pull
-    - name: Dependency Review
-      uses: actions/dependency-review-action@v3.0.3
+    - name: OSS INDEX Vulnerability Scanner
+      # You may pin to the exact commit or the version.
+      # uses: mmercan/actions-vulnerability-scanner@2fc21d2ada79a5a10955904e793e87c37e52ea18
+      uses: mmercan/actions-vulnerability-scanner@v3
       with:
-        vulnerability-check: true
+        # The path to the sln file
+        path: 'MjordanSdev.sln'
 
   build:
 
