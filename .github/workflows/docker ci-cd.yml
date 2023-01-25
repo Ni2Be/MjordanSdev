@@ -17,6 +17,16 @@ env:
   
 jobs:
 
+
+  vulnerabilityCheck:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v3.0.3
+        with:
+          vulnerability-check: true
+
   build:
 
     runs-on: ubuntu-latest
