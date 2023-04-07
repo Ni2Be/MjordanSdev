@@ -7,6 +7,10 @@
 		<UserSecretsId>7a83c8cb-565a-4423-999a-9fb3527f5cb4</UserSecretsId>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="HotChocolate.AspNetCore" Version="12.15.2" />
 		<PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.15.2" />
